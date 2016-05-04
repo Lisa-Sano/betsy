@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  resources :users,    :only => [:new, :create]
+  root "betsy#index"
+
+  resources :products do
+    resources :order_items, :only => [:create, :update, :destroy]
+    resources :reviews
+  end
+
+  resources :users, :only => [:new, :create] do
+    resources :orders
+    resources :products
+    resources :reviews
+  end
+
   resources :sessions, :only => [:create]
   delete "/logout" => "sessions#destroy"
   get    "/login"  => "sessions#new"
