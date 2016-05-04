@@ -1,0 +1,13 @@
+<h1>Welcome! Browse our products:</h1>
+
+<% categories_for_select = @categories.map { |c| [c.capitalize, c] } %>
+<%= form_tag products_path, method: :get do %>
+<%= select_tag(:category, options_for_select(categories_for_select, :selected => params[:category]), :prompt => "Browse by Category...", :onchange => "this.form.submit()") %>
+<% end %>
+
+<% @products.each do |product| %>
+  <p>
+  <%= link_to product.name, product_path(product.id) %>
+  <span class="price"><%= to_money(product.price) %></span>
+  </p>
+<% end %>
