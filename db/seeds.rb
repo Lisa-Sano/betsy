@@ -27,24 +27,19 @@ end
 users = [
   { name: "Jillian",
     user_name: "jillian",
-    email: "jillian@example.com",
-    password: "jillian123" },
+    email: "jillian@example.com" },
   { name: "Justine",
     user_name: "justine",
-    email: "justine@example.com",
-    password: "justine123" },
+    email: "justine@example.com" },
   { name: "Melissa",
     user_name: "melissa",
-    email: "melissa@example.com",
-    password: "melissa123" },
+    email: "melissa@example.com" },
   { name: "Lisa",
     user_name: "lisa",
-    email: "lisa@example.com",
-    password: "lisa123" },
+    email: "lisa@example.com" },
   { name: "Jeremy",
     user_name: "jeremy",
-    email: "jeremy@example.com",
-    password: "jeremy123" }
+    email: "jeremy@example.com" }
 ]
 
 users.each do |user|
