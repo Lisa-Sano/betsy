@@ -27,7 +27,7 @@ gem 'rails-erd'
 gem 'graphviz'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -41,6 +41,9 @@ group :development, :test do
 end
 
 group :development do
+  gem "pry-rails"
+  gem "better_errors"
+  gem "binding_of_caller"
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -48,3 +51,6 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
