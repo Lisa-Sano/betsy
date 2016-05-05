@@ -26,9 +26,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review.new = Review.new(review_edit_params[:review])
+    @review = Review.new(review_edit_params[:review])
     if @review.save
-      redirect_to product_path(@product)
+      redirect_to reviews_path
     else
       flash.now[:alert] = 'Review could not be saved.'
       render :new

@@ -83,5 +83,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :new, :create]
 
   get "/reviews/new/:product_id"  => "reviews#new"
+  # POST   /reviews(.:format)                               reviews#create
+
 
 end
