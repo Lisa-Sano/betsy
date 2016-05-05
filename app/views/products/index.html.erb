@@ -1,4 +1,11 @@
 <h1>Welcome! Browse our products:</h1>
+<p>Order id for the session: <%= session[:order_id] %></p>
+<p><%= butts = OrderItem.where(order_id: 17) %>
+    <%= butts.each do |butt| %>
+    <%= butt.product_id %>
+    <%= butt.order_id %>
+    <%= butt.quantity %>
+    <% end %></p>
 
 <%= link_to "Back to All Products", products_path if params[:category] || params[:merchant] %>
 
