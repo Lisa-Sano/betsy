@@ -22,7 +22,9 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    @product = Product.find(params[:id])
-    current_order.add_product(@product)
+    product = Product.find(params[:id])
+    quantity = params[:quantity]
+    current_order.add_product(product, quantity)
+    redirect_to products_path
   end
 end
