@@ -20,4 +20,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @order_item = OrderItem.new(product_id: @product.id)
   end
+
+  def add_to_cart
+    @product = Product.find(params[:id])
+    current_order.add_product(@product)
+  end
 end
