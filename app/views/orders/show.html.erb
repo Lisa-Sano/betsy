@@ -1,21 +1,28 @@
+<% if current_user.nil? %>
+  <% name = "guest" %>
+<% else %>
+  <% name = @user.name %>
+<% end %>
+
 <%= link_to "Back to products", products_path %>
 
-<h1><%= "Welcome to your cart, #{current_user.name}." %></h1>
+<h1>Welcome to your cart, <%= name %>! </h1>
 
-<% if @order == nil %>
-  <%= "You have nothing in your cart, " <%= link_to "Would you like to go back to browse products?", products_path %>"
+<% if @cart[0].nil? %>
+  You have nothing in your cart, <%= link_to "Would you like to go back to browse products?", products_path %>
 <% else %>
-  <% @order.each do |item| %>
+  <% @cart.each do |item| %>
   <div class="item">
     <% product = Product.find(item.product_id) %>
     <%= product.name %>
-    <%= product.price %>
-    <%= form_for @order do |f| %>
+    <%= to_money(product.price) %>
+    <%= form_for item, :url => product_order_item_path(item.product_id, item.id) do |f| %>
       <%= f.label :quantity %>
       <%= f.number_field :quantity, :value => item.quantity %>
 
-      <%= f.submit %>
+      <%= f.submit :'Update Quantity'%>
       <% end %>
+      <%= button_to :'Remove From Cart', product_order_item_path(item.product_id, item.id), method: :delete %>
     </div>
   <% end %>
 <% end %>

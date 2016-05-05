@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   root "products#index"
 
+
   resources :products do
     resources :order_items, :only => [:create, :update, :destroy]
     resources :reviews
     post 'add_to_cart', on: :member
   end
+
+  get "/orders/:id" => "orders#show", as: :order
 
   resources :users, :only => [:new, :create] do
     resources :orders
