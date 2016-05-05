@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
   def create
     @review.new = Review.new(review_edit_params[:review])
     if @review.save
-      redirect_to :back
+      redirect_to product_path(@product)
     else
       flash.now[:alert] = 'Review could not be saved.'
       render :new
@@ -35,18 +35,13 @@ class ReviewsController < ApplicationController
 
   # user_reviews          GET    /users/:user_id/reviews(.:format)           reviews#index
   def index
-    @reviews = Review.where(user_id: params[:user_id])
+    # most popular items
+    @reviews = Review.all
+    @top_reviews = Review.where(rating: 5)
   end
 
-  # def show
-  #   @review = Vendor.find(params[:id])
-  #   @beg_month = Time.now.beginning_of_month
-  #   @end_month = Time.now.end_of_month
-  #   @all_sales = @vendor.sales.where(purchase_time: (@beg_month..@end_month))
-  # end
-  
   def show
-
+    @reviews = Review.where(user_id: params[:user_id])
   end
 
   private
