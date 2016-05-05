@@ -21,6 +21,8 @@
 class ReviewsController < ApplicationController
   def new
     @review = Review.new
+    @product = Product.find(params[:product_id])
+    @user = current_user
   end
 
   def create
