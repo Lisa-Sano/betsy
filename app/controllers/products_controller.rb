@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @categories = Product.uniq.pluck(:category).sort
+    @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
     @merchants = User.joins(:products).uniq.sort
 
     scope = Product.order(name: :asc)
@@ -25,6 +25,6 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     quantity = params[:quantity]
     current_order.add_product(product, quantity, session[:order_id])
-    redirect_to products_path
+    redirect_to order_path(session[:order_id])
   end
 end
