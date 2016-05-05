@@ -5,8 +5,8 @@
 <% if @order == nil %>
   <%= "You have nothing in your cart, " <%= link_to "Would you like to go back to browse products?", products_path %>"
 <% else %>
-  <div class="item">
   <% @order.each do |item| %>
+  <div class="item">
     <% product = Product.find(item.product_id) %>
     <%= product.name %>
     <%= product.price %>
