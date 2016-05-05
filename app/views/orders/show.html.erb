@@ -1,0 +1,21 @@
+<%= link_to "Back to products", products_path %>
+
+<h1><%= "Welcome to your cart, #{current_user.name}." %></h1>
+
+<% if @order == nil %>
+  <%= "You have nothing in your cart, " <%= link_to "Would you like to go back to browse products?", products_path %>"
+<% else %>
+  <div class="item">
+  <% @order.each do |item| %>
+    <% product = Product.find(item.product_id) %>
+    <%= product.name %>
+    <%= product.price %>
+    <%= form_for @order do |f| %>
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity, :value => item.quantity %>
+
+      <%= f.submit %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
