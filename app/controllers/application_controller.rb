@@ -9,12 +9,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
+    # check if an order is already stored in the session
     order ||= Order.find_by(id: session[:order_id])
+
+    # if no order exists, create a new one and store its id in sessions hash
     if order.nil?
       order = Order.create(order_state: "pending")
       session[:order_id] = order.id
     end
 
+    # return the instance of order
     return order
   end
 end
