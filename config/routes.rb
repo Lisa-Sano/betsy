@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root "betsy#index"
+  root "products#index"
 
   resources :products do
     resources :order_items, :only => [:create, :update, :destroy]
     resources :reviews
+    post 'add_to_cart', on: :member
   end
 
   resources :users, :only => [:new, :create] do
@@ -21,8 +22,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
-  resources :products, :only => [:index, :show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
