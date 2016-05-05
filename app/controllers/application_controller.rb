@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    @order ||= Order.new(state: "pending")
+    order ||= Order.find_by(id: session[:order_id])
+    if order.nil?
+      order = Order.create(order_state: "pending")
+      session[:order_id] = order.id
+    end
+
+    return order
   end
 end
