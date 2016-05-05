@@ -6,6 +6,6 @@
   <%= f.label :review %>
   <%= f.text_field :review %>
   <%= f.label :rating %>
-  <%= f.text_field :rating %>
+  <%= f.select :rating, [1, 2, 3, 4, 5]%>
   <%= f.submit %>
 <% end %>
