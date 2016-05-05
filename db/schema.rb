@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503170941) do
+ActiveRecord::Schema.define(version: 20160505000246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160503170941) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "order_state", null: false
-    t.integer  "user_id",     null: false
+    t.integer  "user_id"
     t.integer  "total"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160503170941) do
   create_table "products", force: :cascade do |t|
     t.string   "name",        null: false
     t.integer  "price",       null: false
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "description"
     t.string   "category"
     t.integer  "stock",       null: false
@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20160503170941) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",         null: false
-    t.string   "user_name",    null: false
-    t.string   "password"
-    t.string   "email",        null: false
+    t.string   "name",            null: false
+    t.string   "user_name",       null: false
+    t.string   "password_digest"
+    t.string   "email",           null: false
     t.string   "address"
     t.string   "city"
     t.string   "state"
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20160503170941) do
     t.datetime "cc_exp"
     t.integer  "cc_cvv"
     t.integer  "billing_zip"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

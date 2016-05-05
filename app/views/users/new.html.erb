@@ -1,0 +1,42 @@
+<h1>I am glad you want to create an accout with us</h1>
+
+<% if @user.errors.any? %>
+  <ul class="errors">
+    <% @user.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name %>
+
+  <%= f.label :email, "Email Address:" %>
+  <%= f.email_field :email %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation, "Confirm Password:" %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.submit %>
+<% end %>
