@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @order_item = OrderItem.new(product_id: @product.id)
+    @reviews = Review.where(product_id: @product.id)
   end
 
   def add_to_cart
