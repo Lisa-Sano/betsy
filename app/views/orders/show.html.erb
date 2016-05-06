@@ -8,10 +8,10 @@
 
 <h1>Welcome to your cart, <%= name %>! </h1>
 
-<% if @cart[0].nil? %>
+<% if @order.order_items.empty? %>
   You have nothing in your cart, <%= link_to "Would you like to go back to browse products?", products_path %>
 <% else %>
-  <% @cart.each do |item| %>
+  <% @order.order_items.each do |item| %>
   <div class="item">
     <% product = Product.find(item.product_id) %>
     <%= product.name %>
@@ -25,4 +25,5 @@
       <%= button_to :'Remove From Cart', product_order_item_path(item.product_id, item.id), method: :delete %>
     </div>
   <% end %>
+  Total: <%= to_money(@order.order_total) %>
 <% end %>
