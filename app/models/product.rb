@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
 
   def display_avg(product, reviews)
     if (product.avg_rating(reviews)) > 0
-      "Average rating: #{@product.avg_rating(@reviews)}"
+      "Average rating: #{product.avg_rating(reviews)}"
     else
       "No reviews yet."
     end
