@@ -1,10 +1,24 @@
 class Users::ProductsController < ApplicationController
-  def index
+  before_action :require_login, except: [:index, :show]
 
+  def index
+    @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
+    scope = Product.where(user_id: params[:user_id])
+
+    if params[:category]
+      scope = scope.where(category: params[:category])
+    end
+
+    @products = scope
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def new
     @product = Product.new
+    @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
   end
 
   def create
