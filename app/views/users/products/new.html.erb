@@ -2,4 +2,4 @@
   <h1>Create a new product</h1>
 </div>
 
-<%= render partial: "form", locals: { zone: @product } %>
+<%= render partial: "form", locals: { zone: @product, url: user_products_path(@user) } %>
