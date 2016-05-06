@@ -6,11 +6,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 </head>
 <body>
   <main class="container">
@@ -41,17 +36,18 @@
         </div>
       </nav>
 
-
       <% if flash[:error] -%>
-      <p class='error'><%=h flash[:error] %></p>
+        <div class="alert alert-danger" role="alert">
+          <p class='error'><%=h flash[:error] %></p>
+        </div>
       <% end %>
       <% if flash[:notice] -%>
-      <p class='notice'><%=h flash[:notice] %></p>
+        <div class="alert alert-warning" role="alert">
+          <p class='notice'><%=h flash[:notice] %></p>
+        </div>
       <% end %>
 
-      <%= yield %>
+<%= yield %>
 
-    </div>
-  </main>
 </body>
 </html>
