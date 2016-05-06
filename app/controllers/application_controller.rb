@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_is_owner
-    session[:user_id] == @user.id
+    session[:user_id] == params[:user_id]
   end
 
   def current_order
