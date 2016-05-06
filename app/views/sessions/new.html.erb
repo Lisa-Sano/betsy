@@ -1,10 +1,11 @@
 <%= form_tag sessions_path, method: :post, :html => {:class => "form-signin"} do %>
 <h1>Hope you remember your password!</h1>
-  <%= label_tag :email, class: "form-signin" %>
+
+  <%= label_tag :email %>
   <%= text_field_tag :email %>
 
-  <%= label_tag :password, class: "form-signin"  %>
-  <%= password_field_tag :password, id: "inputEmail", class: "form-control", placeholder: "Email address" %>
+  <%= label_tag :password  %>
+  <%= password_field_tag :password  %>
 
   <%= submit_tag "Sign In, I guess" %>
 <% end %>

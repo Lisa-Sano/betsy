@@ -12,9 +12,19 @@
 <%= submit_tag "Submit" %>
 <% end %>
 
+<div class="row">
 <% @products.each do |product| %>
-  <p>
-  <%= link_to product.name, product_path(product.id) %>
-  <span class="price"><%= to_money(product.price) %></span>
-  </p>
-<% end %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+  <img src="..." alt="...">
+  <div class="caption">
+    <%= link_to product.name, product_path(product.id) %>
+  <p class="price"><%= to_money(product.price) %></p>
+    <p><a href="#" class="btn btn-primary" role="button">See</a>
+    <a href="#" class="btn btn-default" role="button">Buy</a>
+    <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
