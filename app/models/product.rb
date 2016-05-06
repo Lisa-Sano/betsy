@@ -5,5 +5,5 @@ class Product < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :user_id, :stock, presence: true
+  validates :stock, :user_id, presence: true, numericality: { only_integer: true }
 end
