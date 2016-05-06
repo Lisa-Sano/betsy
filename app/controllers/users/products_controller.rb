@@ -45,4 +45,18 @@ class Users::ProductsController < ApplicationController
   def products_params
     params.permit(product: [:name, :description, :price, :photo_url, :stock])
   end
+
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_url # halts request cycle
+    end
+  end
+
+  def current_user_is_owner
+    unless session[:user_id] == params[:user_id]
+      flash[:error] = "You do not have access to that account"
+      redirect_to user_products_path(session[:user_id])
+    end
+  end
 end
