@@ -1,0 +1,23 @@
+<h1>This your order fulfillment page 💰</h1>
+
+<!-- create_table "orders", force: :cascade do |t|
+  t.string   "order_state", null: false
+  t.integer  "user_id"
+  t.integer  "total"
+  t.datetime "created_at",  null: false
+  t.datetime "updated_at",  null: false
+end -->
+
+<%=@user_orders.inspect%>
+
+<%=session.keys%>
+<br>
+<%=session[:order_id]%>
+<br>
+<%=session[:user_id]%>
+<br>
+<%=session[:session_id]%>
+
+<%=@orders_i_have_sold%>
+<%=@orders_i_have_sold.each {|i| i.user_id}%>
+<%=@orders_i_have_sold.each {|i| i.total}%>

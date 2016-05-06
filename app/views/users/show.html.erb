@@ -1,0 +1,14 @@
+<h1>Hello <%= @user.name %> all u need to know about yourself</h1>
+<p>
+  <%= @user.address %>
+  <%= @user.city %>
+  <%= @user.state %>
+  <%= @user.zip %>
+
+</p>
+
+
+<p>
+
+<%= button_to "Order Fullfilment", user_orders_path(@user), class: "btn btn-primary", method: :get%>
+<%= button_to "Edit my products", user_products_path(@user), class: "btn btn-default", method: :get%>
