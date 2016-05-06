@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "products#index"
 
 
-  resources :products do
+  resources :products, :only => [:index, :show] do
     resources :order_items, :only => [:create, :update, :destroy]
     resources :reviews
     post 'add_to_cart', on: :member
@@ -12,8 +12,10 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create] do
     resources :orders
-    resources :products
     resources :reviews
+    scope module: :users do
+      resources :products
+    end
   end
 
   resources :sessions, :only => [:create]

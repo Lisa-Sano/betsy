@@ -1,0 +1,17 @@
+<h1>Welcome <%= @user.name %>! Here are your products:</h1>
+
+<%= link_to "Add a new product", new_user_product_path %>
+
+<% categories_for_select = @categories.map { |c| [c.capitalize, c] } %>
+<%= form_tag products_path, method: :get do %>
+<%= select_tag(:category, options_for_select(categories_for_select, :selected => params[:category]), :prompt => "Browse by Category...") %>
+
+<%= submit_tag "Submit" %>
+<% end %>
+
+<% @products.each do |product| %>
+  <p>
+  <%= link_to product.name, user_product_path(params[:user_id], product.id) %>
+  <span class="price"><%= to_money(product.price) %></span>
+  </p>
+<% end %>
