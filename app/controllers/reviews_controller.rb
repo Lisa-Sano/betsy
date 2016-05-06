@@ -19,12 +19,22 @@
 # new_user_review       GET    /users/:user_id/reviews/new(.:format)       reviews#new
 
 class ReviewsController < ApplicationController
+
   def new
-    @review = Review.new
-    @product = Product.find(params[:product_id])
-    @user = current_user
+    if current_user && current_user_is_owner
+      flash[:error] = "Users cannot review products they sell."
+      redirect_to user_products_path(session[:user_id])
+    else
+      @review = Review.new
+      @product = Product.find(params[:product_id])
+      @user = current_user
+    end
   end
 
+  # def current_user
+  #   @user ||= User.find_by(id: session[:user_id])
+  # end
+  #
   def create
     @review = Review.new(review_edit_params[:review])
     if @review.save
