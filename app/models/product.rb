@@ -6,4 +6,8 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :user_id, :stock, presence: true
+
+  def to_cents(amount)
+    amount = amount.gsub(/[^0-9]/, '').to_i
+  end
 end
