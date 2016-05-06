@@ -16,10 +16,6 @@ class ProductsController < ApplicationController
     @products = scope
   end
 
-  def new
-    @product = Product.new
-  end
-
   def show
     @product = Product.find(params[:id])
     @order_item = OrderItem.new(product_id: @product.id)
@@ -32,7 +28,4 @@ class ProductsController < ApplicationController
     redirect_to order_path(session[:order_id])
   end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
 end
