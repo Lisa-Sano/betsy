@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
     @merchants = User.joins(:products).uniq.sort
@@ -31,8 +32,6 @@ class ProductsController < ApplicationController
     else
       flash[:notice] = "This product is out of stock. To order one please log in"
       redirect_to product
-
     end
   end
-
 end
