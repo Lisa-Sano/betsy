@@ -10,33 +10,64 @@
   </ul>
 <% end %>
 
-<%= form_for @user do |f| %>
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
+<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
 
-  <%= f.label :email, "Email Address:" %>
-  <%= f.email_field :email %>
+<div class="input-group">
+  <%= f.label :user_name, class: "input-group-addon" %>
+  <%= f.text_field :user_name, class: "form-control" %>
+</div>
+<br>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="input-group">
+  <%= f.label :email, class: "input-group-addon" %>
+  <%= f.email_field :email, class: "form-control" %>
+</div>
+<br>
 
-  <%= f.label :address %>
-  <%= f.text_field :address %>
+  <div class="input-group">
+  <%= f.label :name, class: "input-group-addon" %>
+  <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <br>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+  <div class="input-group">
+  <%= f.label :address, class: "input-group-addon" %>
+  <%= f.text_field :address, class: "form-control" %>
+  </div>
+  <br>
 
-  <%= f.label :state %>
-  <%= f.text_field :state %>
+  <div class="input-group">
+  <%= f.label :city, class: "input-group-addon" %>
+  <%= f.text_field :city, class: "form-control" %>
+  </div>
+  <br>
 
-  <%= f.label :zip %>
-  <%= f.text_field :zip %>
+  <div class="input-group">
+  <%= f.label :state, class: "input-group-addon" %>
+  <%= f.text_field :state, class: "form-control" %>
+  </div>
+  <br>
 
-  <%= f.label :password, "Password:" %>
-  <%= f.password_field :password %>
+  <div class="input-group">
+  <%= f.label :zip, class: "input-group-addon" %>
+  <%= f.text_field :zip, class: "form-control" %>
+  </div>
+  <br>
 
-  <%= f.label :password_confirmation, "Confirm Password:" %>
-  <%= f.password_field :password_confirmation %>
+  <div class="input-group">
+  <%= f.label :password, class: "input-group-addon"  %>
+  <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <br>
+  <div class="input-group">
+  <%= f.label :password_confirmation, class: "input-group-addon" %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <br>
+  <br>
 
-  <%= f.submit %>
+
+  <%= f.submit class: "btn btn-primary btn-lg" %>
 <% end %>
+
+</div>

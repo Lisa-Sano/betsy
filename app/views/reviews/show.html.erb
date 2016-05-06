@@ -1,0 +1,19 @@
+<%# this should go in the product and user show views.#%>
+
+<%# product_reviews     GET    /products/:product_id/reviews(.:format)     reviews#index#%>
+
+
+<div class="display_blocks">
+  <h2><%=@product.name : %></h2><br>
+      <ul>
+        <li> <%= link_to "see reviews" product.name, product_reviews_path(product.id) %> </li>
+      </ul>
+</div>
+
+<%# see my reviews? see all reviews by a user? #%>
+<div class="display_blocks">
+  <h2><%=user.name : %></h2><br>
+      <ul>
+        <li> <%= link_to "see reviews" product.name, product_reviews_path(product.id) %> </li>
+      </ul>
+</div>
