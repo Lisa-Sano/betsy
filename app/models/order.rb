@@ -22,4 +22,14 @@ class Order < ActiveRecord::Base
       return item
     end
   end
+
+  def order_total
+    total = 0
+    order_items.each do |item|
+      product = Product.find(item.product_id)
+      quantity_total = product.price * item.quantity
+      total += quantity_total
+    end
+    return total
+  end
 end

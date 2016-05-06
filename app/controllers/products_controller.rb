@@ -32,8 +32,6 @@ class ProductsController < ApplicationController
     else
       flash[:notice] = "This product is out of stock. To order one please log in"
       redirect_to product
-
     end
   end
-
 end
