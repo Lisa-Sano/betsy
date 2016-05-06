@@ -26,4 +26,6 @@
     </div>
   <% end %>
   Total: <%= to_money(@order.order_total) %>
+
+  <%= button_to :'Complete Purchase', user_order_path(session[:user_id], session[:order_id]), method: :patch %>
 <% end %>
