@@ -14,7 +14,7 @@
 <% end %>
 
 <p>Reviews for <%=@product.name%><p>
-<p>Average rating: <%=@product.avg_rating(@reviews)%></p>
+<p><%=@product.display_avg(@product, @reviews)%></p>
 
 <% @reviews.each do |review| %>
   <ul>
