@@ -16,9 +16,9 @@
 <p>Reviews for <%=@product.name%><p>
 <p>Average rating: <%=@product.avg_rating(@reviews)%></p>
 
-<%= @reviews.each do |review| %>
+<% @reviews.each do |review| %>
   <ul>
-    <li>Reviewed by: <%=User.find(review.user_id).name%></li>
+    <li>Reviewed by: <%= review.get_user_name %></li>
     <li>Review: <%=review.review%></li>
     <li>Rating: <%=review.rating%></li>
   </ul>

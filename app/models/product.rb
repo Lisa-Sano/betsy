@@ -10,6 +10,11 @@ class Product < ActiveRecord::Base
       sum += review.rating
       count += 1
     end
-    sum/count
+    if count == 0
+      0
+    else
+      sum/count
+    end
   end
+
 end
