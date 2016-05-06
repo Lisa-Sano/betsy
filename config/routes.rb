@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/orders/:id" => "orders#show", as: :order
 
-  resources :users, :only => [:new, :create] do
+  resources :users, :only => [:new, :create, :show] do
     resources :orders
     resources :reviews
     scope module: :users do

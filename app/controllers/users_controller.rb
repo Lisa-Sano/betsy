@@ -12,6 +12,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @orders = Order.where(user_id: @user.id)
+    @products = Product.where(user_id: @user.id)
+    @order_item = OrderItem.where(user_id: @user.id)
+    @reviews = Review.where(user_id: @user.id)
+  end
+
+
+
   private
 
   def user_create_params

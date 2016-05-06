@@ -24,6 +24,6 @@
   </ul>
 <%end%>
 
-<p><%= link_to "Review this product", new_product_review_path(@product.id) %></p>
+<p><%=link_to "Review this product", new_product_review_path(@product.id) unless current_user == @product.user %></p>
 
 <p><%= link_to "See all reviews", product_reviews_path(@product.id) %></p>
