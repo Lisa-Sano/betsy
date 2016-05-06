@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
   def index
-    @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
+    @categories = Category.order(name: :asc)
     @merchants = User.joins(:products).uniq.sort
 
     scope = Product.order(name: :asc)
 
     if params[:category]
-      scope = scope.where(category: params[:category])
+      category = Category.find(params[:category])
+      scope = category.products
     end
 
     if params[:merchant]
