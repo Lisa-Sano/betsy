@@ -18,7 +18,6 @@ class Users::ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
   end
 
   def create
