@@ -3,10 +3,9 @@
 <head>
   <title>Betsy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'signin', media: 'all', 'data-turbolinks-track' => true %>
-
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -29,7 +28,7 @@
           <% else %>
           <button type="button" class="btn btn-default navbar-btn"><%= link_to "Log In", login_path %></button>
           <% end %>
-          </ul>
+          <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>          </ul>
         </div>
 
       </div>
