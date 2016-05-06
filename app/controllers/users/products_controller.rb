@@ -35,6 +35,11 @@ class Users::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def update
+    Product.update(params[:id], products_params[:product])
+    redirect_to user_product_path(session[:user_id], params[:id])
+  end
+
   private
 
   def products_params
