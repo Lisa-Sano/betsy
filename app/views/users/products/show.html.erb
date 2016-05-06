@@ -1,4 +1,4 @@
-<%= link_to "Back to products", products_path %>
+<p><%= link_to "Back to #{User.find(params[:user_id]).name}'s products", user_products_path(params[:user_id]) %></p>
 
 <h1><%= @product.name %></h1>
 
@@ -12,17 +12,6 @@
        <%= select_tag :quantity, options_for_select([1,2,3,4,5,6,7,8,9,10]) %>
        <%= submit_tag 'Add to Cart' %>
 <% end %>
-
-<p>Reviews for <%=@product.name%><p>
-<p>Average rating: <%=@product.avg_rating(@reviews)%></p>
-
-<% @reviews.each do |review| %>
-  <ul>
-    <li>Reviewed by: <%= review.get_user_name %></li>
-    <li>Review: <%=review.review%></li>
-    <li>Rating: <%=review.rating%></li>
-  </ul>
-<%end%>
 
 <p><%= link_to "Review this product", new_product_review_path(@product.id) %></p>
 
