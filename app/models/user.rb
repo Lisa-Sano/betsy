@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
     somebody = find_by(email: email)
     somebody && somebody.authenticate(password)
   end
+
+  def self.my_account?(current_user, url_user_id)
+    !current_user.nil? && current_user.id == url_user_id
+  end
 end

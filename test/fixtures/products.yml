@@ -4,8 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+sweater:
+  name: sweater
+  price: 2000
+  user: one
+  description: a wool sweater
+  category: sweaters
+  stock: 5
+shoes:
+  name: shoes
+  price: 5000
+  user: two
+  description: black classic pumps
+  category: shoes
+  stock: 10
