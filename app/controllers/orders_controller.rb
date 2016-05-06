@@ -1,5 +1,15 @@
 class OrdersController < ApplicationController
 
+  # create_table "orders", force: :cascade do |t|
+  #   t.string   "order_state", null: false
+  #   t.integer  "user_id"
+  #   t.integer  "total"
+  #   t.datetime "created_at",  null: false
+  #   t.datetime "updated_at",  null: false
+  #
+  def index
+    @orders_i_have_sold = Order.where(user_id: session[:user_id])
+  end
   def show
     @cart = OrderItem.where(order_id: session[:order_id])
     render :show
