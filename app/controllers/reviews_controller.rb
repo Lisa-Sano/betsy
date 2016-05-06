@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
   # user_reviews          GET    /users/:user_id/reviews(.:format)           reviews#index
   def index
     # most popular items
-    @reviews = Review.all
+    @reviews = Review.all.each
     @top_reviews = Review.where(rating: 5)
   end
 

@@ -9,7 +9,7 @@
 
 <h1>Products reviewed by popularity</h1>
 
-<%= @reviews.each do |review| %>
+<% @reviews.each do |review| %>
   <ul>
     <li>Product: <%=Product.find(review.product_id).name%></li>
     <li>Reviewed by: <%=User.find(review.user_id).name%></li>
