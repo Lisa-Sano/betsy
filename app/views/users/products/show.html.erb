@@ -1,0 +1,18 @@
+<p><%= link_to "Back to #{User.find(params[:user_id]).name}'s products", user_products_path(params[:user_id]) %></p>
+
+<h1><%= @product.name %></h1>
+
+<img src=<%= @product.photo_url %>>
+
+<p><em><%= @product.description %></em></p>
+<p><strong>Price:</strong> <%= to_money(@product.price) %></p>
+<p><strong>Category:</strong> <%= @product.category %></p>
+
+<%= form_tag add_to_cart_product_path(@product.id) do %>
+       <%= select_tag :quantity, options_for_select([1,2,3,4,5,6,7,8,9,10]) %>
+       <%= submit_tag 'Add to Cart' %>
+<% end %>
+
+<p><%= link_to "Review this product", new_product_review_path(@product.id) %></p>
+
+<p><%= link_to "See all reviews", product_reviews_path(@product.id) %></p>
