@@ -1,6 +1,6 @@
 class Users::ProductsController < ApplicationController
   before_action :require_login, except: [:index, :show]
-  # before_action :current_user_is_owner, only: [:new, :edit, :destroy]
+  before_action :current_user_is_owner, only: [:new, :edit, :destroy]
 
   def index
     @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
@@ -67,7 +67,7 @@ class Users::ProductsController < ApplicationController
   end
 
   def current_user_is_owner
-    unless session[:user_id] == params[:user_id]
+    unless session[:user_id] == params[:user_id].to_i
       flash[:error] = "You do not have access to that account"
       redirect_to user_products_path(session[:user_id])
     end
