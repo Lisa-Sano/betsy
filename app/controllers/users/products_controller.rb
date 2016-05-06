@@ -12,7 +12,7 @@ class Users::ProductsController < ApplicationController
 
     @products = scope
 
-    if current_user.id == params[:user_id].to_i
+    if User.my_account?(current_user, params[:user_id].to_i)
         render action: :my_index
     else
         render action: :index
@@ -22,7 +22,7 @@ class Users::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
-    if current_user.id == params[:user_id].to_i
+    if User.my_account?(current_user, params[:user_id].to_i)
         render action: :my_show
     else
         render action: :show

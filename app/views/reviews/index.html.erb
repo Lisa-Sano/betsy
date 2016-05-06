@@ -12,7 +12,7 @@
 <% @reviews.each do |review| %>
   <ul>
     <li>Product: <%=Product.find(review.product_id).name%></li>
-    <li>Reviewed by: <%=User.find(review.user_id).name%></li>
+    <li>Reviewed by: <%=User.find(review.user_id).name if review.user_id != nil%> </li>
     <li>Review: <%=review.review%></li>
     <li>Rating: <%=review.rating%></li>
   </ul>
