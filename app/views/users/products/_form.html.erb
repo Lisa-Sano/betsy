@@ -24,5 +24,14 @@
     <%= f.number_field :stock, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <select multiple class="form-control" id="category">
+      <% @categories.each do |category| %>
+        <option><%= category.capitalize %></option>
+      <% end %>
+    </select>
+  </div>
+
   <%= f.submit class: "btn btn-success" %>
 <% end %>
