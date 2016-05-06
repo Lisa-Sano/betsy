@@ -1,18 +1,28 @@
 <%= form_for(zone) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class: "inputdefault" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Product name" %>
+  </div>
 
-  <%= f.label :price %>
-  <%= f.text_field :price %>
+  <div class="form-group">
+    <%= f.label :description, class: "inputdefault" %>
+    <%= f.text_field :description, class: "form-control", placeholder: "Product description" %>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <div class="form-group">
+    <%= f.label :price, class: "inputdefault" %>
+    <%= f.text_field :price, class: "form-control", placeholder: "$ (in dollars)" %>
+    </div>
 
-  <%= f.label :photo_url %>
-  <%= f.text_field :photo_url %>
+  <div class="form-group">
+    <%= f.label :photo_url, class: "inputdefault" %>
+    <%= f.url_field :photo_url, class: "form-control", placeholder: "URL (optional)" %>
+    </div>
 
-  <%= f.label :stock %>
-  <%= f.text_field :stock %>
+  <div class="form-group">
+    <%= f.label :stock, class: "inputdefault" %>
+    <%= f.number_field :stock, class: "form-control" %>
+  </div>
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-success" %>
 <% end %>
