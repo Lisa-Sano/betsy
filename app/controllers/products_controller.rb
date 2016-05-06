@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
     @merchants = User.joins(:products).uniq.sort
