@@ -1,12 +1,10 @@
+<%= form_tag sessions_path, method: :post, :html => {:class => "form-signin"} do %>
 <h1>Hope you remember your password!</h1>
-<%= form_tag sessions_path, method: :post do %>
-  <%= label_tag :email, "Email Address:" %>
+  <%= label_tag :email %>
   <%= text_field_tag :email %>
 
-  <%= label_tag :password, "Password (secret):" %>
-  <%= password_field_tag :password %>
+  <%= label_tag :password  %>
+  <%= password_field_tag :password  %>
 
   <%= submit_tag "Sign In, I guess" %>
 <% end %>
-
-<%= @error %>

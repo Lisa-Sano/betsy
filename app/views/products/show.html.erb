@@ -13,6 +13,17 @@
        <%= submit_tag 'Add to Cart' %>
 <% end %>
 
+<p>Reviews for <%=@product.name%><p>
+<p>Average rating: <%=@product.avg_rating(@reviews)%></p>
+
+<% @reviews.each do |review| %>
+  <ul>
+    <li>Reviewed by: <%= review.get_user_name %></li>
+    <li>Review: <%=review.review%></li>
+    <li>Rating: <%=review.rating%></li>
+  </ul>
+<%end%>
+
 <p><%= link_to "Review this product", new_product_review_path(@product.id) %></p>
 
 <p><%= link_to "See all reviews", product_reviews_path(@product.id) %></p>

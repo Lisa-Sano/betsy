@@ -1,4 +1,12 @@
 class Review < ActiveRecord::Base
   belongs_to :product
-  has_one :user
+  belongs_to :user
+
+  def get_user_name
+    if user
+      user.name
+    else
+      "Guest user"
+    end
+  end
 end

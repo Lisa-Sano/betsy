@@ -20,13 +20,20 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @order_item = OrderItem.new(product_id: @product.id)
+    @reviews = Review.where(product_id: @product.id)
   end
 
   def add_to_cart
     product = Product.find(params[:id])
     quantity = params[:quantity]
-    current_order.add_product(product, quantity, session[:order_id])
-    redirect_to order_path(session[:order_id])
+    if current_user || product.in_stock?
+      current_order.add_product(product, quantity, session[:order_id])
+      redirect_to order_path(session[:order_id])
+    else
+      flash[:notice] = "This product is out of stock. To order one please log in"
+      redirect_to product
+
+    end
   end
 
 end
