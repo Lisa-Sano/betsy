@@ -11,7 +11,7 @@
 
   <div class="form-group">
     <%= f.label :price, class: "inputdefault" %>
-    <%= f.text_field :price, class: "form-control", placeholder: "$ (in dollars)" %>
+    <%= f.text_field :price, class: "form-control", placeholder: "$ (in dollars)", value: to_money(zone.price) %>
     </div>
 
   <div class="form-group">
