@@ -6,12 +6,11 @@ class ProductsController < ApplicationController
 
     scope = Product.order(name: :asc)
 
-    if params[:category]
-      category = Category.find(params[:category])
-      scope = category.products
+    if params[:category].present?
+      scope = scope.joins(:categories).where(categories: {id: params[:category]})
     end
 
-    if params[:merchant]
+    if params[:merchant].present?
       scope = scope.where(user_id: params[:merchant])
     end
 
