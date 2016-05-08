@@ -41,4 +41,16 @@ class Product < ActiveRecord::Base
 
     amount.gsub(/[^0-9]/, '').to_i * 100
   end
+
+
+  def add_categories(product_categories, selected)
+    selected.each do |id|
+      category = Category.find(id)
+      if product_categories.include? category
+        product_categories.delete(category)
+      else
+        product_categories << category
+      end
+    end
+  end
 end
