@@ -55,7 +55,7 @@ class Users::ProductsController < ApplicationController
     if @product.save
       redirect_to user_product_path(session[:user_id], params[:id])
     else
-      flash[:error] = "There was an error updating your product. Please try again."
+      flash.now[:error] = "There was an error updating your product. Please try again."
       render :edit
     end
   end
