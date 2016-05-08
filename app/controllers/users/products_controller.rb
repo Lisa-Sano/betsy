@@ -22,6 +22,7 @@ class Users::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @categories = @product.categories
 
     if User.my_account?(current_user, params[:user_id].to_i)
         render action: :my_show
