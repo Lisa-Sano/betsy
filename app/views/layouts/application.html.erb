@@ -6,11 +6,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 </head>
 <body>
   <main class="container">
@@ -23,13 +18,19 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><%= link_to "Sign Up", new_user_path unless current_user %></li>
+
+
             <% if current_user%>
+
             <button type="button" class="btn btn-default navbar-btn"><%= link_to "Log Out", logout_path, method: :delete  %></button>
+            <li class="active"><%= link_to "My account", user_path(current_user) if current_user.valid? %></li>
             <% else %>
+            <li class="active"><%= link_to "Sign Up", new_user_path%></li>
             <button type="button" class="btn btn-default navbar-btn"><%= link_to "Log In", login_path %></button>
             <% end %>
-            <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>          </ul>
+            <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
+
+          </ul>
           </div>
 
         </div>
@@ -46,9 +47,7 @@
         </div>
       <% end %>
 
-      <%= yield %>
+<%= yield %>
 
-    </div>
-  </main>
 </body>
 </html>

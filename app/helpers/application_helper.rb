@@ -1,5 +1,5 @@
 module ApplicationHelper
   def to_money(price_in_cents)
-    "$" + sprintf('%.2f', (price_in_cents / 100))
+    "$" + sprintf('%.2f', (price_in_cents / 100.0))
   end
 end

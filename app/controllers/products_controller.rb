@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @categories = Category.order(name: :asc)
     @merchants = User.joins(:products).uniq.sort
@@ -32,8 +33,6 @@ class ProductsController < ApplicationController
     else
       flash[:notice] = "This product is out of stock. To order one please log in"
       redirect_to product
-
     end
   end
-
 end

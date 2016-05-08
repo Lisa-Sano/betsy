@@ -49,14 +49,21 @@ class Users::ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
     Product.update(params[:id], products_params[:product])
-    redirect_to user_product_path(session[:user_id], params[:id])
+    @product.price = @product.to_cents(params[:product][:price])
+    if @product.save
+      redirect_to user_product_path(session[:user_id], params[:id])
+    else
+      flash.now[:error] = "There was an error updating your product. Please try again."
+      render :edit
+    end
   end
 
   private
 
   def products_params
-    params.permit(product: [:name, :description, :price, :photo_url, :stock])
+    params.permit(product: [:name, :description, :photo_url, :stock])
   end
 
   def require_login
