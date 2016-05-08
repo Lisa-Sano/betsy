@@ -3,11 +3,12 @@ class Users::ProductsController < ApplicationController
   before_action :current_user_is_owner, only: [:new, :edit, :destroy]
 
   def index
-    @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
-    scope = Product.where(user_id: params[:user_id])
+    @categories = Category.order(name: :asc)
 
-    if params[:category]
-      scope = scope.where(category: params[:category])
+    scope = Product.where(user_id: params[:user_id]).order(name: :asc)
+
+    if params[:category].present?
+      scope = scope.joins(:categories).where(categories: {id: params[:category]})
     end
 
     @products = scope

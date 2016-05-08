@@ -39,5 +39,4 @@ class Product < ActiveRecord::Base
   def to_cents(amount)
     amount = amount.gsub(/[^0-9]/, '').to_i
   end
-
 end
