@@ -24,14 +24,17 @@
 </div>
 
 
+<div class="btn-group">
 <% states_for_select = @grouped_by_status.keys.map { |s| [s.capitalize, s] } %>
 <%= form_tag user_orders_path, method: :get do %>
 <%= select_tag(:order_state, options_for_select(states_for_select,
-:selected => params[:order_state]), :prompt => "Filter orders by status") %>
+:selected => params[:order_state]), :prompt => "Filter orders by status", class: "btn btn-default dropdown-toggle") %>
 
-<%= submit_tag "Submit" %>
+<%= submit_tag "Submit", class: "btn btn-primary" %>
 <% end %>
-<br><br>
+</div>
+<br>
+<br>
 <div class="panel panel-primary">
   <div class="panel-heading"><h3><%=params[:order_state].upcase%></h3></div>
   <div class="row">
@@ -83,7 +86,7 @@
                 <th><strong> Subtotal: </strong></th>
               </tr>
                 <% OrderItem.where(order_id: order_id).map do |order_item|  %>
-              <tr >
+              <tr data-link="<%= order_item_path(order_item.id) %>">
                 <td><%= link_to order_item.product.name, order_item_path(order_item.id)%><td>
                 <td><%= order_item.quantity %></td>
                 <td><%= order_item.product.price * order_item.quantity %></td>
