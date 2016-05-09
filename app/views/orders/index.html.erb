@@ -1,12 +1,5 @@
 <h1>This your order fulfillment page 💰</h1>
 
-<!-- create_table "orders", force: :cascade do |t|
-t.string   "order_state", null: false
-t.integer  "user_id"
-t.integer  "total"
-t.datetime "created_at",  null: false
-t.datetime "updated_at",  null: false
-end -->
 <div class="panel panel-primary">
   Your total Revenue including pending and cancel orders is <span class="input-group-addon" id="sizing-addon1"><%= @total_revenue %></span>
 </div>
@@ -52,7 +45,16 @@ end -->
 
           <br>
           <p> Buyer: <%= order.user.name%></p>
-          <p> Products:<%= OrderItem.where(order_id: order.id).first.inspect%></p>
+          <p> Products:
+            <div class="list-group">
+            <% OrderItem.where(order_id: order.id).map do |order_item|  %>
+          <tr>
+            <td><%= link_to order_item.product.name, order_item_path(order_item.id), class: "list-group-item"%><td>
+          </tr>
+          <% end %>
+        </div>
+        </p>
+
           <p><a href="#" class="btn btn-primary" role="button">See</a>
           </div>
         </div>
@@ -74,14 +76,14 @@ end -->
             <!-- Each order item sold by me with a quantity and line-item subtotal -->
 
             <strong>Items: </strong>
-            <table class="table">
+            <table class="table table-hover">
               <tr>
                 <th><strong> Product: </strong></th>
                 <th><strong> Quantity: </strong></th>
                 <th><strong> Subtotal: </strong></th>
               </tr>
                 <% OrderItem.where(order_id: order_id).map do |order_item|  %>
-              <tr>
+              <tr >
                 <td><%= link_to order_item.product.name, order_item_path(order_item.id)%><td>
                 <td><%= order_item.quantity %></td>
                 <td><%= order_item.product.price * order_item.quantity %></td>

@@ -1,28 +1,29 @@
+
 <h1>Hello <%=@user.name%>, this is the info about this Order Item</h1>
 <div class="panel panel-primary">
   <div class="panel-heading"><h3>Order Item Info
   </h3></div>
-  <table>
+  <table class="table">
     <tr>
-      <td>Item id</td> <td><%=@item.id%></td>
+      <td><strong>Item id:</strong></td> <td><%=@item.id%></td>
     </tr>
     <tr>
-      <td>Order id: </td><td><%=@item.order_id%></td>
+      <td><strong>Order id:</strong></td><td><%=@item.order_id%></td>
     </tr>
     <tr>
-      <td>Product</td><td><%=@item.product.name%></td>
+      <td><strong>Product</strong></td><td><%=@item.product.name%></td>
     </tr>
     <tr>
-      <td>Quantity:</td><td><%=@item.quantity%></td>
+      <td><strong>Quantity:</strong></td><td><%=@item.quantity%></td>
     </tr>
     <tr>
-      <td>Added to the cart at:</td><td><%=@item.created_at%></td>
+      <td><strong>Added to the cart at:</strong></td><td><%=@item.created_at%></td>
     </tr>
     <tr>
-      <td>Buyer's Name:</td><td><%=@item.product.user.name%></td>
+      <td><strong>Buyer's Name:</strong></td><td><%=@item.product.user.name%></td>
     </tr>
     <tr>
-      <td>Buyer's email:</td><td><%=@item.product.user.email%></td>
+      <td><strong>Buyer's email:</strong></td><td><%=@item.product.user.email%></td>
     </tr>
   </table>
 </div>
