@@ -1,14 +1,3 @@
-# In order to be a Review:
-# Rating must be present &
-# Rating must be an integer &
-# Rating must be between 1 and 5
-
-# As a guest user (or signed in user) I can: Leave a review for a product providing:
-# A Text review
-# A rating out of 5
-
-# As a signed-in user, I cannot:
-# Review my own products
 
 # product_reviews     GET    /products/:product_id/reviews(.:format)     reviews#index
 #                     POST   /products/:product_id/reviews(.:format)     reviews#create
@@ -19,6 +8,8 @@
 # new_user_review       GET    /users/:user_id/reviews/new(.:format)       reviews#new
 
 class ReviewsController < ApplicationController
+
+  helper_method :top_ratings, :display_name
 
   def new
     if current_user && current_user_is_owner
@@ -45,15 +36,27 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # user_reviews          GET    /users/:user_id/reviews(.:format)           reviews#index
   def index
-    # most popular items
-    @reviews = Review.all.each
-    @top_reviews = Review.where(rating: 5)
+    @reviews = Review.all
+
+    #how to make this more efficient?
+    @top_ratings = Review.where(rating: 5)
   end
 
   def show
     @reviews = Review.where(user_id: params[:user_id])
+  end
+
+  # def display_name(user)
+  #   user.name || "guest"
+  # end
+
+  def display_name(user)
+    if user
+      user.name
+    else
+      "Guest user"
+    end
   end
 
   private
