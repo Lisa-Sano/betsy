@@ -13,7 +13,7 @@
     <% @reviews.each do |review| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.user_id == nil ? "Guest User" : User.find(review.user_id).name %></li>
+        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
         <li>Review: <%=review.review%></li>
         <li>Rating: <%=review.rating%></li>
       </ul>
@@ -23,7 +23,7 @@
     <% @top_ratings.each do |review| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.user_id == nil ? "Guest User" : User.find(review.user_id).name %> </li>
+        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
         <li>Review: <%=review.review%></li>
         <li>Rating: <%=review.rating%></li>
       </ul>
@@ -33,7 +33,7 @@
     <% @products_today.each do |product| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.user_id == nil ? "Guest User" : User.find(review.user_id).name %> </li>
+        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
         <li>Review: <%=review.review%></li>
         <li>Rating: <%=review.rating%></li>
       </ul>

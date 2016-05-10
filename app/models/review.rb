@@ -7,8 +7,8 @@ class Review < ActiveRecord::Base
   # validates :rating, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 6 }
 
   def get_user_name
-    if user
-      user.name
+    if @user
+      @user.name
     else
       "Guest user"
     end
