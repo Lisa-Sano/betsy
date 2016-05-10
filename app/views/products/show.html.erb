@@ -6,7 +6,7 @@
 
 <p><em><%= @product.description %></em></p>
 <p><strong>Price:</strong> <%= to_money(@product.price) %></p>
-<p><strong>Categories:</strong> 
+<p><strong>Categories:</strong>
   <%= @categories.map(&:name).join(', ') unless @categories.nil? %>
 </p>
 
@@ -20,8 +20,7 @@
 
 <% @reviews.each do |review| %>
   <ul>
-    <%# how to use helper method for these? #%>
-    <li>Reviewed by: <%= current_user == nil ? "Guest user" : current_user.name %></li>
+    <li>Reviewed by: <%= review.get_user_name %></li>
     <li>Review: <%=review.review%></li>
     <li>Rating: <%=review.rating%></li>
   </ul>
