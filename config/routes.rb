@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   resources :order_items, :only => [:show]
 
-
   resources :sessions, :only => [:create]
   delete "/logout" => "sessions#destroy"
   get    "/login"  => "sessions#new"
