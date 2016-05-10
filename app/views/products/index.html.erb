@@ -2,7 +2,7 @@
 
 <%= link_to "Back to All Products", products_path if params[:category] || params[:merchant] %>
 
-<% categories_for_select = @categories.map { |c| [c.capitalize, c] } %>
+<% categories_for_select = @categories.map { |c| [c.name, c.id] } %>
 <%= form_tag products_path, method: :get do %>
 <%= select_tag(:category, options_for_select(categories_for_select, :selected => params[:category]), :prompt => "Browse by Category...") %>
 
