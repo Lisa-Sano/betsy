@@ -20,7 +20,8 @@
 
 <% @reviews.each do |review| %>
   <ul>
-    <li>Reviewed by: <%= review.get_user_name %></li>
+    <%# how to use helper method for these? #%>
+    <li>Reviewed by: <%= current_user == nil ? "Guest user" : current_user.name %></li>
     <li>Review: <%=review.review%></li>
     <li>Rating: <%=review.rating%></li>
   </ul>

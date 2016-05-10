@@ -7,13 +7,34 @@
 <%#  t.datetime "updated_at", null: false
 <%#end#%>
 
-<h1>Products reviewed by popularity</h1>
+<h1>Reviews</h1>
 
-<% @reviews.each do |review| %>
-  <ul>
-    <li>Product: <%=Product.find(review.product_id).name%></li>
-    <li>Reviewed by: <%=User.find(review.user_id).name if review.user_id != nil%> </li>
-    <li>Review: <%=review.review%></li>
-    <li>Rating: <%=review.rating%></li>
-  </ul>
-<%end%>
+  <h2>All reviews:</h2>
+    <% @reviews.each do |review| %>
+      <ul>
+        <li>Product: <%=Product.find(review.product_id).name%></li>
+        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
+        <li>Review: <%=review.review%></li>
+        <li>Rating: <%=review.rating%></li>
+      </ul>
+    <%end%>
+
+  <h2>Our customers love:</h2>
+    <% @top_ratings.each do |review| %>
+      <ul>
+        <li>Product: <%=Product.find(review.product_id).name%></li>
+        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
+        <li>Review: <%=review.review%></li>
+        <li>Rating: <%=review.rating%></li>
+      </ul>
+    <%end%>
+
+  <h2>Hot products today:</h2>
+    <% @products_today.each do |product| %>
+      <ul>
+        <li>Product: <%=Product.find(review.product_id).name%></li>
+        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
+        <li>Review: <%=review.review%></li>
+        <li>Rating: <%=review.rating%></li>
+      </ul>
+    <%end%>
