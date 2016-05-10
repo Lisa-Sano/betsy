@@ -7,7 +7,7 @@
 <p><em><%= @product.description %></em></p>
 <p><strong>Price:</strong> <%= to_money(@product.price) %></p>
 <p><strong>Category:</strong>
-  <%= @categories.map(&:name).join(', ') %>
+  <%= @categories.map(&:name).join(', ') unless @categories.nil? %>
 </p>
 
 <%= form_tag add_to_cart_product_path(@product.id) do %>
