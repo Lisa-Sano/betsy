@@ -28,7 +28,14 @@ class ApplicationController < ActionController::Base
 
   def reset_cart
     #reduce inventory for each product
-    #clear current cart
-    #reset session order_id
+    to_remove = OrderItem.where(order_id: session[:order_id])
+    to_remove.each do |ordered_product|
+      remove_from = Product.find(ordered_product.product_id)
+      new_stock = remove_from.stock - ordered_product.quantity
+      remove_from.update(stock: new_stock)
+    end
+
+    #reset session order_id & clear current cart
+    session[:order_id] = nil
   end
 end

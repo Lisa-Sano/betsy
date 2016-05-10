@@ -27,5 +27,5 @@
   <% end %>
   Total: <%= to_money(@order.order_total) %>
 
-  <%= button_to :'Complete Purchase', edit_user_order_path(session[:user_id], session[:order_id]), method: :get %>
+  <%= button_to :'Checkout', edit_user_path(session[:user_id]), method: :get %>
 <% end %>

@@ -23,11 +23,9 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @user.login? == false
-      @user.save
-    end
-    
-    @order.update(order_state: "paid", user_id: @user.id)
-    render COMPLETED ORDER PAGE
+    order = Order.find_by(id: session[:order_id])
+    order.update(order_state: "paid", user_id: current_user.id)
+    reset_cart
+    render :order_confirmation
   end
 end
