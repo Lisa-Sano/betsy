@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     post 'add_to_cart', on: :member
   end
 
-  get "/orders/:id" => "orders#show", as: :order
-
   resources :users, :only => [:new, :create, :show] do
     resources :orders
     resources :reviews
