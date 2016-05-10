@@ -10,33 +10,51 @@
 class ReviewsController < ApplicationController
 
   helper_method :top_ratings, :display_name
-
-  def new
-    if current_user && current_user_is_owner
-      flash[:error] = "Users cannot review products they sell."
-      redirect_to user_products_path(session[:user_id])
-    else
+  # from older commit
+    def new
       @review = Review.new
       @product = Product.find(params[:product_id])
-      # @user = User.find(params[:review][:user_id].to_s)
+      @user = current_user
     end
-  end
 
-  # def current_user
-  #   @user ||= User.find_by(id: session[:user_id])
+    def create
+      # @product = Product.find(params[:review][:product_id])
+      @review = Review.create(review_edit_params[:review])
+      if @review.save
+        redirect_to product_path(@review.product_id)
+      else
+        flash.now[:alert] = 'Review could not be saved.'
+        render :new
+      end
+    end
+
+  # current fucking mess
+  # def new
+  #   if current_user && current_user_is_owner
+  #     flash[:error] = "Users cannot review products they sell."
+  #     redirect_to user_products_path(session[:user_id])
+  #   else
+  #     @review = Review.new
+  #     @product = Product.find(params[:product_id])
+  #     # @user = User.find(params[:review][:user_id].to_s)
+  #   end
   # end
   #
-  def create
-    @user = current_user
-    @product = @product = Product.find(params[:product_id])
-    @review = Review.new(review_edit_params[:review][:user_id])
-    if @review.save
-      redirect_to product_path(@review.product_id)
-    else
-      flash.now[:alert] = 'Review could not be saved.'
-      render :new
-    end
-  end
+  # # def current_user
+  # #   @user ||= User.find_by(id: session[:user_id])
+  # # end
+  # #
+  # def create
+  #   @user = current_user
+  #   @product = Product.find(params[:review][:product_id])
+  #   @review = Review.new(review_edit_params[:review])
+  #   if @review.save
+  #     redirect_to product_path(@review.product_id)
+  #   else
+  #     flash.now[:alert] = 'Review could not be saved.'
+  #     render :new
+  #   end
+  # end
 
   def index
     @reviews = Review.all

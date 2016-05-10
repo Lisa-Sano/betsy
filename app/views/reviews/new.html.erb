@@ -1,10 +1,12 @@
-<h1>Welcome <%= @user.name if @user %><br> Leave a review for <%= @product.name %></h1>
+<h1>Welcome
+  <%= current_user == nil ? "Guest user" : @user.name %>
+  <br> Leave a review for <%#= @product.name %></h1>
 
 <%= form_for @review do |f| %>
-  <%= f.hidden_field :product_id, :value => @product.id %>
-  <%= f.hidden_field :user_id, :value => @user.id if @user %>
-  <%= f.label :guest_name if @user == nil %>
-  <%= f.text_field :guest_name if @user == nil %>
+  <%= f.hidden_field :product_id, :value => @review.product_id %>
+  <%= f.hidden_field :user_id, :value => @user == nil ? "guest user" : @user %>
+  <%#= f.label :guest_name if @user == nil %>
+  <%#= f.text_field :guest_name if @user == nil %>
   <%= f.label :review %>
   <%= f.text_field :review %>
   <%= f.label :rating %>
