@@ -1,0 +1,48 @@
+<h1>Checkout, <%= current_user.name %></h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :value => current_user.name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, :value => current_user.email %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, :value => current_user.address %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city, :value => current_user.city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state, :value => current_user.state %>
+
+  <%= f.label :zip %>
+  <%= f.number_field :zip, :value => current_user.zip %>
+
+<% ####ADD TO DATABASE????????? %>
+  <%= f.label :'Name as appears on card' %>
+  <%= f.text_field :card_name, :value => current_user.name %>
+
+<% #####Add to database??????? %>
+<% #####Save credit card number securely??? %>
+<% #####PULL LAST FOUR??? %>
+  <%#= f.label :'Credit card number' %>
+  <%#= f.number_field :credit_card %>
+
+<% ####NOT DATE TIME????? %>
+  <%= f.label :'Credit card expiration' %>
+  <%= f.number_field :cc_exp, :value => current_user.cc_exp %>
+
+  <%= f.label :'CVV' %>
+  <%= f.number_field :cc_cvv, :value => current_user.cc_cvv %>
+
+  <%= f.label :'Billing Zip Code' %>
+  <%= f.text_field :billing_zip, :value => current_user.billing_zip %>
+
+  <%= f.submit :'Complete Purchase', user_order_path(session[:user_id], session[:order_id]), method: :patch %>
+  <% end %>
+
+Purchasing an order makes the following changes:
+Reduces the number of inventory for each product
+Changes the order state from "pending" to "paid"
+Clears the current cart
