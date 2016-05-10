@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     @categories = Category.order(name: :asc)
     @merchants = User.joins(:products).uniq.sort
 
-    scope = Product.order(name: :asc)
+    scope = Product.where(retired: nil).order(name: :asc)
 
     if params[:category].present?
       scope = scope.joins(:categories).where(categories: {id: params[:category]})
