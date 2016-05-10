@@ -30,7 +30,7 @@
     <%end%>
 
   <h2>Hot products today:</h2>
-    <% @products_today.each do |product| %>
+    <% @products_today.each do |review| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
         <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>

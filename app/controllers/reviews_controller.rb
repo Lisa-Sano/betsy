@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
 
     #how to make this more efficient?
     @top_ratings = Review.where(rating: 5)
-    @products_today = Review.where(updated_at: Time.zone.now.beginning_of_day)
+    @products_today = Review.where(:created_at => Date.today...Date.today + 1, rating: 5 )
   end
 
   def show
@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
   # def display_name(user)
   #   user.name || "guest"
   # end
-  # 
+  #
   # def display_name(user)
   #   if user
   #     user.name
