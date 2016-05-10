@@ -25,4 +25,10 @@ class ApplicationController < ActionController::Base
     # return the instance of order
     return order
   end
+
+  def reset_cart
+    #reduce inventory for each product
+    #clear current cart
+    #reset session order_id
+  end
 end

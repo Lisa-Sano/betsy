@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     if @user.login? == false
       @user.save
     end
-
+    
     @order.update(order_state: "paid", user_id: @user.id)
     render COMPLETED ORDER PAGE
   end
