@@ -9,7 +9,7 @@
 
 <h1>Reviews</h1>
 
-  <h2>All Reviews:</h2>
+  <h2>All reviews:</h2>
     <% @reviews.each do |review| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
@@ -21,10 +21,20 @@
 
   <h2>Our customers love:</h2>
     <% @top_ratings.each do |review| %>
-    <ul>
-      <li>Product: <%=Product.find(review.product_id).name%></li>
-      <li>Reviewed by: <%= review.user_id == nil ? "Guest User" : User.find(review.user_id).name %> </li>
-      <li>Review: <%=review.review%></li>
-      <li>Rating: <%=review.rating%></li>
-    </ul>
+      <ul>
+        <li>Product: <%=Product.find(review.product_id).name%></li>
+        <li>Reviewed by: <%= review.user_id == nil ? "Guest User" : User.find(review.user_id).name %> </li>
+        <li>Review: <%=review.review%></li>
+        <li>Rating: <%=review.rating%></li>
+      </ul>
+    <%end%>
+
+  <h2>Hot products today:</h2>
+    <% @products_today.each do |product| %>
+      <ul>
+        <li>Product: <%=Product.find(review.product_id).name%></li>
+        <li>Reviewed by: <%= review.user_id == nil ? "Guest User" : User.find(review.user_id).name %> </li>
+        <li>Review: <%=review.review%></li>
+        <li>Rating: <%=review.rating%></li>
+      </ul>
     <%end%>

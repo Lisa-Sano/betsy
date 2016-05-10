@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     else
       @review = Review.new
       @product = Product.find(params[:product_id])
-      @user = current_user
+      # @user = User.find(params[:review][:user_id].to_s)
     end
   end
 
@@ -27,7 +27,9 @@ class ReviewsController < ApplicationController
   # end
   #
   def create
-    @review = Review.new(review_edit_params[:review])
+    @user = current_user
+    @product = @product = Product.find(params[:product_id])
+    @review = Review.new(review_edit_params[:review][:user_id])
     if @review.save
       redirect_to product_path(@review.product_id)
     else
@@ -41,6 +43,7 @@ class ReviewsController < ApplicationController
 
     #how to make this more efficient?
     @top_ratings = Review.where(rating: 5)
+    @products_today = Review.where(updated_at: Time.zone.now.beginning_of_day)
   end
 
   def show
