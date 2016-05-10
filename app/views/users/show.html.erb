@@ -1,9 +1,9 @@
-<h1>Hello <%= @user.name %> all u need to know about yourself</h1>
+<h1>Hello <%= current_user.name %> all u need to know about yourself</h1>
 <p>
-  <%= @user.address %>
-  <%= @user.city %>
-  <%= @user.state %>
-  <%= @user.zip %>
+  <%= current_user.address %>
+  <%= current_user.city %>
+  <%= current_user.state %>
+  <%= current_user.zip %>
 
 </p>
 

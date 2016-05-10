@@ -1,2 +1,16 @@
-<h1>Users::Orders#show</h1>
+<h1>This order info</h1>
 <p>Find me in app/views/users/orders/show.html.erb</p>
+
+<%=params%>
+
+<br>
+Order Id:<%=@order.id%>
+<br>
+Total: <%=@order.total%>
+<br>
+Placed at:<%=@order.created_at%>
+<br>
+Updated at: <%=@order.updated_at%>
+<br>
+Buyer's name:<%=@order.user.name%>
+<br>
