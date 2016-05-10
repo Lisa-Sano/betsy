@@ -1,7 +1,11 @@
 <h1>This your order fulfillment page 💰</h1>
 
+
 <div class="panel panel-primary">
-  Your total Revenue including pending and cancel orders is <span class="input-group-addon" id="sizing-addon1"><%= @total_revenue %></span>
+  <div class="panel-heading">
+    <h3>Your total Revenue including pending and canceled orders is</h3>
+  </div>
+   <span class="input-group-addon" id="sizing-addon1"><h2><%= to_money(@total_revenue) %></h2></span>
 </div>
 
 <div class="panel panel-default">
@@ -16,7 +20,7 @@
     <% @grouped_by_status.each do |status, array| %>
     <tr>
       <td><%= status.capitalize %></td>
-      <td><%= array.map { |item| item.product.price }.sum %></td>
+      <td><%= to_money(array.map { |item| item.product.price }.sum) %></td>
       <td><span class="badge"><%= array.map { |item| item.order_id }.count %></span></td>
       <%end%>
     </tr>
@@ -89,7 +93,7 @@
               <tr data-link="<%= order_item_path(order_item.id) %>">
                 <td><%= link_to order_item.product.name, order_item_path(order_item.id)%><td>
                 <td><%= order_item.quantity %></td>
-                <td><%= order_item.product.price * order_item.quantity %></td>
+                <td><%= to_money(order_item.product.price * order_item.quantity) %></td>
               </tr>
               <% end %>
             </table>
