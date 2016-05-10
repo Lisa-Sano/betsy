@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     resources :reviews
     scope module: :users do
       resources :products
+      resources :fulfillment, :only => [:index, :show]
     end
   end
+
 
   resources :order_items, :only => [:show]
 
