@@ -1,7 +1,7 @@
 <h1>Welcome! Here are <%= User.find(params[:user_id]).user_name %>'s products:</h1>
 
-<% categories_for_select = @categories.map { |c| [c.capitalize, c] } %>
-<%= form_tag products_path, method: :get do %>
+<% categories_for_select = @categories.map { |c| [c.name, c.id] } %>
+<%= form_tag user_products_path, method: :get do %>
 <%= select_tag(:category, options_for_select(categories_for_select, :selected => params[:category]), :prompt => "Browse by Category...") %>
 
 <%= submit_tag "Submit" %>

@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
   has_many :order_items
+  has_many :product_categories
+  has_many :categories, through: :product_categories
 
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
@@ -35,7 +37,20 @@ class Product < ActiveRecord::Base
   end
 
   def to_cents(amount)
-    amount = amount.gsub(/[^0-9]/, '').to_i
+    return amount.gsub(/[^0-9]/, '').to_i if amount.include? "."
+
+    amount.gsub(/[^0-9]/, '').to_i * 100
   end
 
+
+  def add_categories(product_categories, selected)
+    selected.each do |id|
+      category = Category.find(id)
+      if product_categories.include? category
+        product_categories.delete(category)
+      else
+        product_categories << category
+      end
+    end
+  end
 end

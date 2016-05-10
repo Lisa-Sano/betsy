@@ -3,11 +3,12 @@ class Users::ProductsController < ApplicationController
   before_action :current_user_is_owner, only: [:new, :edit, :destroy]
 
   def index
-    @categories = Product.where.not(category: nil).uniq.pluck(:category).sort
-    scope = Product.where(user_id: params[:user_id])
+    @categories = Category.order(name: :asc)
 
-    if params[:category]
-      scope = scope.where(category: params[:category])
+    scope = Product.where(user_id: params[:user_id]).order(name: :asc)
+
+    if params[:category].present?
+      scope = scope.joins(:categories).where(categories: {id: params[:category]})
     end
 
     @products = scope
@@ -21,6 +22,7 @@ class Users::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @categories = @product.categories
 
     if User.my_account?(current_user, params[:user_id].to_i)
         render action: :my_show
@@ -31,12 +33,14 @@ class Users::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.order(name: :asc)
   end
 
   def create
     @product = Product.new(products_params[:product])
     @product.price = @product.to_cents(params[:product][:price])
     @product.user_id = session[:user_id]
+    @product.add_categories(@product.categories, params[:product][:categories][1..-1])
     if @product.save
       redirect_to user_products_path(session[:user_id])
     else
@@ -46,17 +50,27 @@ class Users::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @categories = Category.order(name: :asc)
   end
 
   def update
+    @product = Product.find(params[:id])
+    categories = @product.categories
     Product.update(params[:id], products_params[:product])
-    redirect_to user_product_path(session[:user_id], params[:id])
+    @product.price = @product.to_cents(params[:product][:price])
+    @product.add_categories(categories, params[:product][:categories][1..-1])
+    if @product.save
+      redirect_to user_product_path(session[:user_id], params[:id])
+    else
+      flash.now[:error] = "There was an error updating your product. Please try again."
+      render :edit
+    end
   end
 
   private
 
   def products_params
-    params.permit(product: [:name, :description, :price, :photo_url, :stock])
+    params.permit(product: [:name, :description, :photo_url, :stock])
   end
 
   def require_login
@@ -72,4 +86,5 @@ class Users::ProductsController < ApplicationController
       redirect_to user_products_path(session[:user_id])
     end
   end
+
 end
