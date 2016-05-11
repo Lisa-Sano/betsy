@@ -1,20 +1,26 @@
 <%= link_to "Back to products", products_path %>
 
-<h1><%= @product.name %></h1>
 
-<img src=<%= @product.photo_url %>>
+<div class="media">
+  <div class="media-left media-middle">
+    <img src=<%= @product.photo_url %>>
+  </div>
 
-<p><em><%= @product.description %></em></p>
-<p><strong>Price:</strong> <%= to_money(@product.price) %></p>
-<p><strong>Categories:</strong> 
-  <%= @categories.map(&:name).join(', ') unless @categories.nil? %>
-</p>
-<p><strong>In stock:</strong> <%= @product.stock %></p>
+  <div class="media-body">
+    <h1 class="media-heading"><%= @product.name %></h1>
+    <p><em><%= @product.description %></em></p>
+    <p><strong>Price:</strong> <%= to_money(@product.price) %></p>
+    <p><strong>Categories:</strong> 
+      <%= @categories.map(&:name).join(', ') unless @categories.nil? %>
+    </p>
+    <p><strong>In stock:</strong> <%= @product.stock %></p>
 
-<%= form_tag add_to_cart_product_path(@product.id) do %>
-       <%= select_tag :quantity, options_for_select([1,2,3,4,5,6,7,8,9,10]) %>
-       <%= submit_tag 'Add to Cart' %>
-<% end %>
+    <%= form_tag add_to_cart_product_path(@product.id) do %>
+           <%= select_tag :quantity, options_for_select([1,2,3,4,5,6,7,8,9,10]) %>
+           <%= submit_tag 'Add to Cart' %>
+    <% end %>
+  </div>
+</div>
 
 <p>Reviews for <%=@product.name%><p>
 <p><%=@product.display_avg(@product, @reviews)%></p>
