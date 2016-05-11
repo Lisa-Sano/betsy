@@ -7,13 +7,17 @@ Rails.application.routes.draw do
     post 'add_to_cart', on: :member
   end
 
-  resources :users, :only => [:new, :create, :show, :edit] do
+  resources :users, :only => [:new, :create, :show, :edit, :update] do
     resources :orders
     resources :reviews
     scope module: :users do
       resources :products
+      resources :fulfillment, :only => [:index, :show]
     end
   end
+
+
+  resources :order_items, :only => [:show]
 
   resources :sessions, :only => [:create]
   delete "/logout" => "sessions#destroy"

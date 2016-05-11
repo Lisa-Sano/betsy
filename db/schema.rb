@@ -49,14 +49,15 @@ ActiveRecord::Schema.define(version: 20160510223957) do
   add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.integer  "price",       null: false
+    t.string   "name",                        null: false
+    t.integer  "price",                       null: false
     t.integer  "user_id"
     t.string   "description"
-    t.integer  "stock",       null: false
+    t.integer  "stock",                       null: false
     t.string   "photo_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "retired",     default: false
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -10,5 +10,6 @@
 <p><strong>Category:</strong>
   <%= @categories.map(&:name).join(', ') unless @categories.nil? %>
 </p>
+<p><strong>Status:</strong> <%= @product.retired == true ? "Retired" : "Active" %></p>
 
 <p><%= link_to "See all reviews", product_reviews_path(@product.id) %></p>

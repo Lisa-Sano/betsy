@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     @categories = Category.order(name: :asc)
     @merchants = User.joins(:products).uniq.sort
 
-    scope = Product.order(name: :asc)
+    scope = Product.where(retired: false).order(name: :asc)
 
     if params[:category].present?
       scope = scope.joins(:categories).where(categories: {id: params[:category]})
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   def add_to_cart
     product = Product.find(params[:id])
     quantity = params[:quantity]
-    if current_user || product.in_stock?
+    if product.in_stock?
       current_order.add_product(product, quantity, session[:order_id])
       redirect_to user_order_path(session[:user_id], session[:order_id]), method: :get
       else

@@ -13,8 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
 #product_photo {
   height: 350px;
   overflow: hidden;
   text-align: center;
 }
+
+
+ #edit-user {
+   float: right;
+   margin-top: -50px;
+ }
+
+ .dropdown {
+   border: solid gray;
+   padding: 10px;
+ }

@@ -1,0 +1,28 @@
+<h1>Hello <%=current_user.name%>, this is the info about this Order Item</h1>
+<div class="panel panel-primary">
+  <div class="panel-heading"><h3>Order Item Info
+  </h3></div>
+  <table class="table">
+    <tr>
+      <td><strong>Item id:</strong></td> <td><%=@item.id%></td>
+    </tr>
+    <tr>
+      <td><strong>Order id:</strong></td><td><%=@item.order_id%></td>
+    </tr>
+    <tr>
+      <td><strong>Product</strong></td><td><%=@item.product.name%></td>
+    </tr>
+    <tr>
+      <td><strong>Quantity:</strong></td><td><%=@item.quantity%></td>
+    </tr>
+    <tr>
+      <td><strong>Added to the cart at:</strong></td><td><%=@item.created_at%></td>
+    </tr>
+    <tr>
+      <td><strong>Buyer's Name:</strong></td><td><%=@item.order.user.name%></td>
+    </tr>
+    <tr>
+      <td><strong>Buyer's email:</strong></td><td><%=@item.order.user.email%></td>
+    </tr>
+  </table>
+</div>
