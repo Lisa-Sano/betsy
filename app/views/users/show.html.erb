@@ -1,11 +1,33 @@
-<h1>Hello <%= @user.name %> all u need to know about yourself</h1>
-<p>
-  <%= @user.address %>
-  <%= @user.city %>
-  <%= @user.state %>
-  <%= @user.zip %>
+<h1>Hello <%= current_user.name %> all u need to know about yourself</h1>
 
-</p>
+  <div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h2>My Info</h2>
+    <%= button_to "Edit My Accout Info", edit_user_path(current_user), class: "btn btn-default", id: "edit-user", method: :get%>
+</div>
 
-<%= button_to "Order Fullfilment", user_orders_path(@user), class: "btn btn-primary", method: :get%>
-<%= button_to "Edit my products", user_products_path(@user), class: "btn btn-default", method: :get%>
+  <!-- Table -->
+  <table class="table">
+    <tr>
+    <td><strong>User Name:</strong></td><td><%= current_user.user_name %></td>
+  </tr>
+    <tr>
+    <td><strong>Address: </strong></td><td><%= current_user.address %></td>
+    <tr>
+    </tr>
+    <td><strong>City: </strong></td><td><%= current_user.city %></td>
+    <tr>
+    </tr>
+    <td><strong>State: </strong></td><td><%= current_user.state %></td>
+    <tr>
+    </tr>
+    <td><strong>Zip: </strong></td><td><%= current_user.zip %></td>
+    <tr>
+    </tr>
+
+  </table>
+</div>
+
+
+<%= button_to "Edit my products", user_products_path(current_user), class: "btn btn-default", method: :get%>
+<%= button_to "Order Fullfilment", user_fulfillment_index_path(current_user), class: "btn btn-primary", method: :get%>

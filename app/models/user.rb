@@ -17,4 +17,10 @@ class User < ActiveRecord::Base
   def self.my_account?(current_user, url_user_id)
     !current_user.nil? && current_user.id == url_user_id
   end
+
+  def total_revenue
+    OrderItem.where(product_id: products)
+      .map { |item| item.product.price }
+      .sum
+  end
 end

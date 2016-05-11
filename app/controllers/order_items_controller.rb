@@ -1,4 +1,9 @@
 class OrderItemsController < ApplicationController
+  before_action :require_login, only: [:show]
+  def show
+    @item = OrderItem.find(params[:id])
+  end
+
   def update
     @item = OrderItem.find(params[:id])
     @item.update(update_quantity)

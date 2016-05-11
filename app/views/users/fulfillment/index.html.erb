@@ -1,0 +1,93 @@
+<h1>This your order fulfillment page 💰</h1>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3>Your total Revenue including pending and canceled orders is</h3>
+  </div>
+  <span class="input-group-addon" id="sizing-addon1"><h2><%= to_money(current_user.total_revenue) %></h2></span>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><h3>Orders</h3></div>
+  <table class="table">
+    <tr>
+      <th><h4>Status</h4></th>
+      <th><h4>Revenue by Status</h4></th>
+      <th><h4>Number of orders</h4></th>
+    </tr>
+    <% @grouped_by_status.each do |status, array| %>
+    <tr>
+      <td><strong><%= status.capitalize %><strong></td>
+      <td><%= to_money(array.map { |item| item.product.price }.sum) %></td>
+      <td><span class="badge"><%= array.map { |item| item.order_id }.count %></span></td>
+    <%end%>
+    </tr>
+  </table>
+</div>
+
+<div class="dropdown">
+<div class="btn-group">
+  <% states_for_select = @grouped_by_status.keys.map { |s| [s.capitalize, s] } %>
+  <%= form_tag user_fulfillment_index_path, method: :get do %>
+  <label for="basic-url">Order by Order State</label>
+    <%= select_tag(:order_state, options_for_select(states_for_select,
+      :selected => params[:order_state]), prompt: "All orders", class: "btn btn-default dropdown-toggle") %>
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
+</div>
+<br>
+<br>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><h3>
+    <% if params[:order_state] == "" || params[:order_state] == nil%>
+    <%= "All Orders that include at least one of my products"  %>
+    <% else %>
+    <%= params[:order_state]%>
+    <% end %>
+  </h3></div>
+  <div class="row">
+    <% @orders.each do |order| %>
+      <div class="col-sm-6">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>
+              <%=link_to "Order id: #{order.id}", user_fulfillment_path(current_user, order.id) %>
+            </h3>
+            <strong>Items: </strong>
+            <table class="table table-hover">
+              <tr>
+                <th><strong> Product: </strong></th>
+                <th><strong> Quantity: </strong></th>
+                <th><strong> Subtotal: </strong></th>
+              </tr>
+
+              <% OrderItem.where(order_id: order.id).map do |order_item|  %>
+              <tr data-link="<%= order_item_path(order_item.id) %>">
+                <% if order_item.product.user.name == current_user.name %>
+                  <td><%= link_to order_item.product.name, order_item_path(order_item.id)%><td>
+                  <td><%= order_item.quantity %></td>
+                  <td><%= to_money(order_item.subtotal) %></td>
+                <% end %>
+
+              </tr>
+
+              <% end %>
+            </table>
+
+            <br>
+            <strong>State: </strong><%= order.order_state%>
+            <br>
+            <strong>Placed at: </strong><%= order.created_at%>
+            <br>
+            <br>
+
+            <p><a href="#" class="btn btn-primary" role="button">Link to transition the order item to marked as shipped</a></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

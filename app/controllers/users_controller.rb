@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show]
+
   def new
     @user = User.new
   end
@@ -12,13 +14,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-    @orders = Order.where(user_id: @user.id)
-    @products = Product.where(user_id: @user.id)
-    @order_item = OrderItem.where(user_id: @user.id)
-    @reviews = Review.where(user_id: @user.id)
-  end
+  def show; end
 
   def edit
     @user = User.find(session[:user_id])
