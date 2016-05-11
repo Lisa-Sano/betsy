@@ -42,7 +42,7 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading"><h3>
-    <% if params[:order_state] == "" %>
+    <% if params[:order_state] == "" || params[:order_state] == nil%>
     <%= "All Orders that include at least one of my products"  %>
     <% else %>
     <%= params[:order_state]%>
