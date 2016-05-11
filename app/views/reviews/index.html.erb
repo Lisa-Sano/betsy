@@ -1,10 +1,3 @@
-<%#create_table "reviews", force: :cascade do |t|
-<%#  t.integer  "product_id", null: false
-<%#  t.integer  "user_id",    null: false
-<%#  t.string   "review"
-<%#  t.integer  "rating",     null: false
-<%#  t.datetime "created_at", null: false
-<%#  t.datetime "updated_at", null: false#%>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -18,7 +11,7 @@
   <h2>All reviews:</h2>
     <% @reviews.each do |review| %>
       <ul class="list-group">
-        <li class="list-group-item">Product: <%=Product.find(review.product_id).name%></li>
+        <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
         <li class="list-group-item">Reviewed by: <%= review.get_user_name %></li>
         <li class="list-group-item">Review: <%=review.review%></li>
         <li class="list-group-item">Rating: <%=review.rating%></li>
@@ -28,7 +21,7 @@
   <h2>Our customers love:</h2>
     <% @top_ratings.each do |review| %>
       <ul class="list-group">
-        <li class="list-group-item">Product: <%=Product.find(review.product_id).name%></li>
+        <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
         <li class="list-group-item">Reviewed by: <%= review.get_user_name %></li>
         <li class="list-group-item">Review: <%=review.review%></li>
         <li class="list-group-item">Rating: <%=review.rating%></li>
@@ -38,7 +31,7 @@
   <h2>Hot products today:</h2>
     <% @products_today.each do |review| %>
       <ul class="list-group">
-        <li class="list-group-item">Product: <%=Product.find(review.product_id).name%></li>
+        <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
         <li class="list-group-item">Reviewed by: <%= review.get_user_name %></li>
         <li class="list-group-item">Review: <%=review.review%></li>
         <li class="list-group-item">Rating: <%=review.rating%></li>
