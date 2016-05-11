@@ -15,9 +15,4 @@ class Review < ActiveRecord::Base
     end
   end
 
-
-  #
-  # def top_ratings
-  #   top_ratings = @reviews.each.where(rating: 5)
-  # end
 end
