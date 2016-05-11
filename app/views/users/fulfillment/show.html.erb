@@ -1,16 +1,23 @@
 <h1>This order info</h1>
-<p>Find me in app/views/users/orders/show.html.erb</p>
 
-<%=params%>
-
-<br>
-Order Id:<%=@order.id%>
-<br>
-Total: <%=@order.total%>
-<br>
-Placed at:<%=@order.created_at%>
-<br>
-Updated at: <%=@order.updated_at%>
-<br>
-Buyer's name:<%=@order.user.name%>
-<br>
+<div class="panel panel-primary">
+  <div class="panel-heading"><h3>Order Item Info
+  </h3></div>
+  <table class="table">
+    <tr>
+      <td><strong>Order Id: </strong></td><td><%=@order.id%></td>
+    </tr>
+    <tr>
+      <td><strong>Total: </strong></td><td><%=@order.total%></td>
+    </tr>
+    <tr>
+      <td><strong>Placed at: </strong></td><td><%=@order.created_at%></td>
+    </tr>
+    <tr>
+      <td><strong>Updated at: </strong></td><td><%=@order.updated_at%></td>
+    </tr>
+    <tr>
+      <td><strong>Buyer's name: </strong></td><td><%=@order.user.name%></td>
+    </tr>
+  </table>
+</div>

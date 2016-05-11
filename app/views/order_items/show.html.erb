@@ -1,5 +1,4 @@
-
-<h1>Hello <%=@user.name%>, this is the info about this Order Item</h1>
+<h1>Hello <%=current_user.name%>, this is the info about this Order Item</h1>
 <div class="panel panel-primary">
   <div class="panel-heading"><h3>Order Item Info
   </h3></div>
@@ -20,10 +19,10 @@
       <td><strong>Added to the cart at:</strong></td><td><%=@item.created_at%></td>
     </tr>
     <tr>
-      <td><strong>Buyer's Name:</strong></td><td><%=@item.product.user.name%></td>
+      <td><strong>Buyer's Name:</strong></td><td><%=@item.order.user.name%></td>
     </tr>
     <tr>
-      <td><strong>Buyer's email:</strong></td><td><%=@item.product.user.email%></td>
+      <td><strong>Buyer's email:</strong></td><td><%=@item.order.user.email%></td>
     </tr>
   </table>
 </div>

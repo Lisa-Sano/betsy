@@ -1,7 +1,6 @@
 class OrderItemsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, only: [:show]
   def show
-    @user = User.find(session[:user_id])
     @item = OrderItem.find(params[:id])
   end
 

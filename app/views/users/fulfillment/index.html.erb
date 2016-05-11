@@ -6,7 +6,8 @@
   </div>
   <span class="input-group-addon" id="sizing-addon1"><h2><%= to_money(current_user.total_revenue) %></h2></span>
 </div>
-
+<%= @melissa %>
+<%= params %>
 <div class="panel panel-primary">
   <div class="panel-heading"><h3>Orders</h3></div>
   <table class="table">
@@ -55,10 +56,14 @@
 
               <% OrderItem.where(order_id: order.id).map do |order_item|  %>
               <tr data-link="<%= order_item_path(order_item.id) %>">
-                <td><%= link_to order_item.product.name, order_item_path(order_item.id)%><td>
+                <% if order_item.product.user.name == current_user.name %>
+                  <td><%= link_to order_item.product.name, order_item_path(order_item.id)%><td>
                   <td><%= order_item.quantity %></td>
                   <td><%= to_money(order_item.subtotal) %></td>
+                <% end %>
+
               </tr>
+
               <% end %>
             </table>
 
@@ -67,11 +72,10 @@
             <strong>State: </strong><%= order.order_state%>
             <br>
             <strong>Placed at: </strong><%= order.created_at%>
-
-              <p><a href="#" class="btn btn-primary" role="button">See</a>
-              </div>
-            </div>
+            <p><a href="#" class="btn btn-primary" role="button">See</a>
           </div>
-          <% end %>
         </div>
       </div>
+    <% end %>
+  </div>
+</div>
