@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+#product_photo {
+  height: 350px;
+  overflow: hidden;
+  text-align: center;
+}

@@ -16,7 +16,7 @@
 <% @products.each do |product| %>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-  <img src=<%= product.photo_url %>> 
+          <div id="product_photo"><img src =<%= product.photo_url %>> </div>
   <div class="caption">
     <%= link_to product.name, product_path(product.id) %>
   <p class="price"><%= to_money(product.price) %></p>
