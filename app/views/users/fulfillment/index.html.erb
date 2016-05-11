@@ -25,18 +25,29 @@
   </table>
 </div>
 
+<div class="dropdown">
 <div class="btn-group">
   <% states_for_select = @grouped_by_status.keys.map { |s| [s.capitalize, s] } %>
   <%= form_tag user_fulfillment_index_path, method: :get do %>
+  <label for="basic-url">Order by Order State</label>
     <%= select_tag(:order_state, options_for_select(states_for_select,
       :selected => params[:order_state]), prompt: "All orders", class: "btn btn-default dropdown-toggle") %>
     <%= submit_tag "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>
+</div>
+<br>
+<br>
 
 
 <div class="panel panel-primary">
-  <div class="panel-heading"><h3><%=params[:order_state]%></h3></div>
+  <div class="panel-heading"><h3>
+    <% if params[:order_state] == "" %>
+    <%= "All Orders that include at least one of my products"  %>
+    <% else %>
+    <%= params[:order_state]%>
+    <% end %>
+  </h3></div>
   <div class="row">
     <% @orders.each do |order| %>
       <div class="col-sm-6">
