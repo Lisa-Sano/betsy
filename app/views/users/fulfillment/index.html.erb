@@ -1,11 +1,16 @@
 <h1>This your order fulfillment page 💰</h1>
+<%= params %>
+<br><br>
+<%= session.keys %>
+<%= current_user.products.inspect %>
+
 
 
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3>Your total Revenue including pending and canceled orders is</h3>
   </div>
-   <span class="input-group-addon" id="sizing-addon1"><h2><%= to_money(@total_revenue) %></h2></span>
+   <span class="input-group-addon" id="sizing-addon1"><h2><%= to_money(current_user.total_revenue) %></h2></span>
 </div>
 
 <div class="panel panel-default">
@@ -91,7 +96,7 @@
               <tr data-link="<%= order_item_path(order_item.id) %>">
                 <td><%= link_to order_item.product.name, order_item_path(order_item.id)%><td>
                 <td><%= order_item.quantity %></td>
-                <td><%= to_money(order_item.product.price * order_item.quantity) %></td>
+                <td><%= to_money(order_item.subtotal) %></td>
               </tr>
               <% end %>
             </table>

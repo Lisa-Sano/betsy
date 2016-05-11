@@ -2,20 +2,18 @@ class Users::FulfillmentController < ApplicationController
   before_action :require_login
 
   def index
-    @products_i_sell = Product.where(user_id: current_user)
-    @my_order_items = OrderItem.where(product_id: @products_i_sell)
-    @total_revenue = @my_order_items.map { |item| item.product.price }.sum
-    @grouped_by_status = @my_order_items.group_by { |post| post.order.order_state}
-    @grouped_by_order = @my_order_items.group_by { |post| post.order.id}
-    @my_orders = @grouped_by_order.keys
+    @grouped_by_status = OrderItem.where(product_id: current_user.products).group_by { |item| item.order.order_state}
 
-    scope = Order.where(id: @my_orders)
+    @grouped_by_order = OrderItem.where(product_id: current_user.products).group_by { |item| item.order.id}
+    my_orders = @grouped_by_order.keys
+
+    my_orders = Order.where(id: my_orders)
 
     if params[:order_state] && params[:order_state] != ""
-      scope = scope.where(order_state: params[:order_state])
+      my_orders = my_orders.where(order_state: params[:order_state])
     end
 
-    @orders = scope
+    @orders = my_orders
 
   end
 
