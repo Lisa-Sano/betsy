@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
     if product.in_stock?
       current_order.add_product(product, quantity, session[:order_id])
       redirect_to user_order_path(session[:user_id], session[:order_id]), method: :get
-      else
+    else
       flash[:notice] = "This product is out of stock. To order one please log in"
       redirect_to product
     end
