@@ -16,7 +16,6 @@ products = [
   { name: "Ally Secret Trellis Long Silk Scarf", price: 15900 , user_id: 4, description: "Silk scarf in windowpane gingham with flowery ombre-tone border", stock:20  },
   { name: "Good Vibes Crinkle Wrap", price: 15900 , user_id: 4, description: "Lightweight color-block scarf featuring delicate eyelash fringe and glittering ends", stock:20  },
   { name: "Carrson Dress Sandal", price: 90000 , user_id: 5, description: "Ankle-strap sandal in rich leather featuring covered block heel and single toe", stock:20  },
-
 ]
 
 products.each do |product|
@@ -36,7 +35,7 @@ categories.each do |category|
   Category.create category
 end
 
-p_one = Product.find(1) 
+p_one = Product.find(1)
 p_one.categories << Category.find_by_name("Dress")
 p_two = Product.find(2)
 p_two.categories << Category.find_by_name("Blouse")
@@ -83,6 +82,15 @@ orders = [
 {order_state: "paid", user_id: 3, total: 84000},
 {order_state: "complete", user_id: 4, total: 63910},
 {order_state: "canceled", user_id: 5, total: 71200},
+
+{order_state: "paid", user_id: 1, total: 84000},
+{order_state: "complete", user_id: 1, total: 63910},
+{order_state: "canceled", user_id: 3, total: 71200},
+{order_state: "pending", user_id: 4, total: 110000},
+{order_state: "paid", user_id: 2, total: 110000},
+{order_state: "paid", user_id: 3, total: 71200},
+{order_state: "pending", user_id: 4, total: 110000},
+{order_state: "paid", user_id: 2, total: 110000},
 ]
 orders.each do |order|
   Order.create order
@@ -94,7 +102,29 @@ order_items = [
 {product_id: 3, order_id: 4, quantity: 7},
 {product_id: 5, order_id: 3, quantity: 3},
 {product_id: 4, order_id: 2, quantity: 2},
-{product_id: 2, order_id: 1, quantity: 1}
+{product_id: 2, order_id: 1, quantity: 1},
+{product_id: 5, order_id: 5, quantity: 2},
+{product_id: 5, order_id: 4, quantity: 7},
+{product_id: 5, order_id: 3, quantity: 3},
+{product_id: 4, order_id: 2, quantity: 2},
+{product_id: 2, order_id: 1, quantity: 1},
+{product_id: 8, order_id: 6, quantity: 2},
+{product_id: 9, order_id: 6, quantity: 2},
+{product_id: 10, order_id: 6, quantity: 3},
+{product_id: 9, order_id: 7, quantity: 2},
+{product_id: 10, order_id: 7, quantity: 1},
+{product_id: 1, order_id: 7, quantity: 2},
+{product_id: 11, order_id: 7, quantity: 2},
+{product_id: 10, order_id: 8, quantity: 7},
+{product_id: 11, order_id: 8, quantity: 3},
+{product_id: 12, order_id: 8, quantity: 2},
+{product_id: 1, order_id: 8, quantity: 2},
+{product_id: 18, order_id: 8, quantity: 2},
+{product_id: 12, order_id: 9, quantity: 1},
+{product_id: 14, order_id: 9, quantity: 4},
+{product_id: 13, order_id: 10, quantity: 1},
+{product_id: 18, order_id: 11, quantity: 7},
+
 ]
 
 order_items.each do |order_item|

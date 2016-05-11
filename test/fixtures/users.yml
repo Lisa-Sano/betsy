@@ -10,8 +10,31 @@ one:
   user_name: person_one
   email: person@one.com
   password_digest: <%= BCrypt::Password.create('password', cost: 1) %>
-two:
-  name: Person Two
-  user_name: person_two
-  email: person@two.com
+
+jeremy:
+  name: jeremy!
+  user_name: super_jeremy
+  email: jeremy@ada.com
   password_digest: <%= BCrypt::Password.create('password', cost: 1) %>
+
+
+  # create_table "users", force: :cascade do |t|
+  #   t.string   "name",            null: false
+  #   t.string   "user_name",       null: false
+  #   t.string   "password_digest"
+  #   t.string   "email",           null: false
+  #   t.string   "address"
+  #   t.string   "city"
+  #   t.string   "state"
+  #   t.integer  "zip"
+  #   t.integer  "last_four_cc"
+  #   t.datetime "cc_exp"
+  #   t.integer  "cc_cvv"
+  #   t.integer  "billing_zip"
+  #   t.datetime "created_at",      null: false
+  #   t.datetime "updated_at",      null: false
+  # end
+
+  # validates :name, presence: true
+  # validates :user_name, presence: true, uniqueness: true
+  # validates :email, presence: true, uniqueness: true

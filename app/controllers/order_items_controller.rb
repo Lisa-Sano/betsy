@@ -1,4 +1,8 @@
 class OrderItemsController < ApplicationController
+  def show
+    @item = OrderItem.find(params[:id])
+  end
+
   def update
     @item = OrderItem.find(params[:id])
     @item.update(update_quantity)
