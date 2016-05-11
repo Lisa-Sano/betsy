@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 products = [
-<<<<<<< HEAD
   { name: "Flora Stone Maxi Dress", price: 35600, user_id: 1, description: "V-neck maxi in tropical print featuring adjustable spaghetti straps and center cutout with tie at bust", stock:20, photo_url: "https://s-media-cache-ak0.pinimg.com/736x/9f/dc/97/9fdc97ffb840b8fd044825ab096a40ec.jpg"  },
 
   { name: "Eyelet-Yoke Top", price: 4500, user_id: 1, description: "Sleeveless top in floral motif featuring crochet yoke and vertical insets at front and back", stock:20, photo_url: "http://assets.charmingshoppes.com/is/image/LaneBryant/pr_175047_1A?$product_main$&wid=354&hei=460"  },
@@ -47,7 +46,6 @@ products = [
   { name: "Ally Secret Trellis Long Silk Scarf", price: 15900 , user_id: 4, description: "Silk scarf in windowpane gingham with flowery ombre-tone border", stock:20  },
   { name: "Good Vibes Crinkle Wrap", price: 15900 , user_id: 4, description: "Lightweight color-block scarf featuring delicate eyelash fringe and glittering ends", stock:20  },
   { name: "Carrson Dress Sandal", price: 90000 , user_id: 5, description: "Ankle-strap sandal in rich leather featuring covered block heel and single toe", stock:20  },
->>>>>>> master
 ]
 
 products.each do |product|
