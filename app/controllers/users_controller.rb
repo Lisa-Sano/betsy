@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @order = Order.find(session[:order_id])
     @user.update(user_create_params[:user])
-    redirect_to edit_user_order_path(@user.id, @order.id)
+    redirect_to edit_order_path(@order.id), method: :patch
   end
 
   private

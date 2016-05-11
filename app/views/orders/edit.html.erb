@@ -14,7 +14,7 @@
   <% end %>
   Total: <%= to_money(@order.order_total) %>
 
-  <%= link_to "Edit cart", user_order_path(session[:user_id], @order.id), method: :get %>
+  <%= link_to "Edit cart", order_path(@order.id), method: :get %>
 
-  <%= button_to :'Checkout', user_order_path(session[:user_id], @order.id), method: :patch %>
+  <%= button_to :'Checkout', order_path(@order.id), method: :patch %>
 <% end %>

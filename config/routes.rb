@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, :only => [:new, :create, :show, :edit, :update] do
-    resources :orders
     resources :reviews
     scope module: :users do
       resources :products
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders, :only => [:show, :edit, :update]
 
   resources :order_items, :only => [:show]
 

@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :reviews
 
-  validates :name, presence: true
-  validates :user_name, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  validates :name, presence: true, unless: :guest?
+  validates :user_name, presence: true, uniqueness: true, unless: :guest?
+  validates :email, presence: true, uniqueness: true, unless: :guest?
 
   has_secure_password
 
@@ -22,5 +22,11 @@ class User < ActiveRecord::Base
     OrderItem.where(product_id: products)
       .map { |item| item.product.price }
       .sum
+  end
+
+  def guest?
+    return true if self.name == "guest"
+  else
+    return false
   end
 end
