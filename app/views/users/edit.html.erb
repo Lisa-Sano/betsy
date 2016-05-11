@@ -1,6 +1,6 @@
 <h1><%= current_user.name %>, please confirm or enter your purchase information.</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, url: user_path(session[:user_id]) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, :value => current_user.name %>
 

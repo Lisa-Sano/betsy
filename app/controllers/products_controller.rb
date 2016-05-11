@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   def add_to_cart
     product = Product.find(params[:id])
     quantity = params[:quantity]
-    if current_user || product.in_stock?
+    if product.in_stock?
       current_order.add_product(product, quantity, session[:order_id])
       redirect_to user_order_path(session[:user_id], session[:order_id]), method: :get
       else

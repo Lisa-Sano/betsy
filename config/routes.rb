@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'add_to_cart', on: :member
   end
 
-  resources :users, :only => [:new, :create, :show, :edit] do
+  resources :users, :only => [:new, :create, :show, :edit, :update] do
     resources :orders
     resources :reviews
     scope module: :users do
