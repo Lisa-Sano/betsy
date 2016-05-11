@@ -2,9 +2,8 @@
 
 <%= link_to "Add a new product", new_user_product_path %>
 
-<% categories_for_select = @categories.map { |c| [c.name, c.id] } %>
 <%= form_tag user_products_path, method: :get do %>
-<%= select_tag(:category, options_for_select(categories_for_select, :selected => params[:category]), :prompt => "Browse by Category...") %>
+<%= select_tag(:category, options_for_select(@categories.map { |c| [c.name, c.id] }, :selected => params[:category]), :prompt => "Browse by Category...") %>
 
 <%= submit_tag "Submit" %>
 <% end %>
