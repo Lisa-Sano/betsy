@@ -2,16 +2,40 @@
 
 <%= link_to "Add a new product", new_user_product_path %>
 
-<% categories_for_select = @categories.map { |c| [c.name, c.id] } %>
 <%= form_tag user_products_path, method: :get do %>
-<%= select_tag(:category, options_for_select(categories_for_select, :selected => params[:category]), :prompt => "Browse by Category...") %>
+<%= select_tag(:category, options_for_select(@categories.map { |c| [c.name, c.id] }, :selected => params[:category]), :prompt => "Browse by Category...") %>
 
 <%= submit_tag "Submit" %>
 <% end %>
 
-<% @products.each do |product| %>
-  <p>
-  <%= link_to product.name, user_product_path(params[:user_id], product.id) %>
-  <span class="price"><%= to_money(product.price) %></span>
-  </p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">Current Products: </h2>
+  </div>
+  <% @products.each do |product| %>
+      <div class="list-group">
+        <%= link_to user_product_path(params[:user_id], product.id), class: "list-group-item" do %>
+          <%= product.name %>
+          <span class="price"><%= to_money(product.price) %></span>
+        <% end %>
+      </div>
+  <% end %>
+</div>
+
+
+<% if @retired_products %>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h2 class="panel-title">Retired Products: </h2>
+  </div>
+  <% @retired_products.each do |product| %>
+    <div class="list-group">
+      <%= link_to user_product_path(params[:user_id], product.id), class: "list-group-item" do %>
+        <%= product.name %>
+        <span class="price"><%= to_money(product.price) %></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 <% end %>
+

@@ -29,5 +29,13 @@
     <%= f.select :categories, options_for_select(@categories.map { |c| [c.name, c.id] }, zone.categories.map { |c| c.id }), {}, {multiple: true, class: "form-control"} %>
   </div>
 
+  <div class="form-group">
+    <p><%= f.label :retired, "Retire this product?" %></p>
+    <%= f.radio_button :retired, false %> 
+    <%= f.label :retired, 'No', :value => false %>
+    <%= f.radio_button :retired, true %>
+    <%= f.label :retired, 'Yes', :value => true %>
+  </div>
+
   <%= f.submit class: "btn btn-success" %>
 <% end %>
