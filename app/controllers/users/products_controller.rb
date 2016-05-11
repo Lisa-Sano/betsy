@@ -5,7 +5,7 @@ class Users::ProductsController < ApplicationController
   def index
     @categories = Category.order(name: :asc)
 
-    scope = Product.where(user_id: params[:user_id], retired: nil).order(name: :asc)
+    scope = Product.where(user_id: params[:user_id], retired: false).order(name: :asc)
 
     if params[:category].present?
       scope = scope.joins(:categories).where(categories: {id: params[:category]})
@@ -71,7 +71,7 @@ class Users::ProductsController < ApplicationController
   private
 
   def products_params
-    params.permit(product: [:name, :description, :photo_url, :stock])
+    params.permit(product: [:name, :description, :photo_url, :stock, :retired])
   end
 
   def require_login
