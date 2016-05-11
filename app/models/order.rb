@@ -33,7 +33,4 @@ class Order < ActiveRecord::Base
     return total
   end
 
-  def revenue
-
-  end
 end
