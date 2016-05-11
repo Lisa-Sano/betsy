@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
   root "products#index"
 
-
   resources :products, :only => [:index, :show] do
     resources :order_items, :only => [:create, :update, :destroy]
     resources :reviews
     post 'add_to_cart', on: :member
   end
 
-  resources :users, :only => [:new, :create, :show] do
+  resources :users, :only => [:new, :create, :show, :edit] do
     resources :orders
     resources :reviews
     scope module: :users do

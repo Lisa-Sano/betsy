@@ -1,0 +1,20 @@
+<h1><%= current_user.name %>, please confirm your order.</h1>
+<p>When finished editing your cart, select "confirm purchase" to complete your transaction.</p>
+
+<% if @order.order_items.empty? %>
+  You have nothing in your cart, <%= link_to "Would you like to go back to browse products?", products_path %>
+<% else %>
+  <% @order.order_items.each do |item| %>
+  <div class="item">
+    <% product = Product.find(item.product_id) %>
+    <%= product.name %>
+    <%= to_money(product.price) %>
+    <%= item.quantity %>
+    </div>
+  <% end %>
+  Total: <%= to_money(@order.order_total) %>
+
+  <%= link_to "Edit cart", user_order_path(session[:user_id], @order.id), method: :get %>
+
+  <%= button_to :'Checkout', user_order_path(session[:user_id], @order.id), method: :patch %>
+<% end %>

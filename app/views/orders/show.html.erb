@@ -26,4 +26,6 @@
     </div>
   <% end %>
   Total: <%= to_money(@order.order_total) %>
+
+  <%= button_to :'Checkout', edit_user_path(session[:user_id]), method: :get %>
 <% end %>
