@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  root "products#index"
+
+  root "welcome#index"
+
+  get 'welcome/index'
 
   resources :products, :only => [:index, :show] do
     resources :order_items, :only => [:create, :update, :destroy]
     resources :reviews
     post 'add_to_cart', on: :member
   end
+  get 'search' => 'products#search', as: 'search_product'
 
   resources :users, :only => [:new, :create, :show, :edit, :update] do
-    resources :orders
     resources :reviews
     scope module: :users do
       resources :products
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders, :only => [:show, :edit, :update]
 
   resources :order_items, :only => [:show]
 

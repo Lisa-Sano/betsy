@@ -1,20 +1,41 @@
-<h1><%= current_user.name %>, please confirm your order.</h1>
-<p>When finished editing your cart, select "confirm purchase" to complete your transaction.</p>
+<%= render partial: "cart" %>
 
-<% if @order.order_items.empty? %>
-  You have nothing in your cart, <%= link_to "Would you like to go back to browse products?", products_path %>
-<% else %>
-  <% @order.order_items.each do |item| %>
-  <div class="item">
-    <% product = Product.find(item.product_id) %>
-    <%= product.name %>
-    <%= to_money(product.price) %>
-    <%= item.quantity %>
-    </div>
+<!-- THIS SHOULD MAYBE BE A DIFFERENT HEADER TAG <h1><%#= current_user.name %>, please confirm or enter your purchase information.</h1> -->
+
+<%= form_for @order, url: order_path(session[:order_id]), method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.label :zip %>
+  <%= f.number_field :zip %>
+
+  <%= f.label :'Name as appears on card' %>
+  <%= f.text_field :card_name %>
+
+  <%= f.label :'Credit card number' %>
+  <%= f.number_field :last_four_cc %>
+
+  <%= f.label :'Credit card expiration' %>
+  <%= f.select :cc_exp_month, options_for_select([["01", "01"], ["02", "02"], ["03", "03"], ["04", "04"], ["05", "05"], ["06", "06"], ["07", "07"], ["08", "08"], ["09", "09"], ["10", "10"], ["11", "11"], ["12", "12"]]) %>
+  <%= f.select :cc_exp_year, options_for_select([["2016", "2016"], ["2017", "2017"], ["2018", "2018"], ["2019", "2019"], ["2020", "2020"]]) %>
+
+  <%= f.label :'CVV' %>
+  <%= f.number_field :cc_cvv %>
+
+  <%= f.label :'Billing Zip Code' %>
+  <%= f.text_field :billing_zip %>
+
+  <%= f.submit :'Complete Purchase' %>
   <% end %>
-  Total: <%= to_money(@order.order_total) %>
-
-  <%= link_to "Edit cart", user_order_path(session[:user_id], @order.id), method: :get %>
-
-  <%= button_to :'Checkout', user_order_path(session[:user_id], @order.id), method: :patch %>
-<% end %>

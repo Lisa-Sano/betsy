@@ -12,8 +12,17 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find_by(id: session[:order_id])
-    order.update(order_state: "paid", user_id: current_user.id)
+    order.update(order_state: "paid")
+    order.last_four_cc = params[:order][:last_four_cc][-4..-1]
+    order.save
+    order.update(order_update_params[:order])
     reset_cart
     render :order_confirmation
+  end
+
+  private
+
+  def order_update_params
+    params.permit(order: [:name, :email, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year])
   end
 end
