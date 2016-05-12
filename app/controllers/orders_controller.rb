@@ -1,16 +1,4 @@
 class OrdersController < ApplicationController
-
-  # create_table "orders", force: :cascade do |t|
-  #   t.string   "order_state", null: false
-  #   t.integer  "user_id"
-  #   t.integer  "total"
-  #   t.datetime "created_at",  null: false
-  #   t.datetime "updated_at",  null: false
-  #
-  def index
-    @orders_i_have_sold = Order.where(user_id: session[:user_id])
-  end
-
   def show
     @order = Order.find_by(id: session[:order_id])
     render :show
@@ -24,8 +12,17 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find_by(id: session[:order_id])
-    order.update(order_state: "paid", user_id: current_user.id)
+    order.update(order_state: "paid")
+    order.last_four_cc = params[:order][:last_four_cc][-4..-1]
+    order.save
+    order.update(order_update_params[:order])
     reset_cart
     render :order_confirmation
+  end
+
+  private
+
+  def order_update_params
+    params.permit(order: [:name, :email, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year])
   end
 end

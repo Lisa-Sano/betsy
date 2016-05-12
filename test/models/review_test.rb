@@ -3,7 +3,7 @@ require 'test_helper'
 class ReviewTest < ActiveSupport::TestCase
 
   # test "validations: user id can't be blank" do
-  #   review = Review.new
+  #   review = Review.create
   #   not_valid_assertion(review, :user_id)
   # end
   #

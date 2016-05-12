@@ -10,48 +10,33 @@
 class ReviewsController < ApplicationController
 
   helper_method :top_ratings, :display_name
-  # from older commit
-    def new
-      @review = Review.new
-      @product = Product.find(params[:product_id])
-      @user = current_user
-    end
 
-    def create
-      @product = Product.find(params[:review][:product_id])
-      @review = Review.create(review_edit_params[:review])
-      if @review.save
-        redirect_to product_path(@review.product_id)
-      else
-        flash.now[:alert] = 'Review could not be saved.'
-        render :new
-      end
-    end
+  def new
+    @review = Review.new
+    @product = Product.find(params[:product_id])
+    @user = @review.get_user_name
+  end
 
+  def create
+    @product = Product.find(params[:review][:product_id])
+    @review = Review.create(review_edit_params[:review])
+    if @review.save
+      redirect_to product_path(@review.product_id)
+    else
+      flash.now[:alert] = 'Review could not be saved.'
+      render :new
+    end
+  end
 
   def index
     @reviews = Review.all
-
-    #how to make this more efficient?
     @top_ratings = Review.where(rating: 5)
-    @products_today = Review.where(updated_at: Time.zone.now.beginning_of_day)
+    @products_today = Review.where(:created_at => Date.today...Date.today + 1, rating: 5 )
   end
 
   def show
     @reviews = Review.where(user_id: params[:user_id])
   end
-
-  # def display_name(user)
-  #   user.name || "guest"
-  # end
-  # 
-  # def display_name(user)
-  #   if user
-  #     user.name
-  #   else
-  #     "Guest user"
-  #   end
-  # end
 
   private
 

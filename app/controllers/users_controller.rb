@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show]
+
   def new
     @user = User.new
   end
@@ -12,24 +14,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-    @orders = Order.where(user_id: @user.id)
-    @products = Product.where(user_id: @user.id)
-    @order_item = OrderItem.where(user_id: @user.id)
-    @reviews = Review.where(user_id: @user.id)
-  end
+  def show; end
 
   def edit
-    @user = User.find(session[:user_id])
+    @user = User.find(current_user.id)
     render :edit
   end
 
   def update
-    @user = User.find(params[:id])
-    @order = Order.find(session[:order_id])
+    @user = User.find(current_user.id)
     @user.update(user_create_params[:user])
-    redirect_to edit_user_order_path(@user.id, @order.id)
+    redirect_to user_path(current_user.id)
   end
 
   private

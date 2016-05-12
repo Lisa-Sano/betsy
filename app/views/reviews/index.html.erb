@@ -4,16 +4,15 @@
 <%#  t.string   "review"
 <%#  t.integer  "rating",     null: false
 <%#  t.datetime "created_at", null: false
-<%#  t.datetime "updated_at", null: false
-<%#end#%>
+<%#  t.datetime "updated_at", null: false#%>
 
 <h1>Reviews</h1>
-
+<%#add bootstrap tabs#%>
   <h2>All reviews:</h2>
     <% @reviews.each do |review| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
+        <li>Reviewed by: <%= review.get_user_name %></li>
         <li>Review: <%=review.review%></li>
         <li>Rating: <%=review.rating%></li>
       </ul>
@@ -23,17 +22,17 @@
     <% @top_ratings.each do |review| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
+        <li>Reviewed by: <%= review.get_user_name %></li>
         <li>Review: <%=review.review%></li>
         <li>Rating: <%=review.rating%></li>
       </ul>
     <%end%>
 
   <h2>Hot products today:</h2>
-    <% @products_today.each do |product| %>
+    <% @products_today.each do |review| %>
       <ul>
         <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.user_id == nil || review.user_id == 0 ? "Guest User" : User.find(review.user_id).name %></li>
+        <li>Reviewed by: <%= review.get_user_name %></li>
         <li>Review: <%=review.review%></li>
         <li>Rating: <%=review.rating%></li>
       </ul>
