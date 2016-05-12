@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 products = [
-<<<<<<< HEAD
   { name: "Flora Stone Maxi Dress", price: 35600, user_id: 1, description: "V-neck maxi in tropical print featuring adjustable spaghetti straps and center cutout with tie at bust", stock:20, photo_url: "https://s-media-cache-ak0.pinimg.com/736x/9f/dc/97/9fdc97ffb840b8fd044825ab096a40ec.jpg"  },
 
   { name: "Eyelet-Yoke Top", price: 4500, user_id: 1, description: "Sleeveless top in floral motif featuring crochet yoke and vertical insets at front and back", stock:20, photo_url: "http://assets.charmingshoppes.com/is/image/LaneBryant/pr_175047_1A?$product_main$&wid=354&hei=460"  },
@@ -36,18 +35,8 @@ products = [
 
   { name: "Floral Lace Crop Sweater", price: 12900, user_id: 3, description: "Slender straps, skin-baring cutaway shoulders and an abbreviated hem put a flirtatious twist on a pretty white tank sweetened with an overlay of floral lace.", stock:20, photo_url: " https://www.bauhaus.com.hk/image/cache/data/products/501216B598293201-350x350.jpg" },
 
-  { name: "Retro 1950's Polka Dot Cat Eye Fashion Sunglasses", price: 15900 , user_id: 4, description: "A distinct mod version of 50s-inspired cat eye sunglasses with high pointed corners and adorable polka dots. You'll find they can work with many outfits, from the very modern to the utterly vintage. Made with an acetate based frame, metal hinges and gradient polycarbonate UV protected lenses.", stock:20, photo_url: "  https://ledchristmaslighting.com/images/FM73252.jpg"}
-=======
-  { name: "Flora Stone Maxi Dress", price: 35600, user_id: 1, description: "V-neck maxi in tropical print featuring adjustable spaghetti straps and center cutout with tie at bust", stock:20  },
-  { name: "Eyelet-Yoke Top", price: 4500, user_id: 1, description: "Sleeveless top in floral motif featuring crochet yoke and vertical insets at front and back", stock:20  },
-  { name: "Tree of Life Pendant Necklace", price: 9130, user_id: 2, description: "Sterling silver necklace featuring polished pendant with gold-plated tree at center and diamond-studded leaves", stock:20  },
-  { name: "Bold Stainless Steel Bracelet Watch", price: 55000, user_id: 2, description: "Elegant brushed stainless steel watch featuring white sunray dial with signature dot at 12 o'clock", stock:20  },
-  { name: "Cedar Street Bag", price: 28000, user_id: 3, description: "Colorful faux-leather satchel featuring hardware feet and removable cross-body strap", stock:20  },
-  { name: "Family Tree Personalized Names Necklace", price: 2900, user_id: 3, description: "Personalized family necklace with copper family tree charm in silver washer by DistinctlyIvy", stock:20  },
-  { name: "Ally Secret Trellis Long Silk Scarf", price: 15900 , user_id: 4, description: "Silk scarf in windowpane gingham with flowery ombre-tone border", stock:20  },
-  { name: "Good Vibes Crinkle Wrap", price: 15900 , user_id: 4, description: "Lightweight color-block scarf featuring delicate eyelash fringe and glittering ends", stock:20  },
-  { name: "Carrson Dress Sandal", price: 90000 , user_id: 5, description: "Ankle-strap sandal in rich leather featuring covered block heel and single toe", stock:20  },
->>>>>>> master
+  { name: "Retro 1950's Polka Dot Cat Eye Fashion Sunglasses", price: 15900 , user_id: 4, description: "A distinct mod version of 50s-inspired cat eye sunglasses with high pointed corners and adorable polka dots. You'll find they can work with many outfits, from the very modern to the utterly vintage. Made with an acetate based frame, metal hinges and gradient polycarbonate UV protected lenses.", stock:20, photo_url: "  https://ledchristmaslighting.com/images/FM73252.jpg"},
+  
 ]
 
 products.each do |product|

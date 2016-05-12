@@ -5,14 +5,14 @@
 # below each fixture, per the syntax in the comments below
 #
 
-  review:
-    product_id: 5
-    user_id: 2
-    review: "What a great product!"
-    rating: 3
+review:
+  product_id: 5
+  user_id: 2
+  review: "What a great product!"
+  rating: 3
 
-  review:
-    product_id: 2
-    user_id: 4
-    review: "I hate this product."
-    rating: 1
+review:
+  product_id: 2
+  user_id: 4
+  review: "I hate this product."
+  rating: 1
