@@ -2,22 +2,12 @@ require 'test_helper'
 
 class ReviewTest < ActiveSupport::TestCase
 
-  # test "validations: rating must not be blank" do
-  #   review = reviews(:review_4)
-  #   assert_not_nil review.rating
-  # end
-
   test "validations: review can be left blank" do
     review = Review.new(rating: 3)
     assert review.valid?
   end
 
-  # test "validations: review can be left blank" do
-  #   review = reviews(:review_5)
-  #   assert review.valid?
-  # end
-
-  test "validations: user id must be an integer, not a string" do
+  test "validations: user id must be an integer" do
     review = reviews(:review_2)
     assert Integer, review.rating
   end
@@ -27,7 +17,10 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not review.valid?
   end
 
-
+  test "get_user_name" do
+    review = reviews(:review_4)
+    review.get_user_name
+  end
 
 # assert(expression, fail_message)
 # assert_not(expression, fail_message)
