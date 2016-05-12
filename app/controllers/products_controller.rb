@@ -26,9 +26,14 @@ class ProductsController < ApplicationController
   def  search
     product_names = Product.all.pluck(:name)
     result = product_names.select do |name|
-      name.include? params[:q]
+      name.include? params[:q].capitalize
     end
+
     @products = Product.where(name: result)
+
+    if @products == []
+    flash[:notice] = "Not matches fot #{params[:q]} found "
+    end
   end
 
   def add_to_cart
