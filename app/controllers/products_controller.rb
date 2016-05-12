@@ -23,6 +23,15 @@ class ProductsController < ApplicationController
     @reviews = Review.where(product_id: @product.id)
   end
 
+  def  search
+    product_names = Product.all.pluck(:name)
+    result  = product_names.select do |name|
+      name.include? params[:q]
+    end
+
+    @products = Product.where(name: result)
+  end
+
   def add_to_cart
     product = Product.find(params[:id])
     quantity = params[:quantity]

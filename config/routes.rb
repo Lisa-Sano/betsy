@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :reviews
     post 'add_to_cart', on: :member
   end
+  get 'search' => 'products#search', as: 'search_product'
 
   resources :users, :only => [:new, :create, :show, :edit, :update] do
     resources :reviews

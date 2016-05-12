@@ -1,0 +1,9 @@
+<%=params%>
+<%=@products.inspect%>
+
+
+<%@products.each do |product|%>
+<%=product.name%>
+<%=product.description%>
+<%=product.price %>
+<%end%>
