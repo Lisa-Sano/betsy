@@ -4,20 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-
 one:
   name: Person One
   user_name: person_one
   email: person@one.com
   password_digest: <%= BCrypt::Password.create('password', cost: 1) %>
-
 jeremy:
   name: jeremy!
   user_name: super_jeremy
   email: jeremy@ada.com
   password_digest: <%= BCrypt::Password.create('password', cost: 1) %>
-
-
   # create_table "users", force: :cascade do |t|
   #   t.string   "name",            null: false
   #   t.string   "user_name",       null: false

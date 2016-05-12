@@ -1,9 +1,7 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
   test "should get new" do
     get :new
     assert_response :success
@@ -14,8 +12,4 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should get show" do
-  #   get :show
-  #   assert_response :success
-  # end
 end

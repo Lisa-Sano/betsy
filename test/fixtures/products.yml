@@ -40,3 +40,9 @@ ring:
   user: jeremy
   description: blah blah
   stock: 10
+sandal:
+  name: sandal
+  price: 25360
+  user: one
+  description: blah blah
+  stock: 0
