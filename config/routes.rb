@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   get    "/login"  => "sessions#new"
 
+  resources :categories, :only => [:new, :create]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
