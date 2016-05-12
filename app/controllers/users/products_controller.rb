@@ -39,7 +39,7 @@ class Users::ProductsController < ApplicationController
 
   def create
     @product = Product.new(products_params[:product])
-    @product.price = @product.to_cents(params[:product][:price])
+    @product.to_cents(params[:product][:price])
     @product.user_id = session[:user_id]
     @product.add_categories(@product.categories, params[:product][:categories][1..-1])
     if @product.save
@@ -58,7 +58,7 @@ class Users::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     categories = @product.categories
     Product.update(params[:id], products_params[:product])
-    @product.price = @product.to_cents(params[:product][:price])
+    @product.to_cents(params[:product][:price])
     @product.add_categories(categories, params[:product][:categories][1..-1])
     if @product.save
       redirect_to user_product_path(session[:user_id], params[:id])

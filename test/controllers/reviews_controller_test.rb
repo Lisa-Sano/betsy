@@ -6,7 +6,7 @@ class ReviewsControllerTest < ActionController::TestCase
   # end
 
   test "should get new" do
-    get :new
+    get new_product_review
     assert_response :success
   end
 

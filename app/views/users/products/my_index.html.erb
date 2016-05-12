@@ -1,6 +1,7 @@
 <h1>Welcome <%= @user.name %>! Here are your products:</h1>
 
-<%= link_to "Add a new product", new_user_product_path %>
+<p><%= link_to "Add a new product", new_user_product_path %></p>
+<p><%= link_to "Add a new category", new_category_path %></p>
 
 <%= form_tag user_products_path, method: :get do %>
 <%= select_tag(:category, options_for_select(@categories.map { |c| [c.name, c.id] }, :selected => params[:category]), :prompt => "Browse by Category...") %>

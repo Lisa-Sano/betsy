@@ -1,75 +1,9 @@
 <h1>I am glad you want to create an accout with us</h1>
 
 <% if @user.errors.any? %>
-  <ul class="errors">
     <% @user.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
+      <%  flash.now[:notice] = "#{column.capitalize}: #{message} "%>
     <% end %>
-  </ul>
 <% end %>
 
-<!-- <%= render partial: "form", locals: { zone: @user } %> -->
-
-<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
-
-<div class="input-group">
-  <%= f.label :user_name, class: "input-group-addon" %>
-  <%= f.text_field :user_name, class: "form-control" %>
-</div>
-<br>
-
-  <div class="input-group">
-  <%= f.label :email, class: "input-group-addon" %>
-  <%= f.email_field :email, class: "form-control" %>
-</div>
-<br>
-
-  <div class="input-group">
-  <%= f.label :name, class: "input-group-addon" %>
-  <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :address, class: "input-group-addon" %>
-  <%= f.text_field :address, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :city, class: "input-group-addon" %>
-  <%= f.text_field :city, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :state, class: "input-group-addon" %>
-  <%= f.text_field :state, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :zip, class: "input-group-addon" %>
-  <%= f.text_field :zip, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :password, class: "input-group-addon"  %>
-  <%= f.password_field :password, class: "form-control" %>
-  </div>
-  <br>
-  <div class="input-group">
-  <%= f.label :password_confirmation, class: "input-group-addon" %>
-  <%= f.password_field :password_confirmation, class: "form-control" %>
-  </div>
-  <br>
-  <br>
-
-
-  <%= f.submit class: "btn btn-primary btn-lg" %>
-<% end %>
-
-</div>
+<%= render partial: "form", locals: { zone: @user } %>

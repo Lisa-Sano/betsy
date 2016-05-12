@@ -5,14 +5,32 @@
 # below each fixture, per the syntax in the comments below
 #
 
-review:
-  product_id: 5
-  user_id: 2
-  review: "What a great product!"
-  rating: 3
+  review_1:
+    product: shoes
+    user: one
+    review: "What a great product!"
+    rating: 3
 
-review:
-  product_id: 2
-  user_id: 4
-  review: "I hate this product."
-  rating: 1
+  review_2:
+    product: sweater
+    user: two
+    review: "I hate this product."
+    rating: 1
+
+  review_3:
+    product: sweater
+    user: two
+    review: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+    rating: 1
+
+  review_4:
+    product: sweater
+    user: two
+    review: "I hate this product."
+    rating: 5
+
+  review_5:
+    product: shoes
+    user: one
+    review: nil
+    rating: 4
