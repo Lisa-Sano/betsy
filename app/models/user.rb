@@ -19,9 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def total_revenue
-    OrderItem.where(product_id: products)
-      .map { |item| item.product.price }
-      .sum
+    OrderItem.where(product_id: products).map { |item| item.product.price }.sum
   end
 
   def guest?

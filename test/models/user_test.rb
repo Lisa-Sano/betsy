@@ -21,4 +21,18 @@ class UserTest < ActiveSupport::TestCase
     jeremy = users(:jeremy)
     assert_not User.log_in(jeremy.email, "catdog")
   end
+
+  test "total_revenue" do
+
+    # def total_revenue
+    #   OrderItem.where(product_id: products)
+    #     .map { |item| item.product.price }
+    #     .sum
+    # end
+
+    jeremy = users(:jeremy)
+    assert_equal 29960, jeremy.total_revenue
+
+  end
+
 end

@@ -4,7 +4,6 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-
 sweater:
   name: sweater
   price: 2000
@@ -16,4 +15,28 @@ shoes:
   price: 5000
   user: two
   description: black classic pumps
+  stock: 10
+jeans:
+  name: jeans
+  price: 4000
+  user: one
+  description: blah blah
+  stock: 10
+scarf:
+  name: scarf
+  price: 2300
+  user: jeremy
+  description: blah blah
+  stock: 10
+top:
+  name: top
+  price: 21300
+  user: jeremy
+  description: blah blah
+  stock: 10
+ring:
+  name: ring
+  price: 25360
+  user: jeremy
+  description: blah blah
   stock: 10
