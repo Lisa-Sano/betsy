@@ -2,70 +2,8 @@
 
 <% if @user.errors.any? %>
     <% @user.errors.each do |column, message| %>
-      <%  flash[:notice] = "#{column.capitalize}: #{message} "%>
+      <%  flash.now[:notice] = "#{column.capitalize}: #{message} "%>
     <% end %>
 <% end %>
 
-<!-- <%= render partial: "form", locals: { zone: @user } %> -->
-
-<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
-
-<div class="input-group">
-  <%= f.label :user_name, class: "input-group-addon" %>
-  <%= f.text_field :user_name, class: "form-control" %>
-</div>
-<br>
-
-  <div class="input-group">
-  <%= f.label :email, class: "input-group-addon" %>
-  <%= f.email_field :email, class: "form-control" %>
-</div>
-<br>
-
-  <div class="input-group">
-  <%= f.label :name, class: "input-group-addon" %>
-  <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :address, class: "input-group-addon" %>
-  <%= f.text_field :address, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :city, class: "input-group-addon" %>
-  <%= f.text_field :city, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :state, class: "input-group-addon" %>
-  <%= f.text_field :state, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :zip, class: "input-group-addon" %>
-  <%= f.text_field :zip, class: "form-control" %>
-  </div>
-  <br>
-
-  <div class="input-group">
-  <%= f.label :password, class: "input-group-addon"  %>
-  <%= f.password_field :password, class: "form-control" %>
-  </div>
-  <br>
-  <div class="input-group">
-  <%= f.label :password_confirmation, class: "input-group-addon" %>
-  <%= f.password_field :password_confirmation, class: "form-control" %>
-  </div>
-  <br>
-  <br>
-
-
-  <%= f.submit class: "btn btn-primary btn-lg" %>
-<% end %>
-
-</div>
+<%= render partial: "form", locals: { zone: @user } %>
