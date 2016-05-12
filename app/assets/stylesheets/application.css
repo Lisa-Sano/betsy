@@ -34,7 +34,7 @@
  .glyphicon.glyphicon-shopping-cart {
    font-size: 40px;
    margin-left: 15px;
-   margin-top: 5px;
+   margin-top: 0px;
    margin-bottom: 0;
  }
 
@@ -45,4 +45,9 @@
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
+}
+
+.navbar-nav > li > a.cart_link {
+  margin: 0;
+  padding: 0;
 }
