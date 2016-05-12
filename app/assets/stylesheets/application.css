@@ -20,13 +20,20 @@
   text-align: center;
 }
 
-
  #edit-user {
    float: right;
    margin-top: -50px;
  }
 
- .dropdown {
-   border: solid gray;
-   padding: 10px;
+ .active {
+  margin-right: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
+ }
+
+ .glyphicon.glyphicon-shopping-cart {
+   font-size: 40px;
+   margin-left: 15px;
+   margin-top: 5px;
+   margin-bottom: 0;
  }
