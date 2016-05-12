@@ -1,3 +1,43 @@
 <h1>Checkout complete!</h1>
 
+<p>Thank you for your order, <%= @order.name %>. Here is your order confirmation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <td>Product</td>
+      <td>Quantity</td>
+      <td>Item Subtotal</td>
+      <td>Order Subtotal</td>
+    </tr>
+  </thead>
+<% order_subtotal = 0 %>
+<% @order.order_items.each do |item| %>
+  <tbody>
+    <tr>
+    <% product = Product.find(item.product_id) %>
+    <% item_subtotal = product.price * item.quantity %>
+      <td><%= link_to "#{product.name}", product_path(product.id) %></td>
+      <td><%= item.quantity %></td>
+      <td><%= to_money(item_subtotal) %></td>
+      <td><%= to_money(order_subtotal += item_subtotal) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Order total</td>
+      <td><%= to_money(@order.order_total) %></td>
+    </tr>
+    <tr>
+      <td>Order Status</td>
+      <td><%= @order.order_state %></td>
+    </tr>
+    <tr>
+      <td>Date order was placed</td>
+      <td><%= @order.updated_at.strftime("%m/%d/%Y") %></td>
+    </tr>
+  </tfoot>
+</table>
+
 <%= link_to "Browse more products", products_path %>
