@@ -38,21 +38,6 @@ class ProductTest < ActiveSupport::TestCase
     not_valid_assertion(product, :price)
   end
 
-  # test "validations: product must have a user_id" do
-  #   product = Product.new
-  #   not_valid_assertion(product, :user_id)
-  # end
-
-  # test "validations: user_id must be an integer, not a string" do
-  #   product = Product.new(user_id: 'user_id')
-  #   not_valid_assertion(product, :user_id)
-  # end
-
-  # test "validations: user_id must be an integer, not a float" do
-  #   product = Product.new(user_id: 10.5)
-  #   not_valid_assertion(product, :user_id)
-  # end
-
   test "validations: product must have a stock" do
     product = Product.new
     not_valid_assertion(product, :stock)
@@ -77,4 +62,15 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal users(:one), products(:sweater).user
   end
 
+  test "giving a price in dollars with a $ returns a price in cents" do
+    product = Product.first
+    product.to_cents("$50.00")
+    assert_equal 5000, product.price
+  end
+
+  test "giving a price in dollars with no cents returns a price in cents" do
+    product = Product.first
+    product.to_cents("$50")
+    assert_equal 5000, product.price
+  end
 end
