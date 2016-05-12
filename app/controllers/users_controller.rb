@@ -17,15 +17,14 @@ class UsersController < ApplicationController
   def show; end
 
   def edit
-    @user = User.find(session[:user_id])
+    @user = User.find(current_user.id)
     render :edit
   end
 
   def update
-    @user = User.find(params[:id])
-    @order = Order.find(session[:order_id])
+    @user = User.find(current_user.id)
     @user.update(user_create_params[:user])
-    redirect_to edit_order_path(@order.id), method: :patch
+    redirect_to user_path(current_user.id)
   end
 
   private
