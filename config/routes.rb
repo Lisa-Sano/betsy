@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root "products#index"
+
+  root "welcome#index"
+
+  get 'welcome/index'
 
   resources :products, :only => [:index, :show] do
     resources :order_items, :only => [:create, :update, :destroy]
