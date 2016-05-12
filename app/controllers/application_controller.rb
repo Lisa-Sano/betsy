@@ -36,6 +36,7 @@ class ApplicationController < ActionController::Base
       remove_from.update(stock: new_stock)
     end
 
+    @order = Order.find(session[:order_id])
     #reset session order_id & clear current cart
     session[:order_id] = nil
   end
