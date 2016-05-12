@@ -21,4 +21,19 @@ class UserTest < ActiveSupport::TestCase
     jeremy = users(:jeremy)
     assert_not User.log_in(jeremy.email, "catdog")
   end
+
+  test "Redirect to a loggin view after registered" do
+    assert :redirect, users(:crystal).save
+  end
+
+  test "total_revenue should be an Integer" do
+    jeremy = users(:jeremy)
+    assert Fixnum, jeremy.total_revenue.class
+  end
+
+  test "total_revenue" do
+    jeremy = users(:jeremy)
+    assert_equal 29960, jeremy.total_revenue
+  end
+
 end
