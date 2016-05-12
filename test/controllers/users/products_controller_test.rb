@@ -17,7 +17,7 @@ class Users::ProductsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    user = User.first
+    user = User.find_by_name('Person One')
     product = user.products.first
     get :edit, {'user_id' => user.id, 'id' => product.id}, {'user_id' => user.id}
     assert_response :success
