@@ -33,24 +33,19 @@
         </div>
       </nav>
 
-      <div class="row">
+        <div class="row">
         <div class="col-lg-6">
-      <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
+        <%= form_tag(search_product_path, method: "get", class: "navbar-form navbar-left ") do %>
+        <div class="input-group">
+      <%= text_field_tag(:q, nil, class: 'form-control', placeholder: "Search a product") %>
       <span class="input-group-btn">
-      <button class="btn btn-default" type="button">Go!</button>
-      </span>
-      </div><!-- /input-group -->
-      </div><!-- /.col-lg-6 -->
-      </div><!-- /.row -->
-
-      <%= form_tag(search_product_path, method: "get") do %>
-        <%= label_tag(:q, "Search for a product") %>
-      <%= text_field_tag :q %>
-        <%= submit_tag("Search") %>
+        <%= submit_tag("Search", class: "btn btn-default") %>
       <% end %>
-
-<%=params%>
+    </span>
+    </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+    <br>
 
       <% if flash[:error] -%>
         <div class="alert alert-danger" role="alert">

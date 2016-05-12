@@ -25,10 +25,9 @@ class ProductsController < ApplicationController
 
   def  search
     product_names = Product.all.pluck(:name)
-    result  = product_names.select do |name|
+    result = product_names.select do |name|
       name.include? params[:q]
     end
-
     @products = Product.where(name: result)
   end
 
