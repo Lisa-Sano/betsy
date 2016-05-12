@@ -73,4 +73,12 @@ class ProductTest < ActiveSupport::TestCase
     product.to_cents("$50")
     assert_equal 5000, product.price
   end
+
+  test "in_stock" do
+    assert_equal false, products(:sandal).in_stock?
+  end
+
+  test "in_stock method" do
+    assert_equal true, products(:jeans).in_stock?
+  end
 end

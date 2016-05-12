@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :reviews
 
-  validates :name, presence: true, unless: :guest?
-  validates :user_name, presence: true, uniqueness: true, unless: :guest?
-  validates :email, presence: true, uniqueness: true, unless: :guest?
+  validates :name, presence: true
+  validates :user_name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
   has_secure_password
 
@@ -19,9 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def total_revenue
-    OrderItem.where(product_id: products)
-      .map { |item| item.product.price }
-      .sum
+    OrderItem.where(product_id: products).map { |item| item.product.price }.sum
   end
 
   def guest?

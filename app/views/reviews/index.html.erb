@@ -1,39 +1,40 @@
-<%#create_table "reviews", force: :cascade do |t|
-<%#  t.integer  "product_id", null: false
-<%#  t.integer  "user_id",    null: false
-<%#  t.string   "review"
-<%#  t.integer  "rating",     null: false
-<%#  t.datetime "created_at", null: false
-<%#  t.datetime "updated_at", null: false#%>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <h1>Reviews</h1>
-<%#add bootstrap tabs#%>
   <h2>All reviews:</h2>
     <% @reviews.each do |review| %>
-      <ul>
-        <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.get_user_name %></li>
-        <li>Review: <%=review.review%></li>
-        <li>Rating: <%=review.rating%></li>
+      <ul class="list-group">
+        <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
+        <li class="list-group-item">Reviewed by: <%= review.get_user_name %></li>
+        <li class="list-group-item">Review: <%=review.review%></li>
+        <li class="list-group-item">Rating: <%=review.rating%></li>
       </ul>
     <%end%>
 
   <h2>Our customers love:</h2>
     <% @top_ratings.each do |review| %>
-      <ul>
-        <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.get_user_name %></li>
-        <li>Review: <%=review.review%></li>
-        <li>Rating: <%=review.rating%></li>
+      <ul class="list-group">
+        <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
+        <li class="list-group-item">Reviewed by: <%= review.get_user_name %></li>
+        <li class="list-group-item">Review: <%=review.review%></li>
+        <li class="list-group-item">Rating: <%=review.rating%></li>
       </ul>
     <%end%>
 
   <h2>Hot products today:</h2>
     <% @products_today.each do |review| %>
-      <ul>
-        <li>Product: <%=Product.find(review.product_id).name%></li>
-        <li>Reviewed by: <%= review.get_user_name %></li>
-        <li>Review: <%=review.review%></li>
-        <li>Rating: <%=review.rating%></li>
+      <ul class="list-group">
+        <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
+        <li class="list-group-item">Reviewed by: <%= review.get_user_name %></li>
+        <li class="list-group-item">Review: <%=review.review%></li>
+        <li class="list-group-item">Rating: <%=review.rating%></li>
       </ul>
     <%end%>
+</div>

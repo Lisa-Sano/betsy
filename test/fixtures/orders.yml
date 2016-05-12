@@ -4,3 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+one:
+  order_state: pending
+  total: 4534222
+two:
+  order_state: pending
+  total: 4534222
+three:
+  order_state: pending
+  total: 60000
+four:
+  order_state: paid
+  total: 60000
