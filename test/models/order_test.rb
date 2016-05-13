@@ -183,4 +183,12 @@ class OrderTest < ActiveSupport::TestCase
     order.add_product(product, 1, order.id)
     assert_equal(2, order.order_items.count)
   end
+
+  test "test method: order_total - returns a sum of all the order_item prices in the order" do
+    order = Order.create(order_state: "pending")
+    order.order_items << order_items(:item1)
+    order.order_items << order_items(:item2)
+
+    assert_equal 37200, order.order_total
+  end
 end

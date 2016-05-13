@@ -127,3 +127,12 @@
 .prod-header {
   text-align: center;
 }
+
+.prod-index-caption {
+  text-align: center;
+}
+
+.prod-name-index {
+  font-weight: bold;
+  color: #000066;
+}
