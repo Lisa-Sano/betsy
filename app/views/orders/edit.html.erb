@@ -1,6 +1,11 @@
+<% if @order.errors.any? %>
+    <% @order.errors.each do |column, message| %>
+      <%  flash.now[:notice] = "#{column.capitalize}: #{message} "%>
+    <% end %>
+<% end %>
+
 <%= render partial: "cart" %>
 
-<!-- THIS SHOULD MAYBE BE A DIFFERENT HEADER TAG <h1><%#= current_user.name %>, please confirm or enter your purchase information.</h1> -->
 <div class="form-user">
 
 <%= form_for @order, url: order_path(session[:order_id]), method: :patch do |f| %>

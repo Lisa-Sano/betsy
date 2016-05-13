@@ -1,43 +1,55 @@
-<h1>Checkout complete!</h1>
 
-<p>Thank you for your order, <%= @order.name %>. Here is your order confirmation:</p>
+<div class="panel panel-primary form-user">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h2>Checkout Complete!</h2></div>
 
-<table>
-  <thead>
+  <div class="panel-body">
+      <p>Thank you for shooping with us <%= current_user.name if current_user %>. Here is your order confirmation:</p>
+    </div>
+
+    <table class="table">
     <tr>
-      <td>Product</td>
-      <td>Quantity</td>
-      <td>Item Subtotal</td>
-      <td>Order Subtotal</td>
+      <th><strong>Product</strong></th>
+      <th><strong>Quantity</strong></th>
+      <th><strong>Item Subtotal</strong></th>
+      <th><strong>Order Subtotal</strong></th>
     </tr>
-  </thead>
-<% order_subtotal = 0 %>
-<% @order.order_items.each do |item| %>
+    <% order_subtotal = 0 %>
+    <% @order.order_items.each do |item| %>
   <tbody>
     <tr>
     <% product = Product.find(item.product_id) %>
-    <% item_subtotal = product.price * item.quantity %>
       <td><%= link_to "#{product.name}", product_path(product.id) %></td>
       <td><%= item.quantity %></td>
-      <td><%= to_money(item_subtotal) %></td>
-      <td><%= to_money(order_subtotal += item_subtotal) %></td>
+      <td><%= to_money(item.subtotal) %></td>
+      <br><br>
+      <td><%= to_money(order_subtotal += item.subtotal) %></td>
     </tr>
     <% end %>
   </tbody>
   <tfoot>
     <tr>
-      <td>Order total</td>
-      <td><%= to_money(@order.order_total) %></td>
-    </tr>
-    <tr>
+
       <td>Order Status</td>
-      <td><%= @order.order_state %></td>
+      <td><%= @order.order_state.capitalize %></td>
     </tr>
     <tr>
       <td>Date order was placed</td>
       <td><%= @order.updated_at.strftime("%m/%d/%Y") %></td>
     </tr>
+
+    <tr>
+      <td>Order total</td>
+      <td></td>
+
+      <td class="sub-total"><h4><%= to_money(@order.order_total) %></h4></td>
+    </tr>
+    <tr>
   </tfoot>
 </table>
+</div>
 
+</div>
+<br>
+<br>
 <%= link_to "Browse more products", products_path %>

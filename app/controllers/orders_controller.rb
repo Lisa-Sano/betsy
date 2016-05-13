@@ -11,13 +11,17 @@ class OrdersController < ApplicationController
   end
 
   def update
-    order = Order.find_by(id: session[:order_id])
-    order.update(order_state: "paid")
-    order.last_four_cc = params[:order][:last_four_cc][-4..-1]
-    order.save
-    order.update(order_update_params[:order])
-    reset_cart
-    render :order_confirmation
+    @order = Order.find_by(id: session[:order_id])
+    @order.assign_attributes(order_update_params[:order])
+    @order.assign_attributes(order_state: "paid")
+    @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
+    if @order.save
+      reset_cart
+      render :order_confirmation
+    else
+      @user = User.find_by(id: session[:user_id])
+      render :edit
+    end
   end
 
   private

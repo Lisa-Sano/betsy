@@ -167,11 +167,14 @@ order_items = [
 {product_id: 11, order_id: 8, quantity: 3},
 {product_id: 12, order_id: 8, quantity: 2},
 {product_id: 1, order_id: 8, quantity: 2},
-{product_id: 18, order_id: 8, quantity: 2},
+{product_id: 2, order_id: 8, quantity: 2},
 {product_id: 12, order_id: 9, quantity: 1},
 {product_id: 14, order_id: 9, quantity: 4},
 {product_id: 13, order_id: 10, quantity: 1},
-{product_id: 18, order_id: 11, quantity: 7},
+{product_id: 12, order_id: 9, quantity: 1},
+{product_id: 14, order_id: 9, quantity: 4},
+{product_id: 13, order_id: 10, quantity: 1},
+{product_id: 3, order_id: 11, quantity: 7},
 
 ]
 
