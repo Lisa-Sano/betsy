@@ -1,10 +1,12 @@
+<br>
 <%= form_for(zone) do |f| %>
+<div class="form-user">
 
 <div class="input-group form-label-width">
   <%= f.label :user_name, class: "input-group-addon form-label-width-addon" %>
   <%= f.text_field :user_name, class: "form-control form-width-control" %>
 </div>
-
+<br>
   <div class="input-group form-label-width">
   <%= f.label :email, class: "input-group-addon form-label-width-addon" %>
   <%= f.email_field :email, class: "form-control form-width-control" %>
@@ -74,4 +76,6 @@
 
   <%= f.submit "Create Account", class: "btn btn-primary btn-md" %>
   <% end %>
+</div>
+
 </div>
