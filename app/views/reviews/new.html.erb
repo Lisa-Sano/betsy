@@ -1,16 +1,29 @@
 <h1>Welcome <%= current_user ? current_user.name : "Guest user" %>
   <br> Leave a review for <%= @product.name %></h1>
+  <br>
 
 <%= form_for @review, url: product_reviews_path(@product.id) do |f| %>
+<div class="form-user">
+
   <%= f.hidden_field :product_id, :value => @product.id %>
-    <% if current_user %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-    <% else %>
-      <%= f.hidden_field :user_id, :value => nil %>
-    <% end %>
-  <%= f.label :review %>
-  <%= f.text_field :review %>
-  <%= f.label :rating %>
-  <%= f.select :rating, [1, 2, 3, 4, 5]%>
-  <%= f.submit %>
+  <% if current_user %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% else %>
+    <%= f.hidden_field :user_id, :value => nil %>
+  <% end %>
+
+  <div class="input-group form-label-width">
+  <%= f.label :review, class: "input-group-addon form-label-width-addon" %>
+  <%= f.text_field :review, class: "form-control form-width-control" %>
+  </div>
+  <br>
+
+  <div class="input-group form-label-width">
+  <%= f.label :rating, class: "input-group-addon form-label-width-addon" %>
+  <%= f.select :rating, [1, 2, 3, 4, 5], class: "select_rating"%>
+  </div>
+  <br>
+
+  <%= f.submit class: "btn btn-primary btn-md"%>
 <% end %>
+</div>
