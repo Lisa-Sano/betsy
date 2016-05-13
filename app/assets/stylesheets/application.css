@@ -14,6 +14,8 @@
  *= require_self
  */
 
+
+
 #product_photo {
   height: 350px;
   overflow: hidden;
@@ -25,11 +27,11 @@
    margin-top: -50px;
  }
 
- .active {
+ /*.active {
   margin-right: 15px;
   padding-right: 5px;
   padding-left: 5px;
- }
+ }*/
 
  .glyphicon.glyphicon-shopping-cart {
    font-size: 40px;
@@ -55,4 +57,26 @@
 
 .dropdown {
   margin-right: 10px;
+}
+
+.bycategory{
+  text-align: center;
+}
+
+.signin-container {
+  width: 35%;
+  margin: auto;
+}
+
+.user-form {
+    width: 100%;
+}
+
+.user-form-addon {
+    width: 15%;
+    text-align: left;
+}
+
+.form-control {
+    width: 85%;
 }

@@ -1,35 +1,34 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
 
   <div class="carousel-inner" role="listbox">
-
     <div class="item active">
-      <img src="http://www.qualityfootwear.ca/wp-content/uploads/2014/03/park_lane-0079.jpg" alt="igame">
+      <img src="http://www.qualityfootwear.ca/wp-content/uploads/2014/03/park_lane-0079.jpg" alt="Sandals">
       <div class="carousel-caption">
-        <h3>igame</h3>
-        <p>The atmosphere in igame has a touch of Florence and Venice.</p>
+        <h3>Sandals</h3>
+        <p>Beatiful flowers in Kolymbari, Crete.</p>
       </div>
     </div>
 
     <div class="item">
-        <img src="https://onmogul.s3.amazonaws.com/uploads/product/thumbnail/16569/3cb4f4e1ec.jpg" alt="igame">
+        <img src="https://onmogul.s3.amazonaws.com/uploads/product/thumbnail/16569/3cb4f4e1ec.jpg" alt="Scarf">
         <div class="carousel-caption">
-          <h3>Sun Glasses</h3>
-          <p>The atmosphere in igame has a touch of Florence and Venice.</p>
+          <h3>Scarf</h3>
+          <p>Beatiful flowers in Kolymbari, Crete.</p>
         </div>
     </div>
 
     <div class="item">
         <img src="https://jenniferfisherjewelry.com/media/wysiwyg/JFBanner1280x350_3.jpg" alt="Sandal">
         <div class="carousel-caption">
-          <h3>Shoes</h3>
-          <p>Shoes Day!!</p>
+          <h3>Flowers</h3>
+          <p>Beatiful flowers in Kolymbari, Crete.</p>
         </div>
     </div>
 
@@ -68,13 +67,54 @@
   </div>
 
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
 <!-- ######################## -->
+<br><br><br><br>
+
+<div class="row">
+  <h3 class="bycategory">Shop by Category</h3>
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <img src="https://s-media-cache-ak0.pinimg.com/564x/11/f9/9f/11f99f8e2890738e93f1fc4155b710a0.jpg" alt="Sandal">
+      <div class="caption">
+        <h4>Shoes</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <img src="http://www.2-chic.com/images/Variant/icon/20339-20.jpg" alt="Scarf">
+      <div class="caption">
+        <h4>Accesories</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <img src="http://www.addicshop.com/media/catalog/product/cache/1/small_image/252x252/163b81649b7ef7bc8a00b0066e59ae0a/2/_/2_14_.jpg" alt="Watch">
+      <div class="caption">
+        <h4>Jewelry</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+
+<%=link_to image_tag("http://whitecompany.scene7.com/is/image/whitecompany/RECBO_15_MAIN", border: 0), {action: 'search', controller: 'products', q: "top"}, {class: 'dock-item'} %>
+      <div class="caption">
+        <h4>Clothing</h4>
+      </div>
+    </div>
+  </div>
+</div>

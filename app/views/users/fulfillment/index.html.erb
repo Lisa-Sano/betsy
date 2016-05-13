@@ -31,15 +31,13 @@
   <%= form_tag user_fulfillment_index_path, method: :get do %>
   <label for="basic-url">Order by Order State</label>
     <%= select_tag(:order_state, options_for_select(states_for_select,
-      :selected => params[:order_state]), prompt: "All orders", class: "btn btn-default dropdown-toggle") %>
+      :selected => params[:order_state], class: "dropdown-menu"), prompt: "All orders", class: "btn btn-default dropdown-toggle") %>
     <%= submit_tag "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>
 </div>
 <br>
 <br>
-
-
 <div class="panel panel-primary">
   <div class="panel-heading"><h3>
     <% if params[:order_state] == "" || params[:order_state] == nil%>
@@ -71,9 +69,7 @@
                   <td><%= order_item.quantity %></td>
                   <td><%= to_money(order_item.subtotal) %></td>
                 <% end %>
-
               </tr>
-
               <% end %>
             </table>
 

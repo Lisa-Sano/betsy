@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @order_item = OrderItem.new(product_id: @product.id)
     @reviews = Review.where(product_id: @product.id)
+    @categories = @product.categories
   end
 
   def  search
