@@ -36,8 +36,9 @@
   <% end %>
 </div>
 </div>
+
 <br>
-<br>
+
 <div class="panel panel-primary">
   <div class="panel-heading"><h3>
     <% if params[:order_state] == "" || params[:order_state] == nil%>
@@ -69,7 +70,9 @@
                   <td><%= order_item.quantity %></td>
                   <td><%= to_money(order_item.subtotal) %></td>
                 <% end %>
+
               </tr>
+
               <% end %>
             </table>
 
