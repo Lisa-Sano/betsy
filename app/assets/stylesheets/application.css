@@ -62,3 +62,8 @@
 .bycategory{
   text-align: center;
 }
+
+.signin-container {
+  width: 35%;
+  margin: auto;
+}
