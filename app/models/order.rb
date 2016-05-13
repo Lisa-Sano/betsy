@@ -4,6 +4,16 @@ class Order < ActiveRecord::Base
 
   validates :order_state, presence: true
 
+  def already_ordered?(product, order_id)
+    item = OrderItem.find_by_product_id_and_order_id( product.id, order_id)
+
+    if item.nil?
+      return false
+    else
+      return item
+    end
+  end
+
   def add_product(product, quantity, order_id)
     item = already_ordered?(product, order_id)
 

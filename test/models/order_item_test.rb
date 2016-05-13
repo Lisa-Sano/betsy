@@ -5,5 +5,4 @@ class OrderItemTest < ActiveSupport::TestCase
     assert_equal 28000, order_items(:item2).subtotal
   end
 
-
 end

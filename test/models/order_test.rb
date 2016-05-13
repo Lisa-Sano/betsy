@@ -22,7 +22,7 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "validations: user_id must be an integer" do
-    order = Order.new(user_id: 25609124)
+    order = Order.new(user_id: 9237)
     assert_kind_of(Integer, order.user_id)
   end
 
@@ -156,12 +156,31 @@ class OrderTest < ActiveSupport::TestCase
     assert_kind_of(String, order.cc_exp_year)
   end
 
-  test "method: already_ordered? - If OrderItem has not been created, must return false" do
-    product = Product.new
-    order = Order.new
-    already_ordered?(product, order)
-    assert false
+  test "test method: already_ordered? - assert returns false if no OrderItem found" do
+    order = orders(:one)
+    product = products(:sweater)
+    assert_not(order.already_ordered?(product, order))
   end
 
+  test "test method: already_ordered? - assert returns item." do
+    order = orders(:one)
+    product = products(:sweater)
+    order.add_product(product, 1, order.id)
+    assert_kind_of(OrderItem, order.already_ordered?(product, order))
+  end
 
+  test "test method: add_product - assert order has a collection of order_items" do
+    product = products(:sweater)
+    order = orders(:one)
+    order.add_product(product, 1, order.id)
+    assert_not_empty(order.order_items)
+  end
+
+  test "test method: add_product - assert quantity updates" do
+    product = products(:sweater)
+    order = orders(:one)
+    order.add_product(product, 1, order.id)
+    order.add_product(product, 1, order.id)
+    assert_equal(2, order.order_items.count)
+  end
 end
