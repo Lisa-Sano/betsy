@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
     # if no order exists, create a new one and store its id in sessions hash
     if order.nil?
       order = Order.create(order_state: "pending")
+      order.save
       order.update(user_id: current_user.id) if current_user
       session[:order_id] = order.id
     end
