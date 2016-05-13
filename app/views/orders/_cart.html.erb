@@ -11,10 +11,17 @@
 <% if @order.order_items.empty? %>
   You have nothing in your cart, <%= link_to "Would you like to go back to browse products?", products_path %>
 <% else %>
+
   <% @order.order_items.each do |item| %>
-  <div class="item">
+  <div class="media" id="cart-list">
     <% product = Product.find(item.product_id) %>
-    <%= product.name %>
+
+  <div class="media-left">
+      <%=image_tag product.photo_url, class: "media-object", alt: product.name, id: "cart-pics"%>
+</div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= product.name %></h4>
+
     <%= to_money(product.price) %>
     <%= form_for item, :url => product_order_item_path(item.product_id, item.id) do |f| %>
       <%= f.label :quantity %>
@@ -22,9 +29,18 @@
 
       <%= f.submit :'Update Quantity'%>
       <% end %>
-      <%= button_to :'Remove From Cart', product_order_item_path(item.product_id, item.id), method: :delete %>
+      <br>
+      Sub-total: <%item.product.price * item.quantity %>
+      <%= button_to :'Remove From Cart', product_order_item_path(item.product_id, item.id), method: :delete, class:"btn btn-link", id:"remove-left" %>
     </div>
+  </div>
+  <br>
+   <div role="separator" class="divider5"></div>
+   <br>
+
   <% end %>
+
+
   Total: <%= to_money(@order.order_total) %>
 
   <%= button_to :'Checkout', edit_order_path(session[:order_id]), method: :get %>
