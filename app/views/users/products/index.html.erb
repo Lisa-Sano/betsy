@@ -7,9 +7,16 @@
 <%= submit_tag "Submit" %>
 <% end %>
 
-<% @products.each do |product| %>
-  <p>
-  <%= link_to product.name, user_product_path(params[:user_id], product.id) %>
-  <span class="price"><%= to_money(product.price) %></span>
-  </p>
-<% end %>
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div id="product_photo"><img src =<%= product.photo_url %>></div>
+        <div class="caption">
+          <%= link_to product.name, user_product_path(params[:user_id], product.id) %>
+        <p class="price"><%= to_money(product.price) %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

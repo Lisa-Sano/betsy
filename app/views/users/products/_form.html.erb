@@ -1,41 +1,41 @@
 <%= form_for(zone, url: url) do |f| %>
-  <div class="form-group">
-    <%= f.label :name, class: "inputdefault" %>
-    <%= f.text_field :name, class: "form-control", placeholder: "Product name" %>
-  </div>
+  <p><div class="input-group form-label-width">
+    <%= f.label :name, class: "input-group-addon form-label-width-addon" %>
+    <%= f.text_field :name, class: "form-control form-width-control", placeholder: "Product name" %>
+  </div></p>
 
-  <div class="form-group">
-    <%= f.label :description, class: "inputdefault" %>
-    <%= f.text_field :description, class: "form-control", placeholder: "Product description" %>
-  </div>
+  <p><div class="input-group form-label-width">
+    <%= f.label :description, class: "input-group-addon form-label-width-addon" %>
+    <%= f.text_field :description, class: "form-control form-width-control", placeholder: "Product description" %>
+  </div></p>
 
-  <div class="form-group">
-    <%= f.label :price, class: "inputdefault" %>
-    <%= f.text_field :price, class: "form-control", placeholder: "$ (in dollars)", value: to_money(zone.price) %>
-    </div>
+  <p><div class="input-group form-label-width">
+    <%= f.label :price, class: "input-group-addon form-label-width-addon" %>
+    <%= f.text_field :price, class: "form-control form-width-control", placeholder: "$ (in dollars)", value: to_money(zone.price) %>
+    </div></p>
 
-  <div class="form-group">
-    <%= f.label :photo_url, class: "inputdefault" %>
-    <%= f.url_field :photo_url, class: "form-control", placeholder: "URL (optional)" %>
-    </div>
+  <p><div class="input-group form-label-width">
+    <%= f.label :photo_url, class: "input-group-addon form-label-width-addon" %>
+    <%= f.url_field :photo_url, class: "form-control form-width-control", placeholder: "URL (optional)" %>
+    </div></p>
 
-  <div class="form-group">
-    <%= f.label :stock, class: "inputdefault" %>
-    <%= f.number_field :stock, class: "form-control", placeholder: "(required)" %>
-  </div>
+  <p><div class="input-group form-label-width">
+    <%= f.label :stock, class: "input-group-addon form-label-width-addon" %>
+    <%= f.number_field :stock, class: "form-control form-width-control", placeholder: "(required)" %>
+  </div></p>
 
-  <div class="form-group">
+  <p><div class="input-group form-label-width">
     <%= f.label :categories, value: "Category (re-select existing category to delete):" %>
-    <%= f.select :categories, options_for_select(@categories.map { |c| [c.name, c.id] }, zone.categories.map { |c| c.id }), {}, {multiple: true, class: "form-control"} %>
-  </div>
+    <%= f.select :categories, options_for_select(@categories.map { |c| [c.name, c.id] }, zone.categories.map { |c| c.id }), {}, {multiple: true, class: "form-control form-width-control"} %>
+  </div></p>
 
-  <div class="form-group">
+  <p><div class="input-group form-label-width">
     <p><%= f.label :retired, "Retire this product?" %></p>
     <%= f.radio_button :retired, false %> 
     <%= f.label :retired, 'No', :value => false %>
     <%= f.radio_button :retired, true %>
     <%= f.label :retired, 'Yes', :value => true %>
-  </div>
+  </div></p>
 
   <%= f.submit class: "btn btn-success" %>
 <% end %>
