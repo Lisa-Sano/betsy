@@ -118,3 +118,12 @@
   float: none;
   margin: 15% auto 0 auto;
 }
+
+.form-product {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.prod-header {
+  text-align: center;
+}
