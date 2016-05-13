@@ -1,12 +1,4 @@
 
-# product_reviews     GET    /products/:product_id/reviews(.:format)     reviews#index
-#                     POST   /products/:product_id/reviews(.:format)     reviews#create
-# new_product_review  GET    /products/:product_id/reviews/new(.:format) reviews#new
-
-# user_reviews          GET    /users/:user_id/reviews(.:format)           reviews#index
-#                       POST   /users/:user_id/reviews(.:format)           reviews#create
-# new_user_review       GET    /users/:user_id/reviews/new(.:format)       reviews#new
-
 class ReviewsController < ApplicationController
 
   helper_method :top_ratings, :display_name

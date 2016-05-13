@@ -36,7 +36,7 @@ products = [
   { name: "Floral Lace Crop Sweater", price: 12900, user_id: 3, description: "Slender straps, skin-baring cutaway shoulders and an abbreviated hem put a flirtatious twist on a pretty white tank sweetened with an overlay of floral lace.", stock:20, photo_url: " https://www.bauhaus.com.hk/image/cache/data/products/501216B598293201-350x350.jpg" },
 
   { name: "Retro 1950's Polka Dot Cat Eye Fashion Sunglasses", price: 15900 , user_id: 4, description: "A distinct mod version of 50s-inspired cat eye sunglasses with high pointed corners and adorable polka dots. You'll find they can work with many outfits, from the very modern to the utterly vintage. Made with an acetate based frame, metal hinges and gradient polycarbonate UV protected lenses.", stock:20, photo_url: "  https://ledchristmaslighting.com/images/FM73252.jpg"},
-
+]
 
 products.each do |product|
   Product.create product
@@ -184,7 +184,12 @@ reviews = [
  { product_id: 2, user_id: 4, review: "So comfy! Also, one of my grandkids puked on it, and the stain came right out. 10/10 would recommend to a friend.", rating: 5 },
  { product_id: 3, user_id: 4, review: "Got this for my wife. She wore it only one time and one of the diamonds popped out. Very disappointed.", rating: 1 },
  { product_id: 4, user_id: 3, review: "I wore this on my cruise to the Bahamas and got so many compliments. Unfortunately I found out it wasn't waterproof.", rating: 3 },
- { product_id: 5, user_id: 2, review: "Well-made for faux-leather, easily holds a book, sweater, and farmer's market purchases.", rating: 4 }
+ { product_id: 5, user_id: 2, review: "Well-made for faux-leather, easily holds a book, sweater, and farmer's market purchases.", rating: 4 },
+ { product_id: 6, user_id: 5, review: "Cool stuff.", rating: 4 },
+ { product_id: 7, user_id: 4, review: "Yay I liked it", rating: 5 },
+ { product_id: 8, user_id: 4, review: "Boo, I hated it.", rating: 1 },
+ { product_id: 9, user_id: 3, review: "It's okay.", rating: 3 },
+ { product_id: 10, user_id: 2, review: "Really super!", rating: 4 }
  ]
 
 reviews.each do |review|

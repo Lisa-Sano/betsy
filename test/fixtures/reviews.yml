@@ -25,7 +25,7 @@
 
   review_4:
     product: sweater
-    user: two
+    user: one
     review: "I hate this product."
     rating: 5
 
