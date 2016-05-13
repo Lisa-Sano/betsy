@@ -12,7 +12,13 @@ class OrderItemsController < ApplicationController
 
   def destroy
     OrderItem.destroy(params[:id])
-    redirect_to order_path(session[:order_id])
+    order = Order.find(session[:order_id])
+    if order.order_items.empty?
+      reset_cart
+      redirect_to products_path
+    else
+      redirect_to order_path(session[:order_id])
+    end
   end
 
   private
