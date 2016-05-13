@@ -20,8 +20,11 @@
       <%=image_tag product.photo_url, class: "media-object", alt: product.name, id: "cart-pics"%>
 </div>
   <div class="media-body">
-    <h4 class="media-heading"><%= product.name %></h4>
-
+    <h4 class="media-heading"><%= product.name %>
+    <span class="sub-total">
+      <%=to_money(item.subtotal) %>
+    </span>
+    </h4>
     <%= to_money(product.price) %>
     <%= form_for item, :url => product_order_item_path(item.product_id, item.id) do |f| %>
       <%= f.label :quantity %>
@@ -30,7 +33,6 @@
       <%= f.submit :'Update Quantity'%>
       <% end %>
       <br>
-      Sub-total: <%item.product.price * item.quantity %>
       <%= button_to :'Remove From Cart', product_order_item_path(item.product_id, item.id), method: :delete, class:"btn btn-link", id:"remove-left" %>
     </div>
   </div>
