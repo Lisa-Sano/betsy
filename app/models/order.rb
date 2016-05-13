@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   has_many :order_items
   belongs_to :user
 
+  validates :order_state, presence: true
+
   def add_product(product, quantity, order_id)
     item = already_ordered?(product, order_id)
 

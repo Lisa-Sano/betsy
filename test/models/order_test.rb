@@ -12,21 +12,22 @@ class OrderTest < ActiveSupport::TestCase
   test "validations: order_state cannot be nil" do
     order = Order.new
 
-    not_valid_assertion(order, :order_state)
+    assert_not order.valid?
   end
 
   test "validations: order_state must be a string, not an integer" do
     order = Order.new(order_state: 5)
-    not_valid_assertion(order, :order_state)
+    assert_not_kind_of(Integer, order)
   end
 
   test "validations: user_id must be an integer, not a string" do
     order = Order.new(user_id: "frank")
-    not_valid_assertion(order, :user_id)
+    assert_not_kind_of(String, order)
   end
 
   test "validations: total must be an integer, not a string" do
     order = Order.new(total: "twelve dollars")
-    not_valid_assertion(order, :total)
+    assert_not_kind_of(Integer, order)  
   end
+
 end
