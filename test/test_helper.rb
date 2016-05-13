@@ -3,7 +3,7 @@ SimpleCov.start do
   add_filter "/test/"
   add_filter "/app/helpers/"
   add_filter "app/controllers/"
-  add_filter "config/initializers/  "
+  add_filter "config"
 end
 
 ENV['RAILS_ENV'] ||= 'test'
