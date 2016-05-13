@@ -5,62 +5,63 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+  </ol>
 
   <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img src="http://www.qualityfootwear.ca/wp-content/uploads/2014/03/park_lane-0079.jpg" alt="Sandals">
       <div class="carousel-caption">
         <h3>Sandals</h3>
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
+        <p>Make your feet happy</p>
       </div>
     </div>
 
     <div class="item">
         <img src="https://onmogul.s3.amazonaws.com/uploads/product/thumbnail/16569/3cb4f4e1ec.jpg" alt="Scarf">
         <div class="carousel-caption">
-          <h3>Scarf</h3>
-          <p>Beatiful flowers in Kolymbari, Crete.</p>
+          <h3>Scarves</h3>
+          <p>Add a pop of color to your look</p>
         </div>
     </div>
 
-    <div class="item">
-        <img src="https://jenniferfisherjewelry.com/media/wysiwyg/JFBanner1280x350_3.jpg" alt="Sandal">
+<!--     <div class="item">
+        <img src="https://jenniferfisherjewelry.com/media/wysiwyg/JFBanner1280x350_3.jpg" alt="Jewelry">
         <div class="carousel-caption">
-          <h3>Flowers</h3>
-          <p>Beatiful flowers in Kolymbari, Crete.</p>
+          <h3>Jewelry</h3>
+          <p>Just your style.</p>
         </div>
-    </div>
+    </div> -->
 
     <div class="item">
         <img src="http://www.this-that.co/images/files/category-page/fashion-1.jpg" alt="Bag">
         <div class="carousel-caption">
-          <h3>Flowers</h3>
-          <p>Beatiful flowers in Kolymbari, Crete.</p>
+          <h3>Bags</h3>
+          <p>Carry your world, in style</p>
         </div>
     </div>
 
-    <div class="item">
+<!--     <div class="item">
         <img src="http://www.emiliacosi.com/uploads/images/a6908135ab63a95962d556767f7bc410c35637fe.jpg" alt="Bag">
         <div class="carousel-caption">
           <h3>Flowers</h3>
           <p>Beatiful flowers in Kolymbari, Crete.</p>
         </div>
-    </div>
+    </div> -->
 
     <div class="item">
-        <img src="https://onmogul.s3.amazonaws.com/uploads/article/thumbnail/20451/fa7047cb4f.jpg" alt="Bag">
+        <img src="https://onmogul.s3.amazonaws.com/uploads/article/thumbnail/20451/fa7047cb4f.jpg" alt="Shoes">
         <div class="carousel-caption">
-          <h3>Flowers</h3>
-          <p>Beatiful flowers in Kolymbari, Crete.</p>
+          <h3>Shoes</h3>
+          <p></p>
         </div>
     </div>
 
     <div class="item">
         <img src="https://jenniferfisherjewelry.com/media/wysiwyg/JFBanner1280x350_5.jpg" alt="Bag">
         <div class="carousel-caption">
-          <h3>Flowers</h3>
-          <p>Beatiful flowers in Kolymbari, Crete.</p>
+          <h3>Jewelry</h3>
+          <p>A little bling...or a lot?</p>
         </div>
     </div>
 
@@ -82,38 +83,46 @@
 <div class="row">
   <h3 class="bycategory">Shop by Category</h3>
   <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="https://s-media-cache-ak0.pinimg.com/564x/11/f9/9f/11f99f8e2890738e93f1fc4155b710a0.jpg" alt="Sandal">
-      <div class="caption">
-        <h4>Shoes</h4>
-      </div>
+    <%= link_to products_path(:category => @shoes.id) do %>
+      <div class="thumbnail">
+        <img src="https://s-media-cache-ak0.pinimg.com/564x/11/f9/9f/11f99f8e2890738e93f1fc4155b710a0.jpg" alt="Sandal">
+        <div class="caption">
+          <h4>Shoes</h4>
+        </div>
+      <% end %>
     </div>
   </div>
 
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <img src="http://www.2-chic.com/images/Variant/icon/20339-20.jpg" alt="Scarf">
-      <div class="caption">
-        <h4>Accesories</h4>
-      </div>
+      <%= link_to products_path(:category => @accessories.id) do %>
+        <img src="http://www.2-chic.com/images/Variant/icon/20339-20.jpg" alt="Scarf">
+        <div class="caption">
+          <h4>Accessories</h4>
+        </div>
+      <% end %>
     </div>
   </div>
 
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <img src="http://www.addicshop.com/media/catalog/product/cache/1/small_image/252x252/163b81649b7ef7bc8a00b0066e59ae0a/2/_/2_14_.jpg" alt="Watch">
-      <div class="caption">
+      <%= link_to products_path(:category => @jewelry.id) do %>
+        <img src="http://www.addicshop.com/media/catalog/product/cache/1/small_image/252x252/163b81649b7ef7bc8a00b0066e59ae0a/2/_/2_14_.jpg" alt="Watch">
+        <div class="caption">
         <h4>Jewelry</h4>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <%=link_to image_tag("http://whitecompany.scene7.com/is/image/whitecompany/RECBO_15_MAIN", border: 0), {action: 'search', controller: 'products', q: "top"}, {class: 'dock-item'} %>
-      <div class="caption">
+      <%=link_to products_path(:category => @clothing.id) do %>
+        <img src="http://whitecompany.scene7.com/is/image/whitecompany/RECBO_15_MAIN" alt="Clothing">
+        <div class="caption">
         <h4>Clothing</h4>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

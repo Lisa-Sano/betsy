@@ -68,7 +68,7 @@
   margin-right: 10px;
 }
 
-.bycategory{
+.bycategory {
   text-align: center;
 }
 
@@ -90,7 +90,7 @@
     width: 85%;
 }
 
-.form-user{
+.form-user {
   width: 70%;
   margin: auto;
 }
@@ -101,7 +101,7 @@
   border: solid, yellow;
 }
 
-#cart-list{
+#cart-list {
   width: 60%;
 }
 
@@ -112,4 +112,9 @@
 .sub-total {
   float: right;
   color: green;
+}
+
+.category-add-form {
+  float: none;
+  margin: 15% auto 0 auto;
 }
