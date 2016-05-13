@@ -17,10 +17,10 @@ class ReviewTest < ActiveSupport::TestCase
     assert_not review.valid?
   end
 
-  test "get_user_name" do
-    review = reviews(:review_4)
-    review.get_user_name
-  end
+  # test "get_user_name" do
+  #   review = reviews(:review_4)
+  #   assert self.get_user_name
+  # end
 
 # assert(expression, fail_message)
 # assert_not(expression, fail_message)
