@@ -4,7 +4,6 @@
   <%= f.label :user_name, class: "input-group-addon form-label-width-addon" %>
   <%= f.text_field :user_name, class: "form-control form-width-control" %>
 </div>
-<br>
 
   <div class="input-group form-label-width">
   <%= f.label :email, class: "input-group-addon form-label-width-addon" %>
@@ -52,10 +51,27 @@
   <%= f.password_field :password_confirmation, class: "form-control form-width-control" %>
   </div>
   <br>
+  <div class="input-group">
+    <%= f.label :password_confirmation, class: "input-group-addon" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <br>
+  <div class="input-group">
+    <%= f.label :'Credit card last four digits', class: "input-group-addon" %>
+    <%= f.number_field :last_four_cc , class: "form-control"%>
+  </div>
+  <br>
+  <div class="input-group">
+    <%= f.label :'CVV', class: "input-group-addon" %>
+    <%= f.number_field :cc_cvv, class: "form-control" %>
+  </div>
+  <br>
+  <div class="input-group">
+    <%= f.label :'Billing Zip Code', class: "input-group-addon" %>
+    <%= f.text_field :billing_zip, class: "form-control" %>
+  </div>
   <br>
 
-
-  <%= f.submit class: "btn btn-primary btn-lg" %>
-<% end %>
-
+  <%= f.submit "Create Account", class: "btn btn-primary btn-md" %>
+  <% end %>
 </div>
