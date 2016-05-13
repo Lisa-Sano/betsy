@@ -41,12 +41,21 @@
  }
 
  .divider4 {
-  height: 1px;
+  height: 2px;
   width:100%;
   display:block; /* for use on default inline elements like span */
   margin: 9px 0;
   overflow: hidden;
   background-color: #e5e5e5;
+}
+
+.divider5 {
+ height: 2px;
+ width: 60%;
+ display:block; /* for use on default inline elements like span */
+ margin: 9px 0;
+ overflow: hidden;
+ background-color: #e5e5e5;
 }
 
 .navbar-nav > li > a.cart_link {
@@ -59,7 +68,7 @@
   margin-right: 10px;
 }
 
-.bycategory{
+.bycategory {
   text-align: center;
 }
 
@@ -79,4 +88,33 @@
 
 .form-width-control {
     width: 85%;
+}
+
+.form-user {
+  width: 70%;
+  margin: auto;
+}
+
+#cart-pics {
+  height: 100px;
+  overflow: hidden;
+  border: solid, yellow;
+}
+
+#cart-list {
+  width: 60%;
+}
+
+#remove-left {
+  float: right;
+}
+
+.sub-total {
+  float: right;
+  color: green;
+}
+
+.category-add-form {
+  float: none;
+  margin: 15% auto 0 auto;
 }
