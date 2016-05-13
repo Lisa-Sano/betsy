@@ -1,6 +1,6 @@
 <%= form_for @category do |f| %>
-  <div class="col-lg-6">
-    <div class="input-group">
+  <div class="col-lg-6 category-add-form">
+    <div class="input-group input-group-lg">
       <%= f.text_field :name, class: "form-control", placeholder: "Category name" %>
       <span class="input-group-btn">
         <%= f.button ("Create!"), class: "btn btn-success" %>

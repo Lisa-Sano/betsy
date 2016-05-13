@@ -1,13 +1,9 @@
 <h1>Welcome! Browse our products:</h1>
 
-<%= link_to "Back to All Products", products_path if params[:category] || params[:merchant] %>
-
-<% categories_for_select = @categories.map { |c| [c.name, c.id] } %>
 <%= form_tag products_path, method: :get do %>
-<%= select_tag(:category, options_for_select(categories_for_select, :selected => params[:category]), :prompt => "Browse by Category...") %>
+<%= select_tag(:category, options_for_select(items_for_select(@categories), :selected => params[:category]), :prompt => "Browse by Category...") %>
 
-<% merchants_for_select = @merchants.map { |m| [m.user_name, m.id] } %>
-<%= select_tag(:merchant, options_for_select(merchants_for_select, :selected => params[:merchant]), :prompt => "Browse by Merchant...") %>
+<%= select_tag(:merchant, options_for_select(items_for_select(@merchants), :selected => params[:merchant]), :prompt => "Browse by Merchant...") %>
 
 <%= submit_tag "Submit" %>
 <% end %>
@@ -28,3 +24,4 @@
   </div>
   <% end %>
 </div>
+
