@@ -1,11 +1,14 @@
-<%= form_tag sessions_path, method: :post, :html => {:class => "form-signin"} do %>
-<h1>Hope you remember your password!</h1>
+<div class="container">
 
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
+<%= form_tag sessions_path, method: :post, class: "form-signin" do %>
+<h2 class="form-signin-heading">Hope you remember your password!</h2>
 
-  <%= label_tag :password  %>
-  <%= password_field_tag :password  %>
+  <%= label_tag(:email, nil, class: "sr-only", for: "inputPassword") %>
+  <%= text_field_tag(:email, nil, id: "inputEmail", class: 'form-control', placeholder: "Email") %>
 
-  <%= submit_tag "Sign In, I guess" %>
+  <%= label_tag(:password, nil, class: "sr-only", for: "inputPassword") %>
+  <%= password_field_tag(:password, nil, id: "inputPassword", class: 'form-control', placeholder: "Password")   %>
+
+  <%= submit_tag "Sign In, I guess", class:"btn btn-lg btn-primary btn-block" %>
 <% end %>
+</div>
