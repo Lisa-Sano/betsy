@@ -23,10 +23,10 @@
 <p><%=@product.display_avg(@product, @reviews)%></p>
 
 <% @reviews.each do |review| %>
-  <ul>
-    <li>Reviewed by: <%= review.user_id != nil ? User.find(review.user_id).name : "Guest user"%> </li>
-    <li>Review: <%=review.review%></li>
-    <li>Rating: <%=review.rating%></li>
+  <ul class="list-group">
+    <li class="list-group-item">Reviewed by: <%= review.user_id != nil ? User.find(review.user_id).name : "Guest user"%> </li>
+    <li class="list-group-item">Review: <%=review.review%></li>
+    <li class="list-group-item">Rating: <%=review.rating%></li>
   </ul>
 <%end%>
 
