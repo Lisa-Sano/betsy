@@ -3,6 +3,18 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   validates :order_state, presence: true
+  validates :name, presence: true, on: :update
+  validates :email, presence: true, on: :update
+  validates :address, presence: true, on: :update
+  validates :city, presence: true, on: :update
+  validates :state, presence: true, on: :update
+  validates :zip, presence: true, on: :update
+  validates :card_name, presence: true, on: :update
+  validates :last_four_cc, presence: true, on: :update
+  validates :cc_cvv, presence: true, on: :update
+  validates :billing_zip, presence: true, on: :update
+  validates :cc_exp_month, presence: true, on: :update
+  validates :cc_exp_year, presence: true, on: :update
 
   def already_ordered?(product, order_id)
     item = OrderItem.find_by_product_id_and_order_id( product.id, order_id)

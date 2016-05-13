@@ -1,1 +1,3 @@
 <%= render partial: "cart" %>
+
+  <%= button_to :'Checkout', edit_order_path(session[:order_id]), method: :get %>
