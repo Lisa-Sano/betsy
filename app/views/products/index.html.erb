@@ -10,16 +10,15 @@
 
 <div class="row">
 <% @products.each do |product| %>
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-          <div id="product_photo"><img src =<%= product.photo_url %>> </div>
-  <div class="caption">
-    <%= link_to product.name, product_path(product.id) %>
-  <p class="price"><%= to_money(product.price) %></p>
-    <p><a href="#" class="btn btn-primary" role="button">See</a>
-    <a href="#" class="btn btn-default" role="button">Buy</a>
-    <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <%= link_to product_path(product.id) do %>
+        <div id="product_photo"><img src =<%= product.photo_url %>> </div>
+        <div class="caption prod-index-caption">
+          <p class="prod-name-index"><%= product.name %></p>
+          <p class="price"><%= to_money(product.price) %></p>
+        </div>
+      <% end %>
     </div>
   </div>
   <% end %>
