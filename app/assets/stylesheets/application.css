@@ -136,3 +136,8 @@
   font-weight: bold;
   color: #000066;
 }
+
+.total{
+  float: right;
+  position: relative;
+}

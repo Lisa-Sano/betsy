@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     @products = Product.where(name: result)
 
     if @products == []
-    flash[:notice] = "Not matches fot #{params[:q]} found "
+    flash[:notice] = "No matches for #{params[:q]} found "
     end
   end
 
