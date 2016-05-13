@@ -80,3 +80,8 @@
 .form-width-control {
     width: 85%;
 }
+
+.category-add-form {
+  float: none;
+  margin: 15% auto 0 auto;
+}
