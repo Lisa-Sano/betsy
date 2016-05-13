@@ -1,4 +1,4 @@
-<h1>Welcome
+<h1>Welcome <%= current_user ? current_user.name : "Guest user" %>
   <br> Leave a review for <%= @product.name %></h1>
 
 <%= form_for @review, url: product_reviews_path(@product.id) do |f| %>
