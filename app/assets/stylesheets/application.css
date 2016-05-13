@@ -68,15 +68,15 @@
   margin: auto;
 }
 
-.user-form {
+.form-label-width {
     width: 100%;
 }
 
-.user-form-addon {
+.form-label-width-addon {
     width: 15%;
     text-align: left;
 }
 
-.form-control {
+.form-width-control {
     width: 85%;
 }
