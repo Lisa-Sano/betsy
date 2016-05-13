@@ -24,7 +24,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><%= link_to "All Products", products_path%></li>
 
-            <% if current_user%>
+            <% if current_user && current_user.id %>
 
             <ul class="nav navbar-nav">
 
