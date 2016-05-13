@@ -22,10 +22,4 @@ class User < ActiveRecord::Base
   def total_revenue
     OrderItem.where(product_id: products).map { |item| item.product.price }.sum
   end
-
-  def guest?
-    return true if self.name == "guest"
-  else
-    return false
-  end
 end

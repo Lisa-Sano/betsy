@@ -49,25 +49,53 @@ categories = [
   {name: "Jewelry"},
   {name: "Bag"},
   {name: "Scarf"},
-  {name: "Shoes"}
+  {name: "Shoes"},
+  {name: "Clothing"},
+  {name: "Jacket"},
+  {name: "Accessories"},
+  {name: "Sunglasses"}
 ]
 
 categories.each do |category|
   Category.create category
 end
 
+def add_category(product, categories)
+  categories.each do |category|
+    product.categories << Category.find_by_name(category)
+  end
+end
+
 p_one = Product.find(1)
-p_one.categories << Category.find_by_name("Dress")
+add_category(p_one, ["Dress", "Clothing"])
 p_two = Product.find(2)
-p_two.categories << Category.find_by_name("Blouse")
+add_category(p_two, ["Blouse", "Clothing"])
 p_three = Product.find(3)
-p_three.categories << Category.find_by_name("Jewelry")
+add_category(p_three, ["Jewelry", "Accessories"])
 p_four = Product.find(4)
-p_four.categories << Category.find_by_name("Jewelry")
+add_category(p_four, ["Jewelry", "Accessories"])
 p_five = Product.find(5)
-p_five.categories << Category.find_by_name("Bag")
+add_category(p_five,["Bag", "Accessories"])
 p_six = Product.find(6)
-p_six.categories << Category.find_by_name("Jewelry")
+add_category(p_six, ["Jewelry", "Accessories"])
+p_seven = Product.find(7)
+add_category(p_seven, ["Scarf", "Accessories"])
+p_eight = Product.find(8)
+add_category(p_eight, ["Clothing"])
+p_nine = Product.find(9)
+add_category(p_nine, ["Shoes"])
+p_ten = Product.find(10)
+add_category(p_ten, ["Scarf", "Accessories"])
+p_eleven = Product.find(11)
+add_category(p_eleven, ["Clothing"])
+p_twelve = Product.find(12)
+add_category(p_twelve, ["Clothing"])
+p_thirteen = Product.find(13)
+add_category(p_thirteen, ["Clothing", "Jacket"])
+p_fourteen = Product.find(14)
+add_category(p_fourteen, ["Clothing"])
+p_fifteen = Product.find(15)
+add_category(p_fifteen, ["Sunglasses", "Accessories"])
 
 
 users = [
