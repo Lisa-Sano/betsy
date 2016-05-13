@@ -24,7 +24,7 @@
 
 <% @reviews.each do |review| %>
   <ul>
-    <li>Reviewed by: <%= current_user %></li>
+    <li>Reviewed by: <%= review.user_id != nil ? User.find(review.user_id).name : "Guest user"%> </li>
     <li>Review: <%=review.review%></li>
     <li>Rating: <%=review.rating%></li>
   </ul>

@@ -12,7 +12,7 @@
     <% @reviews.each do |review| %>
       <ul class="list-group">
         <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
-        <li class="list-group-item">Reviewed by: <%= current_user ? current_user.name : "Guest user"  %></li>
+        <li class="list-group-item">Reviewed by: <%= review.user_id != nil ? User.find(review.user_id).name : "Guest user"%></li>
         <li class="list-group-item">Review: <%=review.review%></li>
         <li class="list-group-item">Rating: <%=review.rating%></li>
       </ul>
@@ -22,7 +22,7 @@
     <% @top_ratings.each do |review| %>
       <ul class="list-group">
         <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
-        <li class="list-group-item">Reviewed by: <%= current_user ? current_user.name : "Guest user" %></li>
+        <li class="list-group-item">Reviewed by: <%= review.user_id != nil ? User.find(review.user_id).name : "Guest user"%></li>
         <li class="list-group-item">Review: <%=review.review%></li>
         <li class="list-group-item">Rating: <%=review.rating%></li>
       </ul>
@@ -32,7 +32,7 @@
     <% @products_today.each do |review| %>
       <ul class="list-group">
         <li class="list-group-item">Product: <%= link_to Product.find(review.product_id).name, product_path(review.product_id)%></li>
-        <li class="list-group-item">Reviewed by: <%= current_user ? current_user.name : "Guest user" %></li>
+        <li class="list-group-item">Reviewed by: <%= review.user_id != nil ? User.find(review.user_id).name : "Guest user"%></li>
         <li class="list-group-item">Review: <%=review.review%></li>
         <li class="list-group-item">Rating: <%=review.rating%></li>
       </ul>
