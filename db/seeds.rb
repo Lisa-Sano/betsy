@@ -193,5 +193,5 @@ reviews = [
  ]
 
 reviews.each do |review|
-Review.create(review)
+  Review.create review
 end
