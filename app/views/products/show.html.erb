@@ -20,7 +20,7 @@
 </div>
 
 <p>Reviews for <%=@product.name%><p>
-<p><%=@product.display_avg(@product, @reviews)%></p>
+<p><%=@product.display_avg(@product, @reviews).nil? ? "No reviews yet." : @product.display_avg(@product, @reviews)%></p>
 
 <% @reviews.each do |review| %>
   <ul class="list-group">

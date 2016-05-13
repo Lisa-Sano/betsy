@@ -8,12 +8,4 @@ class Review < ActiveRecord::Base
 
   validates_associated :product
 
-  def get_user_name
-    if self.user_id == nil || self.user_id == 0
-      "Guest user"
-    else
-      current_user.name
-    end
-  end
-
 end
