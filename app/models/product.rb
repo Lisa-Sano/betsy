@@ -27,8 +27,6 @@ class Product < ActiveRecord::Base
   def display_avg(product, reviews)
     if (product.avg_rating(reviews)) > 0
       "Average rating: #{product.avg_rating(reviews)}"
-    else
-      "No reviews yet."
     end
   end
 
@@ -38,20 +36,20 @@ class Product < ActiveRecord::Base
 
   def to_cents(amount)
     if amount.include? "."
-      self.price = amount.gsub(/[^0-9]/, '').to_i 
+      self.price = amount.gsub(/[^0-9]/, '').to_i
     else
       self.price = amount.gsub(/[^0-9]/, '').to_i * 100
     end
   end
 
 
-  def add_categories(product_categories, selected)
+  def add_categories(selected)
     selected.each do |id|
       category = Category.find(id)
-      if product_categories.include? category
-        product_categories.delete(category)
+      if self.categories.include? category
+        self.categories.delete(category)
       else
-        product_categories << category
+        self.categories << category
       end
     end
   end
