@@ -15,8 +15,8 @@
 //= require turbolinks
 //= require_tree
 
-= require bootstrap-dropdown
-= require bootstrap
+// = require bootstrap-dropdown
+// = require bootstrap
 
 // jQuery(function($) {
 // $("tr[data-link]").click(function() {
