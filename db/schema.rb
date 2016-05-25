@@ -73,6 +73,10 @@ ActiveRecord::Schema.define(version: 20160525221832) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "retired",     default: false
+    t.integer  "weight"
+    t.integer  "length"
+    t.integer  "width"
+    t.integer  "height"
   end
 
   create_table "reviews", force: :cascade do |t|
