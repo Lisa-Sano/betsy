@@ -1,5 +1,14 @@
-<% @results.each do |result| %>
-<% result.each do |item| %>
-<%= item[0] %>: <%= number_to_currency(item[1]/100) %><br>
-<% end %>
-<% end %>
+
+<%= form_for @order , url: order_path(session[:order_id]), method: :patch do |f| %>
+<%= f.label :shipping %>
+
+  <% @results.each do |result| %>
+    <% result.each do |item| %>
+    <label>
+      <%= item[0] %>: <%= number_to_currency(item[1]/100) %><br><%= f.radio_button :shipping, 'hello' %>
+    </label>
+
+    <% end %>
+  <% end %>
+
+  <% end %>
