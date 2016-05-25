@@ -8,7 +8,7 @@
 
 <div class="form-user">
 
-<%= form_for @order,url: shipping_path , method: :post do |f| %>
+<%= form_for @order,url: order_path(session[:order_id]) , method: :patch do |f| %>
 <div class="input-group">
   <%= f.label :name, class: "input-group-addon" %>
   <%= f.text_field :name, class: "form-control" %>
@@ -67,6 +67,6 @@
 </div>
 <br>
 <div class="input-group">
-  <%= f.submit :'Complete Purchase', class: "btn btn-primary btn-md" %>
+  <%= f.submit :'Shipping Options', class: "btn btn-primary btn-md" %>
   <% end %>
 </div>

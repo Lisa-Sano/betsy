@@ -17,11 +17,32 @@ class OrdersController < ApplicationController
     @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
     if @order.save
       reset_cart
-      render :order_confirmation
+      redirect_to shipping_path
     else
       @user = User.find_by(id: session[:user_id])
       render :edit
     end
+  end
+
+  def getrates
+    @order = Order.find_by(id: session[:order_id])
+    params[:order][:origin]= { state: "WA", zip: 98112, city: "Seattle" }
+    params[:order][:orderitems] = @order.hashify
+    @params = params.to_json
+
+    @results = HTTParty.post("http://localhost:3000/shipping/rates",
+    :body => @params,
+     :headers => { 'Content-Type' => 'application/json' }
+    )
+  end
+
+  def updateshipping
+    info_array = params["order"]["shipping_method"].split
+    cost = (info_array.pop)/100.0
+    method = info_array.join
+
+    @order = Order.find_by(id: session[:order_id])
+    @order.update(shipping_method: method, shipping_cost: cost)
   end
 
   private
