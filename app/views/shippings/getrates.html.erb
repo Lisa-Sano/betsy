@@ -1,0 +1,5 @@
+<% @results.each do |result| %>
+<% result.each do |item| %>
+<%= item[0] %>: <%= number_to_currency(item[1]/100) %><br>
+<% end %>
+<% end %>

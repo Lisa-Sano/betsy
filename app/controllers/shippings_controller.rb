@@ -1,14 +1,23 @@
 class ShippingsController < ApplicationController
 
   def getrates
-    raise
+    @order = Order.find_by(id: session[:order_id])
+    params[:order][:origin]= { state: "WA", zip: 98112, city: "Seattle" }
+    params[:order][:orderitems] = @order.hashify
+    @params = params.to_json
+    
     @results = HTTParty.post("http://localhost:3000/shipping/rates",
-    :body => params.to_json,
-    :headers => { 'Content-Type' => 'application/json' } )
+    :body => @params,
+     :headers => { 'Content-Type' => 'application/json' }
+    )
+    # @body = JSON.parse(response.body)
+
+
+
   end
 
   def displayrates
-
+    render :test
   end
 
 end
