@@ -34,7 +34,6 @@ class OrdersController < ApplicationController
     #updates status if shipping info exists(after order confirmation)
     @order.assign_attributes(order_state: "paid") if params[:order][:carrier_code] != nil
 
-
     if @order.save
       reset_cart
       render :order_confirmation
@@ -47,6 +46,6 @@ class OrdersController < ApplicationController
   private
 
   def order_update_params
-    params.permit(order: [:name, :email, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year, :tracking_info, :carrier_code, :shipping_cost])
+    params.permit(order: [:name, :email, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year, :tracking_info, :carrier_code, :shipping_cost, :total])
   end
 end
