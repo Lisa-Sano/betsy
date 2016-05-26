@@ -23,6 +23,9 @@ class OrdersController < ApplicationController
     if @order.save && params[:order][:carrier_code] != nil
       reset_cart
       render :order_confirmation
+    elsif @order.save
+      @user = User.find_by(id: session[:user_id])
+      render :edit
     else
       @user = User.find_by(id: session[:user_id])
       render :edit
