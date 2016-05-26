@@ -16,12 +16,9 @@ class OrdersController < ApplicationController
     @order.assign_attributes(order_update_params[:order])
     @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
 
-    if @order.save && params[:order][:carrier_code] != nil
-      reset_cart
-      render :order_confirmation
-    elsif @order.save
+    if @order.save
       @user = User.find_by(id: session[:user_id])
-      render :edit
+      render :shipping
     else
       @user = User.find_by(id: session[:user_id])
       render :edit
@@ -38,7 +35,7 @@ class OrdersController < ApplicationController
     @order.assign_attributes(order_state: "paid") if params[:order][:carrier_code] != nil
 
 
-        if @order.save && params[:order][:carrier_code] != nil
+    if @order.save && params[:order][:carrier_code] != nil
       reset_cart
       render :order_confirmation
   end
