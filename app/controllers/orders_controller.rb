@@ -13,8 +13,9 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find_by(id: session[:order_id])
     @order.assign_attributes(order_update_params[:order])
-    @order.assign_attributes(order_state: "paid")
-    @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
+    if params[:order][:last_four_cc] != nil
+      @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
+    end
     if @order.save
       reset_cart
       render :order_confirmation
@@ -24,6 +25,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def confirm_pay
+    @order = Order.find_by(id: session[:order_id])
+    @order.assign_attributes(order_update_params[:order])
+    @order.assign_attributes(order_state: "paid")
+    @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
+    if @order.save
+      reset_cart
+      render :order_confirmation
+    else
+      @user = User.find_by(id: session[:user_id])
+      render :edit
+    end
   private
 
   def order_update_params
