@@ -8,7 +8,7 @@ class ShippingWrapper
     #standardizing shipping dimensions
     package = {:weight => weight, :length => 20, :width => 20, :height => 20, :units => "metric"}
 
-    data = HTTParty.post(BASE_URL + "",
+    data = HTTParty.get(BASE_URL + "",
          :headers => { 'Accept' => 'application/json' },
          :body => { :destination => {:country => 'US', :state => destination.state, :city => destination.city, :zip => destination.zip  },
                    :origin => origin,
