@@ -45,7 +45,7 @@ class Order < ActiveRecord::Base
       height: item.product.height,
       width: item.product.width,
       length: item.product.length,
-      weight: item.product.weight
+      weight: item.product.weight,
       quantity: item.quantity
       }
       orderitem_info_array << hash
