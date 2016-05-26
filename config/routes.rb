@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders, :only => [:show, :edit, :update]
+  patch "/orders/:id/shipping" => "orders#confirmation"
 
   resources :order_items, :only => [:show]
 
