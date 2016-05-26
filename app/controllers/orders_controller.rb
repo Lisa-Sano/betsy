@@ -15,8 +15,7 @@ class OrdersController < ApplicationController
     @order.assign_attributes(order_update_params[:order])
     @order.assign_attributes(order_state: "paid")
     @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
-    if @order.save
-      displayrates
+    if @order.save && displayrates
       render :displayrates
     else
       @user = User.find_by(id: session[:user_id])
@@ -34,10 +33,19 @@ class OrdersController < ApplicationController
     params[:order][:orderitems] = @order.hashify
     @params = params.to_json
 
+
     @results = HTTParty.post("http://localhost:3000/shipping/rates",
     :body => @params,
      :headers => { 'Content-Type' => 'application/json' }
     )
+
+
+    if @results.code > 200
+      @error = @results.parsed_response["error"]
+      return false
+    end
+
+    return true
   end
 
   def updateshipping
