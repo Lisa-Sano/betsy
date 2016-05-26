@@ -10,7 +10,7 @@ class ShippingWrapper
 
     data = HTTParty.get(BASE_URL + "",
          :headers => { 'Accept' => 'application/json' },
-         :body => { :destination => {:country => 'US', :state => destination.state, :city => destination.city, :zip => destination.zip  },
+         :body => { :destination => {:country => 'US', :state => destination.state, :city => destination.city, :zip => destination.zip },
                    :origin => origin,
                    :package => package})
     return data
