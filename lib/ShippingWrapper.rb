@@ -5,7 +5,8 @@ class ShippingWrapper
 
  def self.get_rates(destination, weight)
   origin = {:state => "WA", :city => "Seattle", :zip => "98103"}
-  package = {:weight}
+  #standardizing shipping dimensions
+  package = {:weight => weight, :length => 20, :width => 20, :height => 20, :units => "metric"}
   data = HTTParty.get(BASE_URL + "",
        :headers => { 'Accept' => 'application/json' },
        :body => { :destination => {:state => , :city => , :zip =>  },
