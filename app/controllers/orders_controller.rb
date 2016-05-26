@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
   def updateshipping
     info_array = params["order"]["shipping_method"].split
     cost = (info_array.pop).to_i
-    method = info_array.join
+    method = info_array.join(' ')
 
     @order = Order.find_by(id: session[:order_id])
     @order.update(shipping_method: method, shipping_cost: cost)
