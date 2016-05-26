@@ -63,7 +63,4 @@ class Order < ActiveRecord::Base
     return total
   end
 
-  def update_shipping
-  end
-  
 end
