@@ -45,6 +45,7 @@ class Order < ActiveRecord::Base
       quantity_total = product.price * item.quantity
       total += quantity_total
     end
+    total += @order.shipping_cost if @order.shipping_cost != nil
     return total
   end
 
