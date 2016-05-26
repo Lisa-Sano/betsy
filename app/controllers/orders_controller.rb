@@ -38,6 +38,7 @@ class OrdersController < ApplicationController
     if @order.save && params[:order][:carrier_code] != nil
       reset_cart
       render :order_confirmation
+    end
   end
 
   private
