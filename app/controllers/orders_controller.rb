@@ -1,3 +1,5 @@
+require_relative "../../lib/ShippingWrapper"
+
 class OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: session[:order_id])
