@@ -35,9 +35,12 @@ class OrdersController < ApplicationController
     @order.assign_attributes(order_state: "paid") if params[:order][:carrier_code] != nil
 
 
-    if @order.save && params[:order][:carrier_code] != nil
+    if @order.save
       reset_cart
       render :order_confirmation
+    else
+      @user = User.find_by(id: session[:user_id])
+      render :shipping
     end
   end
 
