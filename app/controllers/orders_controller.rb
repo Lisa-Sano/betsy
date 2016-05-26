@@ -16,19 +16,26 @@ class OrdersController < ApplicationController
     @order.assign_attributes(order_state: "paid")
     @order.last_four_cc = params[:order][:last_four_cc][-4..-1]
     if @order.save
-      reset_cart
-      redirect_to shipping_path
+      # reset_cart
+      displayrates
+      render :displayrates
+
     else
       @user = User.find_by(id: session[:user_id])
       render :edit
     end
   end
 
-  def getrates
+  def displayrates
     @order = Order.find_by(id: session[:order_id])
+    params[:order][:state] = @order.state
+    params[:order][:city] = @order.city
+    params[:order][:zip] = @order.zip
+
     params[:order][:origin]= { state: "WA", zip: 98112, city: "Seattle" }
     params[:order][:orderitems] = @order.hashify
     @params = params.to_json
+
 
     @results = HTTParty.post("http://localhost:3000/shipping/rates",
     :body => @params,
@@ -38,16 +45,20 @@ class OrdersController < ApplicationController
 
   def updateshipping
     info_array = params["order"]["shipping_method"].split
-    cost = (info_array.pop)/100.0
+    cost = (info_array.pop).to_i
     method = info_array.join
 
     @order = Order.find_by(id: session[:order_id])
     @order.update(shipping_method: method, shipping_cost: cost)
+    @cost_with_shipping = @order.total + @order.shipping_cost
+    @order.update(total: @cost_with_shipping)
+    render :order_confirmation
   end
 
   private
 
   def order_update_params
-    params.permit(order: [:name, :email, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year])
+    params[:order][:total] = @order.order_total
+    params.permit(order: [:name, :email, :total, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year])
   end
 end
