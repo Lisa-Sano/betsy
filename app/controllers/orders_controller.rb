@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
       weight += item.weight
     end
 
-    response = ShippingWrapper.get_rates(@order, weight)
+    @shipping_response = ShippingWrapper.get_rates(@order, weight)
   end
 
   #may need separate confirmation method to finalize checkout
