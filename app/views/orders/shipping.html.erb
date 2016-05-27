@@ -1,3 +1,9 @@
 <%= render partial: "cart" %>
-
 #including shipping in total
+
+    <%= form_tag comfirmation_path, method: :patch do %>
+       <% @shipping_info.each do |service, rate| %>
+       Shipping Rates:
+
+      <% end %>
+      <%= submit_tag("Confirm Order") %>
