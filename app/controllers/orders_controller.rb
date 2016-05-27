@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find_by(id: session[:order_id])
     @user = User.find_by(id: session[:user_id])
+
     render :edit
   end
 
@@ -25,6 +26,12 @@ class OrdersController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       render :edit
     end
+  end
+
+  #for shipping page
+  def shipping
+    @order = Order.find_by(id: session[:order_id])
+    @user = User.find_by(id: session[:user_id])
   end
 
   #may need separate confirmation method to finalize checkout
