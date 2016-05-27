@@ -1,0 +1,150 @@
+/* line 7, /Users/Nadine/C5/projects/test/betsy/app/assets/stylesheets/reviews.scss */
+#review_rating {
+  width: 80px;
+  height: 28px;
+  margin-left: 10px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+
+
+#product_photo {
+  height: 350px;
+  overflow: hidden;
+  text-align: center;
+}
+
+ #edit-user {
+   float: right;
+   margin-top: -50px;
+ }
+
+ /*.active {
+  margin-right: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
+ }*/
+
+ .glyphicon.glyphicon-shopping-cart {
+   font-size: 40px;
+   margin-left: 15px;
+   margin-top: 0px;
+   margin-bottom: 0;
+ }
+
+ .divider4 {
+  height: 2px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.divider5 {
+ height: 2px;
+ width: 60%;
+ display:block; /* for use on default inline elements like span */
+ margin: 9px 0;
+ overflow: hidden;
+ background-color: #e5e5e5;
+}
+
+.navbar-nav > li > a.cart_link {
+  margin: 0;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.dropdown {
+  margin-right: 10px;
+}
+
+.bycategory {
+  text-align: center;
+}
+
+.signin-container {
+  width: 35%;
+  margin: auto;
+}
+
+.form-label-width {
+    width: 100%;
+}
+
+.form-label-width-addon {
+    width: 25%;
+    text-align: left;
+}
+
+.form-width-control {
+    width: 85%;
+}
+
+.form-user {
+  width: 70%;
+  margin: auto;
+}
+
+#cart-pics {
+  height: 100px;
+  overflow: hidden;
+  border: solid, yellow;
+}
+
+#cart-list {
+  width: 60%;
+}
+
+#remove-left {
+  float: right;
+}
+
+.sub-total {
+  float: right;
+  color: green;
+}
+
+.category-add-form {
+  float: none;
+  margin: 15% auto 0 auto;
+}
+
+.form-product {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.prod-header {
+  text-align: center;
+}
+
+.prod-index-caption {
+  text-align: center;
+}
+
+.prod-name-index {
+  font-weight: bold;
+  color: #000066;
+}
+
+.total{
+  float: right;
+  position: relative;
+}

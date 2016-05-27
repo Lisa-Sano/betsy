@@ -47,4 +47,6 @@ class Order < ActiveRecord::Base
     end
     return total
   end
+
+
 end

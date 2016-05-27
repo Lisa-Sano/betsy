@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.1'
+
+gem 'httparty'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -31,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass'
 
+gem 'active_shipping'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -41,6 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'simplecov'
+  gem 'sqlite3'
 end
 
 group :development do
