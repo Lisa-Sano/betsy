@@ -33,9 +33,9 @@ class OrdersController < ApplicationController
     info[:order][:origin]= { state: "WA", zip: 98112, city: "Seattle" }
     info[:order][:orderitems] = @order.hashify
     @params = info.to_json
-  
 
-    @results = HTTParty.post("http://localhost:3000/shipping/rates",
+
+    @results = HTTParty.post("http://shippingapi.herokuapp.com/shipping/rates",
     :body => @params,
      :headers => { 'Content-Type' => 'application/json' }
     )
