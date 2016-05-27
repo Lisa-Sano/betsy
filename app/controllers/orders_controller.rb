@@ -64,6 +64,6 @@ class OrdersController < ApplicationController
 
   def order_update_params
     params[:order][:total] = @order.order_total
-    params.permit(order: [:name, :email, :total, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year])
+    params.permit(order: [:shipping_method, :shipping_cost, :name, :email, :total, :address, :city, :state, :zip, :card_name, :cc_cvv, :billing_zip, :cc_exp_month, :cc_exp_year])
   end
 end
