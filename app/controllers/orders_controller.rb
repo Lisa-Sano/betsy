@@ -32,6 +32,14 @@ class OrdersController < ApplicationController
   def shipping
     @order = Order.find_by(id: session[:order_id])
     @user = User.find_by(id: session[:user_id])
+
+    #add weight for all order items
+    weight = 0
+    @order.order_items.each do |item|
+      weight += item.weight
+    end
+
+    response = ShippingWrapper.get_rates(@order, weight)
   end
 
   #may need separate confirmation method to finalize checkout
