@@ -1,5 +1,3 @@
-require_relative "../../lib/ShippingWrapper"
-
 class OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: session[:order_id])
@@ -37,7 +35,11 @@ class OrdersController < ApplicationController
     #jerk code
     weight = rand(20..2000)
 
-    @shipping_response = ShippingWrapper.get_rates(@order, @weight)
+    @shipping_response = ShippingWrapper.get_rates(@order, weight)
+    # package, user, and customer info needs defined above, formatted as:
+    # {weight: 10, height: 20, length: 30, width: 40},
+    # {country: 'US', city: 'Overland Park', state: 'KS', zip: '66212'},
+    # {country: 'US', city: 'Seattle', state: 'WA', zip: '98102'}
     raise
   end
 

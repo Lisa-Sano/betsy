@@ -7,7 +7,7 @@ class ShippingWrapper
     #standardizing shipping dimensions
     package = {:weight => weight, :length => 20, :width => 20, :height => 20, :units => "metric"}
 
-    data = HTTParty.get("https://betsy-shipping-service.herokuapp.com/shipping_rates",
+    data = HTTParty.post("https://betsy-shipping-service.herokuapp.com/shipping_rates",
          :headers => { 'Accept' => 'application/json' },
          :body => { :destination => {:country => 'US', :state => destination.state, :city => destination.city, :zip => destination.zip },
                    :origin => origin,
