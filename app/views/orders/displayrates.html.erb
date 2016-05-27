@@ -1,0 +1,15 @@
+<%= form_for @order , url: updateshipping_path(session[:order_id]), method: :patch do |f| %>
+<%= f.label :update_shipping %>
+
+  <% @results.each do |result| %>
+    <% result.each do |item| %>
+    <div class="radio">
+      <label>
+        <br><%= f.radio_button :shipping_method, item %><%= item[0] %>: <%= number_to_currency(item[1]/100.0) %>
+      </label>
+    </div>
+    <% end %>
+  <% end %>
+
+  <%= f.submit "Checkout", class: "button" %>
+  <% end %>

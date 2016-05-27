@@ -39,10 +39,19 @@
     </tr>
 
     <tr>
+      <td>Shipping Method</td>
+      <td><%= @order.shipping_method %></td>
+    </tr>
+    <tr>
+      <td>Shipping Cost</td>
+      <td><%= to_money(@order.shipping_cost/100.0) %></td>
+    </tr>
+
+    <tr>
       <td>Order total</td>
       <td></td>
 
-      <td class="sub-total"><h4><%= to_money(@order.order_total) %></h4></td>
+      <td class="sub-total"><h4><%= to_money(@order.total) %></h4></td>
     </tr>
     <tr>
   </tfoot>

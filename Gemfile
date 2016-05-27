@@ -30,7 +30,7 @@ gem 'graphviz'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass'
-
+gem 'httparty'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

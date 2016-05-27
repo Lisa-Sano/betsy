@@ -37,6 +37,22 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def hashify
+    items = self.order_items
+    orderitem_info_array = []
+    items.each do |item|
+      hash = {
+      height: item.product.height,
+      width: item.product.width,
+      length: item.product.length,
+      weight: item.product.weight,
+      quantity: item.quantity
+      }
+      orderitem_info_array << hash
+    end
+    orderitem_info_array
+  end
+
 
   def order_total
     total = 0
@@ -47,4 +63,5 @@ class Order < ActiveRecord::Base
     end
     return total
   end
+
 end

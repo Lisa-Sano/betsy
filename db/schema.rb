@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512212224) do
+ActiveRecord::Schema.define(version: 20160525214238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 20160512212224) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "order_state",  null: false
+    t.string   "order_state",     null: false
     t.integer  "user_id"
     t.integer  "total"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "name"
     t.string   "email"
     t.string   "address"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20160512212224) do
     t.integer  "billing_zip"
     t.string   "cc_exp_month"
     t.string   "cc_exp_year"
+    t.string   "shipping_method"
+    t.float    "shipping_cost"
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -70,6 +72,10 @@ ActiveRecord::Schema.define(version: 20160512212224) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "retired",     default: false
+    t.float    "weight"
+    t.float    "height"
+    t.float    "length"
+    t.float    "width"
   end
 
   create_table "reviews", force: :cascade do |t|
