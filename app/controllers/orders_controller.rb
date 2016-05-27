@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       @user = User.find_by(id: session[:user_id])
-      render :shipping
+      redirect_to :shipping
     else
       @user = User.find_by(id: session[:user_id])
       render :edit
@@ -34,12 +34,11 @@ class OrdersController < ApplicationController
     @user = User.find_by(id: session[:user_id])
 
     #add weight for all order items
-    weight = 0
-    @order.order_items.each do |item|
-      weight += item.weight
-    end
+    #jerk code
+    weight = rand(20..2000)
 
-    @shipping_response = ShippingWrapper.get_rates(@order, weight)
+    @shipping_response = ShippingWrapper.get_rates(@order, @weight)
+    raise
   end
 
   #may need separate confirmation method to finalize checkout
