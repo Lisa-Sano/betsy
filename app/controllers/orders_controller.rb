@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     # {weight: 10, height: 20, length: 30, width: 40},
     # {country: 'US', city: 'Overland Park', state: 'KS', zip: '66212'},
     # {country: 'US', city: 'Seattle', state: 'WA', zip: '98102'}
-    raise
+    # raise
   end
 
   #may need separate confirmation method to finalize checkout
