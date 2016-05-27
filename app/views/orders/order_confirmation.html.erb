@@ -44,7 +44,7 @@
     </tr>
     <tr>
       <td>Shipping Cost</td>
-      <td><%= @order.shipping_cost/100.0 %></td>
+      <td><%= to_money(@order.shipping_cost/100.0) %></td>
     </tr>
 
     <tr>
@@ -62,4 +62,3 @@
 <br>
 <br>
 <%= link_to "Browse more products", products_path %>
-<%= @cost_with_shipping %>
